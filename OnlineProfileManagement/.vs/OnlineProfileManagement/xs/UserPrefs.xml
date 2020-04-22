@@ -1,0 +1,69 @@
+﻿<Properties StartupConfiguration="{2CB5322B-9B41-4438-9F62-94D41CF1537D}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OPM.Commands.API/Commands/AddComChannelCommand.cs">
+    <Files>
+      <File FileName="OPM.Commands.API/Controllers/ProfileController.cs" Line="29" Column="1" />
+      <File FileName="OPM.Commands.API/Commands/CreateEntityProfileCommand.cs" Line="11" Column="1" />
+      <File FileName="OPM.Commands.API/CommandHandlers/CreateEntityProfileCommandHandler.cs" Line="50" Column="1" />
+      <File FileName="OPM.Commands.API/Commands/IdentifiedCommand.cs" Line="1" Column="1" />
+      <File FileName="OPM.Commands.API/CommandHandlers/AddComChannelCommandHandler.cs" Line="52" Column="73" />
+      <File FileName="OPM.Commands.API/Infrastructure/AutofacModules/MediatorModule.cs" Line="42" Column="53" />
+      <File FileName="OPM.Commands.API/Behaviors/ValidatorBehavior.cs" Line="1" Column="1" />
+      <File FileName="OPM.Domain/Aggregates/ProfileAggregate/EntityProfile.cs" Line="28" Column="1" />
+      <File FileName="OPM.Infrastructure/Repositories/Interfaces/IProfileRepository.cs" Line="20" Column="6" />
+      <File FileName="OPM.Infrastructure/Repositories/ProfileRepository.cs" Line="22" Column="38" />
+      <File FileName="OPM.Commands.API/DomainEventHandler/ComChannelAddedDomainEventHandler.cs" Line="23" Column="20" />
+      <File FileName="OPM.Domain/Events/ComChannelAddedDomainEvent.cs" Line="21" Column="14" />
+      <File FileName="OPM.Domain/SeekWork/IRepository.cs" Line="1" Column="1" />
+      <File FileName="OPM.Domain/SeekWork/IUnitOfWork.cs" Line="1" Column="1" />
+      <File FileName="OPM.Infrastructure/Repositories/Interfaces/IGroupRepository.cs" Line="1" Column="1" />
+      <File FileName="OPM.Infrastructure/Repositories/GroupRepository.cs" Line="1" Column="1" />
+      <File FileName="OPM.Domain/Events/ProfileCreatedDomainEvent.cs" Line="1" Column="1" />
+      <File FileName="OPM.Commands.API/Commands/AddComChannelCommand.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="OnlineProfileManagement" expanded="True">
+            <Node name="OPM.Commands.API" expanded="True">
+              <Node name="Behaviors" expanded="True" />
+              <Node name="CommandHandlers" expanded="True" />
+              <Node name="Commands" expanded="True">
+                <Node name="AddComChannelCommand.cs" selected="True" />
+              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="DomainEventHandler" expanded="True" />
+              <Node name="Extensions" expanded="True" />
+              <Node name="Infrastructure" expanded="True">
+                <Node name="AutofacModules" expanded="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
+            </Node>
+            <Node name="OPM.Domain" expanded="True">
+              <Node name="Aggregates" expanded="True">
+                <Node name="ProfileAggregate" expanded="True" />
+              </Node>
+              <Node name="Events" expanded="True" />
+              <Node name="SeekWork" expanded="True" />
+            </Node>
+            <Node name="OPM.Infrastructure" expanded="True">
+              <Node name="Repositories" expanded="True">
+                <Node name="Interfaces" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>Profile.Domain/OPM.Domain.csproj</String>
+    <String>OPM.Infrastucture/OPM.Infrastructure.csproj</String>
+  </DisabledProjects>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.OPM.Queries.API PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>

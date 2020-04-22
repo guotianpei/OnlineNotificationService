@@ -1,0 +1,39 @@
+﻿using System;
+using System.Reflection;
+using Autofac;
+using OPM.Infrastructure.Idempotency;
+using OPM.Infrastructure.Repositories;
+using OPM.Infrastructure.Repositories.Interfaces;
+
+namespace OPM.Commands.API.Infrastructure.AutofacModules
+{
+
+//Introduction to Dependency Injection in ASP.NET Core//https://docs.microsoft.com/aspnet/core/fundamentals/depende//ncy-injection//Autofac.Official documentation.//https://docs.autofac.org/en/latest/
+
+    public class ApplicationModule : Autofac.Module
+    {
+        public ApplicationModule() 
+        {
+        }
+
+    protected override void Load(ContainerBuilder builder)
+    {
+
+        
+        builder.RegisterType<ProfileRepository>()
+            .As<IProfileRepository>()
+            .InstancePerLifetimeScope();
+
+        builder.RegisterType<GroupRepository>()
+            .As<IGroupRepository>()
+            .InstancePerLifetimeScope();
+
+        builder.RegisterType<RequestManager>()
+           .As<IRequestManager>()
+           .InstancePerLifetimeScope();
+
+        
+
+    }
+}
+}

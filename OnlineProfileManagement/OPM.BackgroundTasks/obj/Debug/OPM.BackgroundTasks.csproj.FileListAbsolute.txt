@@ -1,0 +1,2 @@
+/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.BackgroundTasks/obj/Debug/OPM.BackgroundTasks.csprojAssemblyReference.cache
+/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.BackgroundTasks/obj/Debug/OPM.BackgroundTasks.csproj.CoreCompileInputs.cache
