@@ -18,4 +18,9 @@
   <ItemGroup>
     <Compile Remove="WeatherForecast.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OPM.Infrastructure\OPM.Infrastructure.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

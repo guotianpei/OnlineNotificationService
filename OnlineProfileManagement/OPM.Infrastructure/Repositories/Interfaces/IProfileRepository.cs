@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using OPM.Domain;
 using OPM.Domain.Aggregates;
 using OPM.Domain.Aggregates.ProfileAggregate;
@@ -16,6 +17,8 @@ namespace OPM.Infrastructure.Repositories.Interfaces
         
         Task<EntityProfile> FindByIdAsync(int id);
 
-        Task<EntityProfile> GetAsync(string profileId);
+        Task<EntityProfile> GetAsync(string EntityID);
+
+        List<Task<EntityProfile>> GetMultiple(List<string> EntityIDs);
     }
 }

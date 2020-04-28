@@ -1,24 +1,16 @@
 ﻿<Properties StartupConfiguration="{2CB5322B-9B41-4438-9F62-94D41CF1537D}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="OPM.Commands.API/Commands/AddComChannelCommand.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OPM.Infrastructure/Repositories/Interfaces/IProfileRepository.cs">
     <Files>
-      <File FileName="OPM.Commands.API/Controllers/ProfileController.cs" Line="29" Column="1" />
-      <File FileName="OPM.Commands.API/Commands/CreateEntityProfileCommand.cs" Line="11" Column="1" />
-      <File FileName="OPM.Commands.API/CommandHandlers/CreateEntityProfileCommandHandler.cs" Line="50" Column="1" />
-      <File FileName="OPM.Commands.API/Commands/IdentifiedCommand.cs" Line="1" Column="1" />
-      <File FileName="OPM.Commands.API/CommandHandlers/AddComChannelCommandHandler.cs" Line="52" Column="73" />
-      <File FileName="OPM.Commands.API/Infrastructure/AutofacModules/MediatorModule.cs" Line="42" Column="53" />
-      <File FileName="OPM.Commands.API/Behaviors/ValidatorBehavior.cs" Line="1" Column="1" />
-      <File FileName="OPM.Domain/Aggregates/ProfileAggregate/EntityProfile.cs" Line="28" Column="1" />
-      <File FileName="OPM.Infrastructure/Repositories/Interfaces/IProfileRepository.cs" Line="20" Column="6" />
-      <File FileName="OPM.Infrastructure/Repositories/ProfileRepository.cs" Line="22" Column="38" />
-      <File FileName="OPM.Commands.API/DomainEventHandler/ComChannelAddedDomainEventHandler.cs" Line="23" Column="20" />
-      <File FileName="OPM.Domain/Events/ComChannelAddedDomainEvent.cs" Line="21" Column="14" />
-      <File FileName="OPM.Domain/SeekWork/IRepository.cs" Line="1" Column="1" />
-      <File FileName="OPM.Domain/SeekWork/IUnitOfWork.cs" Line="1" Column="1" />
-      <File FileName="OPM.Infrastructure/Repositories/Interfaces/IGroupRepository.cs" Line="1" Column="1" />
-      <File FileName="OPM.Infrastructure/Repositories/GroupRepository.cs" Line="1" Column="1" />
-      <File FileName="OPM.Domain/Events/ProfileCreatedDomainEvent.cs" Line="1" Column="1" />
-      <File FileName="OPM.Commands.API/Commands/AddComChannelCommand.cs" Line="1" Column="1" />
+      <File FileName="OPM.Queries.API/Controllers/ProfileController.cs" Line="47" Column="36" />
+      <File FileName="OPM.Commands.API/Controllers/ProfileController.cs" Line="28" Column="1" />
+      <File FileName="OPM.Commands.API/Commands/AddComChannelCommand.cs" Line="22" Column="41" />
+      <File FileName="OPM.Queries.API/QueryHandlers/ProfileQueryHandler.cs" Line="22" Column="1" />
+      <File FileName="OPM.Queries.API/Queries/GetProfileQuery.cs" Line="19" Column="33" />
+      <File FileName="OPM.Commands.API/Infrastructure/AutofacModules/MediatorModule.cs" Line="1" Column="1" />
+      <File FileName="OPM.Queries.API/Queries/IAsyncRequest.cs" Line="8" Column="2" />
+      <File FileName="OPM.Commands.API/CommandHandlers/AddComChannelCommandHandler.cs" Line="33" Column="21" />
+      <File FileName="OPM.Queries.API/QueryHandlers/GetProfileQueryHandler.cs" Line="23" Column="52" />
+      <File FileName="OPM.Infrastructure/Repositories/Interfaces/IProfileRepository.cs" Line="19" Column="56" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -27,9 +19,7 @@
             <Node name="OPM.Commands.API" expanded="True">
               <Node name="Behaviors" expanded="True" />
               <Node name="CommandHandlers" expanded="True" />
-              <Node name="Commands" expanded="True">
-                <Node name="AddComChannelCommand.cs" selected="True" />
-              </Node>
+              <Node name="Commands" expanded="True" />
               <Node name="Controllers" expanded="True" />
               <Node name="DomainEventHandler" expanded="True" />
               <Node name="Extensions" expanded="True" />
@@ -38,17 +28,17 @@
               </Node>
               <Node name="Models" expanded="True" />
             </Node>
-            <Node name="OPM.Domain" expanded="True">
-              <Node name="Aggregates" expanded="True">
-                <Node name="ProfileAggregate" expanded="True" />
-              </Node>
-              <Node name="Events" expanded="True" />
-              <Node name="SeekWork" expanded="True" />
-            </Node>
             <Node name="OPM.Infrastructure" expanded="True">
               <Node name="Repositories" expanded="True">
-                <Node name="Interfaces" expanded="True" />
+                <Node name="Interfaces" expanded="True">
+                  <Node name="IProfileRepository.cs" selected="True" />
+                </Node>
               </Node>
+            </Node>
+            <Node name="OPM.Queries.API" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Queries" expanded="True" />
+              <Node name="QueryHandlers" expanded="True" />
             </Node>
           </Node>
         </State>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -9,7 +10,7 @@ using MediatR;
 namespace OPM.Queries.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[ReadController]")]
     public class ProfileController : ControllerBase
     {
 
@@ -32,7 +33,16 @@ namespace OPM.Queries.API.Controllers
         //var order customer = await _mediator.Send(new GetOrderByIdQuery(orderId));
         //2. API HealthCheck
 
-        public async Task<IActionResult> Index()
+        /// <summary>
+        /// Get profile by entityId
+        /// </summary>
+        /// <param name="entityId">entity ID of profile</param>
+        /// <returns>profile information</returns>
+        [Route("GetProfile")]
+        [HttpGet]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> GetProfile(string entityId)
         {
             await _mediator.Publish(new EmptyCommand());
             var queryResult = await _mediator.Send(new EmptyQuery());

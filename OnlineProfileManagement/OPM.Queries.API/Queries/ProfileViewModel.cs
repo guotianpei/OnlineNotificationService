@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace OPM.Queries.API.Queries
 {
-    public class Profile
+    public class ProfileViewModel
     {
         public List<ProfileComChannel> profileComChannels { get; }
         

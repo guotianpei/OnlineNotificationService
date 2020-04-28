@@ -11,7 +11,7 @@ using OPM.Commands.API.Commands;
 namespace OPM.Commands.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[WriteController]")]
     public class ProfileController : ControllerBase
     {
 
