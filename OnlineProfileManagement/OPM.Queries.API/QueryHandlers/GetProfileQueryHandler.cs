@@ -35,6 +35,7 @@ namespace OPM.Queries.API.QueryHandlers
             {
                 //TO-DO: Mapping return to ProfileViewModel object
                 //var profileViewModel =
+                //return profileViewModel;
             }
             
             return null;

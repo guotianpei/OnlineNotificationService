@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using OPM.Domain.Aggregates.ProfileAggregate;
 using OPM.Domain.SeekWork;
 using OPM.Infrastructure.Repositories.Interfaces;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace OPM.Infrastructure.Repositories
 {
@@ -31,20 +33,31 @@ namespace OPM.Infrastructure.Repositories
         {
             return _context.EntityProfile.Add(profile).Entity;
         }
+        public void Update(EntityProfile profile)
+        {
+            _context.Entry(profile).State = EntityState.Modified;
+        }
 
         public Task<EntityProfile> FindByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<EntityProfile> GetAsync(string profileId)
+        public Task<EntityProfile> GetAsync(string EntityID)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(EntityProfile profile)
+        public IEnumerable<Task<EntityProfile>> GetMultiple(List<string> EntityIDs)
         {
-            _context.Entry(profile).State = EntityState.Modified;
+            throw new NotImplementedException();
         }
+
+        public IEnumerable<Task<EntityProfile>> GetWhere(Expression<Func<Task, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        
     }
 }

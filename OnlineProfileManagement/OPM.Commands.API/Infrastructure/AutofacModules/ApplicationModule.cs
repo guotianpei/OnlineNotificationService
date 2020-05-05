@@ -12,11 +12,15 @@ namespace OPM.Commands.API.Infrastructure.AutofacModules
 
     public class ApplicationModule : Autofac.Module
     {
-        public ApplicationModule() 
+        public string QueriesConnectionString { get; }
+
+        public ApplicationModule(string qconstr)
         {
+            QueriesConnectionString = qconstr;
+
         }
 
-    protected override void Load(ContainerBuilder builder)
+        protected override void Load(ContainerBuilder builder)
     {
 
         
