@@ -58,6 +58,9 @@ namespace OPM.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        
+        List<Task<EntityProfile>> IProfileRepository.GetMultiple(List<string> EntityIDs)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

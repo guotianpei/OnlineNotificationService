@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/Users/tianguo/.dotnet/store/|arch|/|tfm|",
-      "/Users/tianguo/.nuget/packages"
+      "C:\\Users\\tguo4\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\tguo4\\.nuget\\packages"
     ]
   }
 }
