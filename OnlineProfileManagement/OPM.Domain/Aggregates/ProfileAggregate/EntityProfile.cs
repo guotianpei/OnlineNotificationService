@@ -128,14 +128,7 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
 
         }
 
-        public void SetProfileTerminated(int id)
-        {
-            _termDate = DateTime.UtcNow.Date;
-            //TO-DO:
-            //Add ProfileTerminatedDomainEvent for any side effect if needed.
-           
-
-        }
+        
 
         private void ComChannelAddedDomainEvent(ProfileComChannel channel)
         {

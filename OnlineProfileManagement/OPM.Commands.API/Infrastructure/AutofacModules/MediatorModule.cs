@@ -4,9 +4,11 @@ using System.Reflection;
 using Autofac;
 using FluentValidation;
 using MediatR;
+using OPM.Commands.API.Bahaviors;
 using OPM.Commands.API.Commands;
 using OPM.Commands.API.CommandHandlers;
 using OPM.Commands.API.DomainEventHandler;
+using OPM.Commands.API.Validations;
 
 namespace OPM.Commands.API.Infrastructure.AutofacModules
 {
@@ -27,10 +29,14 @@ namespace OPM.Commands.API.Infrastructure.AutofacModules
                 .AsClosedTypesOf(typeof(INotificationHandler<>));
 
             // Register the Command's Validators (Validators based on FluentValidation library)
-            //builder
-            //    .RegisterAssemblyTypes(typeof(CreateOrderCommandValidator).GetTypeInfo().Assembly)
-            //    .Where(t => t.IsClosedTypeOf(typeof(IValidator<>)))
-            //    .AsImplementedInterfaces();
+            builder
+               .RegisterAssemblyTypes(typeof(CreateEntityProfileCommandValidator).GetTypeInfo().Assembly)
+               .Where(t => t.IsClosedTypeOf(typeof(IValidator<>)))
+               .AsImplementedInterfaces();
+            builder
+                .RegisterAssemblyTypes(typeof(ComChannelCommandValidator).GetTypeInfo().Assembly)
+                .Where(t => t.IsClosedTypeOf(typeof(IValidator<>)))
+                .AsImplementedInterfaces();
 
 
             builder.Register<ServiceFactory>(context =>
@@ -39,9 +45,10 @@ namespace OPM.Commands.API.Infrastructure.AutofacModules
                 return t => { object o; return componentContext.TryResolve(t, out o) ? o : null; };
             });
 
-            //builder.RegisterGeneric(typeof(LoggingBehavior<,>)).As(typeof(IPipelineBehavior<,>));
-            //builder.RegisterGeneric(typeof(ValidatorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
-            //builder.RegisterGeneric(typeof(TransactionBehaviour<,>)).As(typeof(IPipelineBehavior<,>));
+            //Register behaviors in behavior pipeline.
+            builder.RegisterGeneric(typeof(LoggingBehavior<,>)).As(typeof(IPipelineBehavior<,>));
+            builder.RegisterGeneric(typeof(ValidatorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
+            builder.RegisterGeneric(typeof(TransactionBehaviour<,>)).As(typeof(IPipelineBehavior<,>));
 
         }
     }

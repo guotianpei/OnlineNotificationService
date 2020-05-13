@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore.Storage;
 using OPM.Domain.SeekWork;
 using OPM.Domain.Aggregates.DistributionGroupsAggregate;
 using OPM.Domain.Aggregates.ProfileAggregate;
-using OPM.
+using OPM.Infrastructure.EntityConfigurations;
+
 using System;
 using System.Data;
 using System.Threading;
@@ -16,8 +17,8 @@ namespace OPM.Infrastructure
     public class ProfileContext : DbContext, IUnitOfWork
     {
         public const string DEFAULT_SCHEMA = "OPM";
-        public DbSet<DistributionGroups> Groups { get; set; }
-        public DbSet<ProfileDistributionGroups> ProfileGroups { get; set; }
+        public DbSet<DistributionGroup> Groups { get; set; }
+        public DbSet<ProfileDistributionGroup> ProfileGroups { get; set; }
         public DbSet<EntityProfile> EntityProfile { get; set; }
         public DbSet<ProfileComChannel> ProfileComChannels { get; set; }
      
@@ -40,9 +41,10 @@ namespace OPM.Infrastructure
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        { 
 
-            modelBuilder.ApplyConfiguration(new profi());
+            modelBuilder.ApplyConfiguration(new EntityProfileConfiguration());
+            modelBuilder.ApplyConfiguration(new ProfileEntityTypeConfiguration());
             // Other entities' configuration ...
         }
 

@@ -1,14 +1,15 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using OPM.Commands.API.Extensions;
+ 
 using Microsoft.Extensions.Logging;
 using OPM.Infrastructure;
 using Serilog.Context;
 using System;
 using System.Threading;
-using System.Threading.Tasks;
+using OPM.Commands.API.Extensions;
 
-namespace Ordering.API.Application.Behaviors
+using System.Threading.Tasks;
+namespace OPM.Commands.API.Bahaviors
 {
     public class TransactionBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {

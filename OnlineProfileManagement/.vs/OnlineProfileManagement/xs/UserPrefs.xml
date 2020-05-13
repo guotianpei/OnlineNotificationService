@@ -1,47 +1,62 @@
 ﻿<Properties StartupConfiguration="{2CB5322B-9B41-4438-9F62-94D41CF1537D}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="OPM.Commands.API/CommandHandlers/IdentifiedCommandHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OPM.Queries.API/Program.cs">
     <Files>
-      <File FileName="OPM.Queries.API/Controllers/ProfileController.cs" Line="51" Column="48" />
-      <File FileName="OPM.Commands.API/Controllers/ProfileController.cs" />
-      <File FileName="OPM.Commands.API/Commands/AddComChannelCommand.cs" />
-      <File FileName="OPM.Queries.API/Queries/GetProfileQuery.cs" Line="21" Column="6" />
-      <File FileName="OPM.Commands.API/Infrastructure/AutofacModules/MediatorModule.cs" />
-      <File FileName="OPM.Queries.API/Queries/IAsyncRequest.cs" Line="1" Column="1" />
-      <File FileName="OPM.Commands.API/CommandHandlers/AddComChannelCommandHandler.cs" Line="1" Column="1" />
-      <File FileName="OPM.Queries.API/QueryHandlers/GetProfileQueryHandler.cs" Line="11" Column="1" />
-      <File FileName="OPM.Infrastructure/Repositories/Interfaces/IProfileRepository.cs" />
-      <File FileName="OPM.Infrastructure/Repositories/ProfileRepository.cs" Line="58" Column="32" />
-      <File FileName="OPM.Infrastructure/ProfileContext.cs" />
-      <File FileName="OPM.Domain/Aggregates/DistributionGroupsAggregate/DistributionGroup.cs" />
-      <File FileName="OPM.Domain/Aggregates/DistributionGroupsAggregate/ProfileDistributionGroup.cs" />
-      <File FileName="OPM.Commands.API/Startup.cs" Line="57" Column="16" />
-      <File FileName="OPM.Commands.API/Infrastructure/AutofacModules/ApplicationModule.cs" />
-      <File FileName="OPM.Queries.API/Queries/QueryBase.cs" Line="10" Column="1" />
-      <File FileName="OPM.Queries.API/Queries/GetProfilesQuery.cs" Line="23" Column="2" />
-      <File FileName="OPM.Infrastructure/Repositories/Interfaces/IGroupRepository.cs" />
-      <File FileName="OPM.Domain/SeekWork/IRepository.cs" Line="8" Column="1" />
-      <File FileName="OPM.Queries.API/Queries/ProfileViewModel.cs" Line="1" Column="1" />
-      <File FileName="OPM.Commands.API/CommandHandlers/IdentifiedCommandHandler.cs" Line="31" Column="34" />
+      <File FileName="OPM.Commands.API/Infrastructure/AutofacModules/MediatorModule.cs" Line="48" Column="55" NotebookId="1" />
+      <File FileName="OPM.Commands.API/Validations/CreateEntityProfileCommandValidator.cs" Line="29" Column="1" NotebookId="1" />
+      <File FileName="OPM.Commands.API/Validations/AddComChannelCommandValidator.cs" Line="8" Column="1" NotebookId="1" />
+      <File FileName="OPM.Domain/Aggregates/ProfileAggregate/ComChannelTypes.cs" Line="9" Column="33" NotebookId="1" />
+      <File FileName="OPM.Commands.API/Bahaviors/ValidatorBehavior.cs" Line="35" Column="32" NotebookId="1" />
+      <File FileName="OPM.Commands.API/Controllers/ProfileController.cs" Line="39" Column="103" NotebookId="1" />
+      <File FileName="OPM.Domain/Aggregates/ProfileAggregate/EntityProfile.cs" Line="116" Column="1" NotebookId="1" />
+      <File FileName="OPM.Infrastructure/ProfileContext.cs" Line="13" Column="30" NotebookId="1" />
+      <File FileName="OPM.Infrastructure/Repositories/ProfileRepository.cs" Line="14" Column="1" NotebookId="1" />
+      <File FileName="OPM.Infrastructure/EntityConfigurations/EntityProfileConfiguration.cs" Line="11" Column="10" NotebookId="1" />
+      <File FileName="OPM.Queries.API/Program.cs" Line="16" Column="1" NotebookId="1" />
     </Files>
+    <FloatingWindows>
+      <FloatingWindow WindowId="1" X="1355" Y="23" Width="640" Height="865">
+        <Files>
+          <File FileName="OPM.Commands.API/Commands/AddComChannelCommand.cs" Line="27" Column="41" />
+        </Files>
+      </FloatingWindow>
+    </FloatingWindows>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="OnlineProfileManagement" expanded="True">
             <Node name="OPM.Commands.API" expanded="True">
-              <Node name="CommandHandlers" expanded="True">
-                <Node name="IdentifiedCommandHandler.cs" selected="True" />
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
               </Node>
+              <Node name="Bahaviors" expanded="True" />
+              <Node name="Commands" expanded="True" />
               <Node name="Controllers" expanded="True" />
+              <Node name="Extensions" expanded="True" />
+              <Node name="Infrastructure" expanded="True">
+                <Node name="AutofacModules" expanded="True" />
+              </Node>
+              <Node name="Validations" expanded="True" />
+            </Node>
+            <Node name="OPM.Domain" expanded="True">
+              <Node name="Aggregates" expanded="True">
+                <Node name="DistributionGroupsAggregate" expanded="True" />
+                <Node name="ProfileAggregate" expanded="True" />
+              </Node>
+              <Node name="Exceptions" expanded="True" />
             </Node>
             <Node name="OPM.Infrastructure" expanded="True">
+              <Node name="EntityConfigurations" expanded="True" />
               <Node name="Repositories" expanded="True" />
             </Node>
             <Node name="OPM.Queries.API" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="QueryHandlers" expanded="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

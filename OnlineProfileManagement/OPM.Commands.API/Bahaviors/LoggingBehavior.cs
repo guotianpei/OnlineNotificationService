@@ -5,8 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using OPM.Commands.API.Extensions;
 
-
-namespace OPM.Commands.API
+namespace OPM.Commands.API.Bahaviors
 {
     public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {

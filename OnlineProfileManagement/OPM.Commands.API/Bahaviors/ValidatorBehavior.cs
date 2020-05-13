@@ -1,13 +1,13 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Ordering.Domain.Exceptions;
+using OPM.Domain.Exceptions;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.eShopOnContainers.BuildingBlocks.EventBus.Extensions;
-
-namespace Ordering.API.Application.Behaviors
+using OPM.Commands.API.Extensions;
+ 
+namespace OPM.Commands.API.Bahaviors
 {
     public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
@@ -36,11 +36,12 @@ namespace Ordering.API.Application.Behaviors
             {
                 _logger.LogWarning("Validation errors - {CommandType} - Command: {@Command} - Errors: {@ValidationErrors}", typeName, request, failures);
 
-                throw new OrderingDomainException(
+                throw new ProfileDomainException(
                     $"Command Validation Errors for type {typeof(TRequest).Name}", new ValidationException("Validation exception", failures));
             }
 
             return await next();
         }
+
     }
 }
