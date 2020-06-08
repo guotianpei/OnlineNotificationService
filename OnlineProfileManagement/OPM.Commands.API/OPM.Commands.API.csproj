@@ -12,10 +12,7 @@
     <Folder Include="Models\" />
     <Folder Include="Extensions\" />
     <Folder Include="Validations\" />
-<<<<<<< HEAD
-=======
     <Folder Include="Bahaviors\" />
->>>>>>> 5887e303d28734153e2d2bd20c006e90862d21c8
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="WeatherForecast.cs" />
