@@ -17,6 +17,27 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "Autofac/5.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Autofac.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Autofac.dll": {}
+        }
+      },
+      "FluentValidation/8.6.2": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.4.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        }
+      },
       "MediatR/8.0.1": {
         "type": "package",
         "compile": {
@@ -1382,6 +1403,46 @@
         "aspnetcore.healthchecks.ui.client.3.1.0.nupkg.sha512",
         "aspnetcore.healthchecks.ui.client.nuspec",
         "lib/netcoreapp3.1/HealthChecks.UI.Client.dll"
+      ]
+    },
+    "Autofac/5.2.0": {
+      "sha512": "V8dBH0dsv75uDzl7Sw+HkhKDPUw2eXnlMjcSVMH+tLo2s67MpTKGyDj1pDcpR+IF2u4YRs0s3/x7R88YJzIWvg==",
+      "type": "package",
+      "path": "autofac/5.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "autofac.5.2.0.nupkg.sha512",
+        "autofac.nuspec",
+        "icon.png",
+        "lib/net461/Autofac.dll",
+        "lib/net461/Autofac.pdb",
+        "lib/net461/Autofac.xml",
+        "lib/netstandard2.0/Autofac.dll",
+        "lib/netstandard2.0/Autofac.pdb",
+        "lib/netstandard2.0/Autofac.xml",
+        "lib/netstandard2.1/Autofac.dll",
+        "lib/netstandard2.1/Autofac.pdb",
+        "lib/netstandard2.1/Autofac.xml"
+      ]
+    },
+    "FluentValidation/8.6.2": {
+      "sha512": "N2vz+f6pAX9AI19hu83U2LJjjc/ETzWGlICVanu3DIG76QhzEu3PR/CQSFBX69PRuBTivrW4jhBzeV7dXIfqyw==",
+      "type": "package",
+      "path": "fluentvalidation/8.6.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fluentvalidation.8.6.2.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net45/FluentValidation.dll",
+        "lib/net45/FluentValidation.xml",
+        "lib/netstandard1.1/FluentValidation.dll",
+        "lib/netstandard1.1/FluentValidation.xml",
+        "lib/netstandard1.6/FluentValidation.dll",
+        "lib/netstandard1.6/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml"
       ]
     },
     "MediatR/8.0.1": {
@@ -5144,6 +5205,8 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "AspNetCore.HealthChecks.UI.Client >= 3.1.0",
+      "Autofac >= 5.2.0",
+      "FluentValidation >= 8.6.2",
       "MediatR >= 8.0.1",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 8.0.0",
       "Microsoft.Extensions.DependencyInjection >= 3.1.3",
@@ -5157,11 +5220,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tguo4\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Queries.API\\OPM.Queries.API.csproj",
+      "projectUniqueName": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Queries.API\\OPM.Queries.API.csproj",
       "projectName": "OPM.Queries.API",
-      "projectPath": "C:\\Users\\tguo4\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Queries.API\\OPM.Queries.API.csproj",
+      "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Queries.API\\OPM.Queries.API.csproj",
       "packagesPath": "C:\\Users\\tguo4\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tguo4\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Queries.API\\obj\\",
+      "outputPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Queries.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\tguo4\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5177,8 +5240,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\tguo4\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Infrastructure\\OPM.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\tguo4\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Infrastructure\\OPM.Infrastructure.csproj"
+            "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Infrastructure\\OPM.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Infrastructure\\OPM.Infrastructure.csproj"
             }
           }
         }
@@ -5195,6 +5258,14 @@
           "AspNetCore.HealthChecks.UI.Client": {
             "target": "Package",
             "version": "[3.1.0, )"
+          },
+          "Autofac": {
+            "target": "Package",
+            "version": "[5.2.0, )"
+          },
+          "FluentValidation": {
+            "target": "Package",
+            "version": "[8.6.2, )"
           },
           "MediatR": {
             "target": "Package",

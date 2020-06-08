@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "jxfNkdEcJ2bS9BTEPeAqlnHYJgT1PJxLgJ6dEa+WNYc/Cu3/m7tBjlY5SjkTgY/g1CEZzk43jKQ2wnlnGD6HyA==",
+  "dgSpecHash": "3HMI5i5NSitwmZiwtKH9aTFrdDYcRYPtwjU7tQJv7JCrMcJ9R7083HBq+VyIjlaqUEPgP73fm+X6sxdxKN1SaA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tguo4\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Queries.API\\OPM.Queries.API.csproj",
+  "projectFilePath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Queries.API\\OPM.Queries.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tguo4\\.nuget\\packages\\aspnetcore.healthchecks.ui.client\\3.1.0\\aspnetcore.healthchecks.ui.client.3.1.0.nupkg.sha512",
+    "C:\\Users\\tguo4\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512",
+    "C:\\Users\\tguo4\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
     "C:\\Users\\tguo4\\.nuget\\packages\\mediatr\\8.0.1\\mediatr.8.0.1.nupkg.sha512",
     "C:\\Users\\tguo4\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\8.0.0\\mediatr.extensions.microsoft.dependencyinjection.8.0.0.nupkg.sha512",
     "C:\\Users\\tguo4\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",

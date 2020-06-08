@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MediatR;
 using OPM.Queries.API.Queries;
+using OPM.Queries.API.Models;
 
 namespace OPM.Queries.API.Controllers
 {
     [ApiController]
-    [Route("[ReadController]")]
+   
     public class ProfileController : ApiControllerBase
     {
 
@@ -28,11 +29,6 @@ namespace OPM.Queries.API.Controllers
             _logger = logger;
         }
 
-
-        //TO-DO:
-        //1. It's good idea to take advantage of GetOrderByIdQuery and handle by GetCustomerByIdQueryHandler
-        //var order customer = await _mediator.Send(new GetOrderByIdQuery(orderId));
-        //2. API HealthCheck
 
         /// <summary>
         /// Get profile by entityId

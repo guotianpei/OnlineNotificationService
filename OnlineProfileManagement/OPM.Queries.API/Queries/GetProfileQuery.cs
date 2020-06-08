@@ -3,6 +3,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using OPM.Queries;
+using OPM.Queries.API.Models;
 
 namespace OPM.Queries.API.Queries
 {

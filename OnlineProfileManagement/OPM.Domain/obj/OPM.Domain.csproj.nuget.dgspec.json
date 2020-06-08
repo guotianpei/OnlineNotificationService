@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tguo4\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Domain\\OPM.Domain.csproj": {}
+    "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Domain\\OPM.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tguo4\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Domain\\OPM.Domain.csproj": {
+    "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Domain\\OPM.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tguo4\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Domain\\OPM.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Domain\\OPM.Domain.csproj",
         "projectName": "OPM.Domain",
-        "projectPath": "C:\\Users\\tguo4\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Domain\\OPM.Domain.csproj",
+        "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Domain\\OPM.Domain.csproj",
         "packagesPath": "C:\\Users\\tguo4\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tguo4\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Domain\\obj\\",
+        "outputPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tguo4\\AppData\\Roaming\\NuGet\\NuGet.Config",

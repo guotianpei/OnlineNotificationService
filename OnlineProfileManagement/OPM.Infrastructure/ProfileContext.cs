@@ -5,11 +5,12 @@ using Microsoft.EntityFrameworkCore.Storage;
 using OPM.Domain.SeekWork;
 using OPM.Domain.Aggregates.DistributionGroupsAggregate;
 using OPM.Domain.Aggregates.ProfileAggregate;
+using OPM.Infrastructure.EntityConfigurations;
+
 using System;
 using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
-using OPM.Infrastructure.EntityConfigurations;
 
 namespace OPM.Infrastructure
 {
@@ -40,7 +41,7 @@ namespace OPM.Infrastructure
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        { 
 
             modelBuilder.ApplyConfiguration(new EntityProfileConfiguration());
             modelBuilder.ApplyConfiguration(new ProfileEntityTypeConfiguration());

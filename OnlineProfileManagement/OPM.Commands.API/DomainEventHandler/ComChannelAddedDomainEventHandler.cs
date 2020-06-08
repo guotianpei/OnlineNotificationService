@@ -20,7 +20,7 @@ namespace OPM.Commands.API.DomainEventHandler
         
         public async Task Handle(ComChannelAddedDomainEvent notification, CancellationToken cancellationToken)
         {
-            //TBD- Send validation email or TEXT based on channel type.
+           
             throw new NotImplementedException();
         }
     }

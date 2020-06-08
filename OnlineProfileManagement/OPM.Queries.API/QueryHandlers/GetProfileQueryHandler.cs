@@ -7,6 +7,7 @@ using OPM.Infrastructure.Repositories;
 using OPM.Infrastructure.Repositories.Interfaces;
 using OPM.Infrastructure.Idempotency;
 using Microsoft.Extensions.Logging;
+using OPM.Queries.API.Models;
 
 
 namespace OPM.Queries.API.QueryHandlers

@@ -38,8 +38,8 @@ namespace OPM.Commands.API.Commands
         [DataMember]
         public string LastName { get; private set; }
 
-        [DataMember]
-        public string Status { get; private set; }
+        //[DataMember]
+        //public string Status { get; private set; }
 
         [DataMember]
         public string ResourceName { get; private set; }
