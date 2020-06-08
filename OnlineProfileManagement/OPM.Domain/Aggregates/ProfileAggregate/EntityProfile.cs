@@ -129,12 +129,15 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         }
 
         
+<<<<<<< HEAD
 
         //private void ComChannelAddedDomainEvent(ProfileComChannel channel)
         //{
         //    var comChannelAddedDomainEvent = new ComChannelAddedDomainEvent(_entityID, _entityName, _firstName, _lastName, channel);
         //    AddDomainEvent(comChannelAddedDomainEvent);
         //}
+=======
+>>>>>>> 5887e303d28734153e2d2bd20c006e90862d21c8
 
         private void ValidatingComChannelDomainEvent(ProfileComChannel channel)
         {

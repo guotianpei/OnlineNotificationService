@@ -10,6 +10,7 @@
 /Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/obj/Debug/netcoreapp3.1/OPM.Infrastructure.csproj.CopyComplete
 /Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/obj/Debug/netcoreapp3.1/OPM.Infrastructure.dll
 /Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/obj/Debug/netcoreapp3.1/OPM.Infrastructure.pdb
+<<<<<<< HEAD
 C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.deps.json
 C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.dll
 C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.pdb
@@ -25,3 +26,5 @@ C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagemen
 C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.runtimeconfig.dev.json
 C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.csproj.CoreCompileInputs.cache
 C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.genruntimeconfig.cache
+=======
+>>>>>>> 5887e303d28734153e2d2bd20c006e90862d21c8

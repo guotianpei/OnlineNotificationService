@@ -59,6 +59,7 @@
 /Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Queries.API/bin/Debug/netcoreapp3.1/OPM.Infrastructure.pdb
 /Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Queries.API/bin/Debug/netcoreapp3.1/OPM.Domain.pdb
 /Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Queries.API/obj/Debug/netcoreapp3.1/OPM.Queries.API.csproj.CopyComplete
+<<<<<<< HEAD
 C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -182,3 +183,5 @@ C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationServ
 C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.pdb
 C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.genruntimeconfig.cache
 C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\FluentValidation.dll
+=======
+>>>>>>> 5887e303d28734153e2d2bd20c006e90862d21c8
