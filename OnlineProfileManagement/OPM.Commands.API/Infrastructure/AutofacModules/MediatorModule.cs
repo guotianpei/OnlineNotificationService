@@ -50,6 +50,7 @@ namespace OPM.Commands.API.Infrastructure.AutofacModules
             builder.RegisterGeneric(typeof(ValidatorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
             builder.RegisterGeneric(typeof(TransactionBehavior<,>)).As(typeof(IPipelineBehavior<,>));
 
+
         }
     }
 }
