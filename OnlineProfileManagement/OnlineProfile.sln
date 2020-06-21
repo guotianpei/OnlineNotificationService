@@ -1,0 +1,50 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9CE9F5DD-3E74-4FAC-B310-C3A1FE440E96}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OPM.Queries.API", "OPM.Queries.API\OPM.Queries.API.csproj", "{2CB5322B-9B41-4438-9F62-94D41CF1537D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OPM.Commands.API", "OPM.Commands.API\OPM.Commands.API.csproj", "{296D7ED7-5D64-4421-8C2C-891F01CC76AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OPM.Domain", "OPM.Domain\OPM.Domain.csproj", "{976AB8E3-B1A1-4676-9702-81CF3F2F049F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OPM.Infrastructure", "OPM.Infrastructure\OPM.Infrastructure.csproj", "{9AE41675-3A2A-4561-89B1-91B7079E58E5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineNotificationProcessor", "..\OnlineNotificationProcessor\OnlineNotificationProcessor\OnlineNotificationProcessor.csproj", "{46D97719-6A18-4C00-AB3B-AF0F7F6EC554}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CB5322B-9B41-4438-9F62-94D41CF1537D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CB5322B-9B41-4438-9F62-94D41CF1537D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CB5322B-9B41-4438-9F62-94D41CF1537D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CB5322B-9B41-4438-9F62-94D41CF1537D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{296D7ED7-5D64-4421-8C2C-891F01CC76AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{296D7ED7-5D64-4421-8C2C-891F01CC76AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{296D7ED7-5D64-4421-8C2C-891F01CC76AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{296D7ED7-5D64-4421-8C2C-891F01CC76AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{976AB8E3-B1A1-4676-9702-81CF3F2F049F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{976AB8E3-B1A1-4676-9702-81CF3F2F049F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{976AB8E3-B1A1-4676-9702-81CF3F2F049F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{976AB8E3-B1A1-4676-9702-81CF3F2F049F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AE41675-3A2A-4561-89B1-91B7079E58E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AE41675-3A2A-4561-89B1-91B7079E58E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AE41675-3A2A-4561-89B1-91B7079E58E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AE41675-3A2A-4561-89B1-91B7079E58E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46D97719-6A18-4C00-AB3B-AF0F7F6EC554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46D97719-6A18-4C00-AB3B-AF0F7F6EC554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46D97719-6A18-4C00-AB3B-AF0F7F6EC554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46D97719-6A18-4C00-AB3B-AF0F7F6EC554}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {204E850E-1490-4709-AB19-1ABCC945388E}
+	EndGlobalSection
+EndGlobal

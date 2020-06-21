@@ -106,19 +106,30 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
                 var comChannel = new ProfileComChannel(type, value, enabled, preference, status);
 
                 _profileComChannels.Add(comChannel);
+
                 //Raise side effect-- for to be validated channel, to send out validation text/email.
-                if (type == ComChannelTypes.Email || type == ComChannelTypes.TEXT)
-                {
-                    ValidatingComChannelDomainEvent(comChannel);
-                }
+
+                ComChannelAddedDomainEvent(comChannel);
+
+
+                //if (type == ComChannelTypes.Email || type == ComChannelTypes.TEXT)
+                //{
+                //    ValidatingComChannelDomainEvent(comChannel);
+                //}
 
             }
 
         }
-        private void ValidatingComChannelDomainEvent(ProfileComChannel channel)
+        //private void ValidatingComChannelDomainEvent(ProfileComChannel channel)
+        //{
+        //    var validdatingcomChannelDomainEvent = new ValidatingComChannelDomainEvent(_entityID, _entityName, _firstName, _lastName, channel);
+        //    AddDomainEvent(validdatingcomChannelDomainEvent);
+        //}
+
+        private void ComChannelAddedDomainEvent(ProfileComChannel channel)
         {
-            var validdatingcomChannelDomainEvent = new ValidatingComChannelDomainEvent(_entityID, _entityName, _firstName, _lastName, channel);
-            AddDomainEvent(validdatingcomChannelDomainEvent);
+            var comChanneAddedDomainEvent = new ComChannelAddedDomainEvent(_entityID, _entityName, _firstName, _lastName, channel);
+            AddDomainEvent(comChanneAddedDomainEvent);
         }
 
 

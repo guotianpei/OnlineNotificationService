@@ -2,7 +2,7 @@
 using MediatR;
 namespace OPM.Queries.API.Queries
 {
-    public abstract class QueryBase<TResult> : IRequest<TResult> where TResult :class
+    public abstract class QueryBase<TResult> : IAsyncRequest<TResult> where TResult :class
     { 
         
     }

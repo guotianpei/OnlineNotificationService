@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\OTM.Commands.API.fsproj": {}
+  },
+  "projects": {
+    "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\OTM.Commands.API.fsproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\OTM.Commands.API.fsproj",
+        "projectName": "OTM.Commands.API",
+        "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\OTM.Commands.API.fsproj",
+        "packagesPath": "C:\\Users\\tguo4\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\tguo4\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "FSharp.Core": {
+              "target": "Package",
+              "version": "[4.7.1, )",
+              "generatePathProperty": true
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.10.9, )",
+              "generatePathProperty": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

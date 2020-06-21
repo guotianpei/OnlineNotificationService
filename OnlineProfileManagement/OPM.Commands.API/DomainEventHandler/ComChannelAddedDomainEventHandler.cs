@@ -24,12 +24,13 @@ namespace OPM.Commands.API.DomainEventHandler
             var type = notification.ComChannel.ChannelType;
             if (type == ComChannelTypes.Email || type == ComChannelTypes.TEXT)
             {
-               //Publish msg to MSG Publisher for email or text for verification.
-               //Do not send in the service as template maintained in cental Template Management service
-               
+                //Publish msg to MSG Publisher for email or text for verification.
+                //Do not send in the service as template maintained in cental Template Management service
+                //Raise ComChannelAddedIntegrationEvent send integration event to event bus.
+
             }
-           
-            
+
+
         }
     }
 }
