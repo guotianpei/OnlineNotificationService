@@ -17,8 +17,8 @@ namespace OPM.Infrastructure
     public class ProfileContext : DbContext, IUnitOfWork
     {
         public const string DEFAULT_SCHEMA = "OPM";
-        public DbSet<DistributionGroup> Groups { get; set; }
-        public DbSet<ProfileDistributionGroup> ProfileGroups { get; set; }
+        //public DbSet<DistributionGroup> Groups { get; set; }
+        //public DbSet<ProfileDistributionGroup> ProfileGroups { get; set; }
         public DbSet<EntityProfile> EntityProfile { get; set; }
         public DbSet<ProfileComChannel> ProfileComChannels { get; set; }
      
@@ -26,25 +26,25 @@ namespace OPM.Infrastructure
         private readonly IMediator _mediator;
         private IDbContextTransaction _currentTransaction;
 
-        private ProfileContext(DbContextOptions<ProfileContext> options) : base(options) { }
+        public ProfileContext(DbContextOptions<ProfileContext> options) : base(options) { }
 
         public IDbContextTransaction GetCurrentTransaction() => _currentTransaction;
 
         public bool HasActiveTransaction => _currentTransaction != null;
 
-        public ProfileContext(DbContextOptions<ProfileContext> options, IMediator mediator) : base(options)
-        {
-            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        //public ProfileContext(DbContextOptions<ProfileContext> options, IMediator mediator) : base(options)
+        //{
+        //    _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
 
 
-            System.Diagnostics.Debug.WriteLine("ProfileContext::ctor ->" + this.GetHashCode());
-        }
+        //    System.Diagnostics.Debug.WriteLine("ProfileContext::ctor ->" + this.GetHashCode());
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         { 
 
-            modelBuilder.ApplyConfiguration(new EntityProfileConfiguration());
-            modelBuilder.ApplyConfiguration(new ProfileEntityTypeConfiguration());
+            //modelBuilder.ApplyConfiguration(new EntityProfileConfiguration());
+            //modelBuilder.ApplyConfiguration(new ProfileEntityTypeConfiguration());
             // Other entities' configuration ...
         }
 
@@ -121,10 +121,12 @@ namespace OPM.Infrastructure
     {
         public ProfileContext CreateDbContext(string[] args)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<ProfileContext>()
-                .UseSqlServer("Server=.;Initial Catalog=Microsoft.eShopOnContainers.Services.OrderingDb;Integrated Security=true");
+            // var optionsBuilder = new DbContextOptionsBuilder<ProfileContext>()
+            //     .UseSqlServer("Server=localhost,5433;Database=OPM;User Id=SA;Password=Pass@word;");
 
-            return new ProfileContext(optionsBuilder.Options, new NoMediator());
+            //// return new ProfileContext(optionsBuilder.Options, new NoMediator());
+            // return new ProfileContext(optionsBuilder.Options);
+            return null;
         }
 
         class NoMediator : IMediator
