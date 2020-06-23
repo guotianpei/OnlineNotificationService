@@ -11,11 +11,9 @@ using OPM.Queries.API.Queries;
 namespace OPM.Queries.API.Controllers
 {
     [ApiController]
-    [Route("[ReadController]")]
+    [Route("[controller]/[action]")]
     public class ProfileController : ApiControllerBase
     {
-
-
 
         //private readonly IMediator _mediator;
         private readonly ILogger<ProfileController> _logger;
@@ -56,6 +54,24 @@ namespace OPM.Queries.API.Controllers
                 return NotFound();
             }
            
+
+        }
+        
+        [HttpGet]
+        //[Route("GetEntityProfile")]
+        public async Task<ActionResult> GetEntityProfileAsync(string entityId)
+        {
+
+            try
+            {
+                var profile = await QueryAsync(new GetProfileQuery(entityId));
+                return Ok(profile);
+            }
+            catch(Exception ex)
+            {
+                return NotFound();
+            }
+
 
         }
     }
