@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using MediatR;
 using OPM.Domain.Aggregates.ProfileAggregate;
 namespace OPM.Domain.Events

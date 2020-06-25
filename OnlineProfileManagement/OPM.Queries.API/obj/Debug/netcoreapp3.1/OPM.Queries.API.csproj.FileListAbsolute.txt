@@ -59,3 +59,129 @@
 /Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Queries.API/bin/Debug/netcoreapp3.1/OPM.Infrastructure.pdb
 /Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Queries.API/bin/Debug/netcoreapp3.1/OPM.Domain.pdb
 /Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Queries.API/obj/Debug/netcoreapp3.1/OPM.Queries.API.csproj.CopyComplete
+<<<<<<< HEAD
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Queries.API.exe
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Queries.API.deps.json
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Queries.API.runtimeconfig.json
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Queries.API.runtimeconfig.dev.json
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Queries.API.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Queries.API.pdb
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\HealthChecks.UI.Client.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\MediatR.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Domain.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Infrastructure.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Infrastructure.pdb
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Domain.pdb
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.csprojAssemblyReference.cache
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.csproj.CoreCompileInputs.cache
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.AssemblyInfoInputs.cache
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.AssemblyInfo.cs
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.RazorTargetAssemblyInfo.cache
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.csproj.CopyComplete
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\staticwebassets\OPM.Queries.API.StaticWebAssets.Manifest.cache
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\staticwebassets\OPM.Queries.API.StaticWebAssets.xml
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.dll
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.pdb
+C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.genruntimeconfig.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Queries.API.exe
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Queries.API.deps.json
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Queries.API.runtimeconfig.json
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Queries.API.runtimeconfig.dev.json
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Queries.API.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Queries.API.pdb
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\HealthChecks.UI.Client.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\MediatR.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Domain.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Infrastructure.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Infrastructure.pdb
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\OPM.Domain.pdb
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.csprojAssemblyReference.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.AssemblyInfoInputs.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.AssemblyInfo.cs
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.RazorTargetAssemblyInfo.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.csproj.CopyComplete
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\staticwebassets\OPM.Queries.API.StaticWebAssets.Manifest.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\staticwebassets\OPM.Queries.API.StaticWebAssets.xml
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.pdb
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.genruntimeconfig.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\FluentValidation.dll
+=======
+>>>>>>> 5887e303d28734153e2d2bd20c006e90862d21c8

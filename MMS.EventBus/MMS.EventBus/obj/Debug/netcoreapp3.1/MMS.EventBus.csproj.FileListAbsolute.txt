@@ -1,0 +1,5 @@
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\MMS.EventBus\MMS.EventBus\bin\Debug\netcoreapp3.1\MMS.EventBus.deps.json
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\MMS.EventBus\MMS.EventBus\bin\Debug\netcoreapp3.1\MMS.EventBus.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\MMS.EventBus\MMS.EventBus\obj\Debug\netcoreapp3.1\MMS.EventBus.csprojAssemblyReference.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\MMS.EventBus\MMS.EventBus\obj\Debug\netcoreapp3.1\MMS.EventBus.AssemblyInfoInputs.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\MMS.EventBus\MMS.EventBus\obj\Debug\netcoreapp3.1\MMS.EventBus.AssemblyInfo.cs
