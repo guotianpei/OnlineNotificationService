@@ -1,18 +1,21 @@
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MediatR;
 using OPM.Infrastructure;
+using OPM.Infrastructure.Repositories.Interfaces;
+using OPM.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+using OPM.Queries.API.Controllers;
 
 namespace OPM.Queries.API
 {
@@ -29,6 +32,13 @@ namespace OPM.Queries.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<ProfileContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ProfileDBConnection")));
+            //services.AddSingleton<DbContextOptions<ProfileContext>, DbContextOptions<ProfileContext>>();   
+            services.AddScoped<IProfileRepository, ProfileRepository>();           
+            services.AddMediatR(typeof(Startup));
+            //services.AddMediatR(typeof().GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof().GetTypeInfo().Assembly);
+
+
             services.AddControllers();
         }
 
