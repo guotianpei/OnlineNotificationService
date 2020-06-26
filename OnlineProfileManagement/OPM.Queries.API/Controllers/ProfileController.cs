@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MediatR;
 using OPM.Queries.API.Queries;
+using OPM.Queries.API.Models;
 
 namespace OPM.Queries.API.Controllers
 {

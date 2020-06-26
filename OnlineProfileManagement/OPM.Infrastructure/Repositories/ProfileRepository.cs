@@ -53,7 +53,7 @@ namespace OPM.Infrastructure.Repositories
 
         public Task<EntityProfile> GetAsync(string EntityID)
         {
-            return   Task.FromResult(_context.EntityProfile.Where(obj => obj.EntityID == Convert.ToInt32(EntityID)).FirstOrDefault<EntityProfile>()); 
+            return   Task.FromResult(_context.EntityProfiles.Where(obj => obj.EntityID == EntityID).FirstOrDefault<EntityProfile>()); 
 
             //return GetEntityDetail(EntityID);
 
