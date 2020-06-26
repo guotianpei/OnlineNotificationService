@@ -1,23 +1,53 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using OPM.Domain.SeekWork;
 
 namespace OPM.Domain.Aggregates.ProfileAggregate
 {
-    public class ProfileComChannel :Entity
+    public class ProfileComChannel :Entity, IAggregateRoot
     {
 
         // DDD Patterns comment
         // Using private fields, allowed since EF Core 1.1, is a much better encapsulation
         // aligned with DDD Aggregates and Domain Entities (Instead of properties and property collections)
         //private string _entityID;
-         
+
+        private Guid _userID;
+
+        public Guid UserID
+        {
+            get { return _userID; }
+            set { _userID = value; }
+        }
+        [Required]
+        public string ComChannel { get; set; }
+        [Required]
         public string Value { get; private set; }
         private bool _enabled;
+        [Required]
+        public bool Enabled
+        {
+            get { return _enabled; }
+            set { _enabled = value; }
+        }
         private int _preference;
-        private DateTime _termDate;
+        public int Preference
+        {
+            get { return _preference; }
+            set { _preference = value; }
+        }
+        private DateTime? _termDate;
+        public DateTime? TermDate
+        {
+            get { return _termDate; }
+            set { _termDate = value; }
+        }
+        [Required]
         public ComChannelStatus Status { get; private set; }
 
         public ComChannelTypes ChannelType { get; private set; }
+
 
 
 

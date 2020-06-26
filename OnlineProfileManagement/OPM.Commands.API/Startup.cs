@@ -22,7 +22,8 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using MMS.IntegrationEventLogEF;
 using MMS.IntegrationEventLogEF.Services;
 using OPM.Commands.API.IntegrationEvents;
- 
+using MMS.EventBusRabbitMQ;
+using RabbitMQ.Client;
 
 namespace OPM.Commands.API
 {
@@ -40,7 +41,7 @@ namespace OPM.Commands.API
         {
             services.AddHealthChecks(Configuration)
                 .AddCustomDbContext(Configuration)
-                .AddCustomIntegration(Configuration);
+                .AddCustomIntegrations(Configuration);
 
             services.AddControllers();
             var container = new ContainerBuilder();
@@ -165,15 +166,15 @@ namespace OPM.Commands.API
 
             if (configuration.GetValue<bool>("AzureServiceBusEnabled"))
             {
-                services.AddSingleton<IServiceBusPersisterConnection>(sp =>
-                {
-                    var logger = sp.GetRequiredService<ILogger<DefaultServiceBusPersisterConnection>>();
+                //services.AddSingleton<IServiceBusPersisterConnection>(sp =>
+                //{
+                //    var logger = sp.GetRequiredService<ILogger<DefaultServiceBusPersisterConnection>>();
 
-                    var serviceBusConnectionString = configuration["EventBusConnection"];
-                    var serviceBusConnection = new ServiceBusConnectionStringBuilder(serviceBusConnectionString);
+                //    var serviceBusConnectionString = configuration["EventBusConnection"];
+                //    var serviceBusConnection = new ServiceBusConnectionStringBuilder(serviceBusConnectionString);
 
-                    return new DefaultServiceBusPersisterConnection(serviceBusConnection, logger);
-                });
+                //    return new DefaultServiceBusPersisterConnection(serviceBusConnection, logger);
+                //});
             }
             else
             {

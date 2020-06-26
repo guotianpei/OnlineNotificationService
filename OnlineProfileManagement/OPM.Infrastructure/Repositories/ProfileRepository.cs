@@ -31,7 +31,7 @@ namespace OPM.Infrastructure.Repositories
 
         public EntityProfile Add(EntityProfile profile)
         {
-            return _context.EntityProfile.Add(profile).Entity;
+            return _context.EntityProfiles.Add(profile).Entity;
         }
         public void Update(EntityProfile profile)
         {

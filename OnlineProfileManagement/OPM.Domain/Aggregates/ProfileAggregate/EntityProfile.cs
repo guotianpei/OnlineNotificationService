@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using OPM.Domain.SeekWork;
 using OPM.Domain.Events;
-  
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OPM.Domain.Aggregates.ProfileAggregate
 {
@@ -22,24 +23,76 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
 
         //Any change toward to child item(profile communication channel), is the change
         //to the Profile, must go thru ProfileRepository.Update(Profile)
+
         private string _entityID;
+        [Required]
+        public string EntityID
+        {
+            get { return _entityID; }
+            set { _entityID = value; }
+        }
 
         private string _entityName;
+        public string EntityName
+        {
+            get { return _entityName; }
+            set { _entityName = value; }
+        }
 
         private string _entityType;
+        public string EntityType
+        {
+            get { return _entityType; }
+            set { _entityType = value; }
+        }
 
         private string _firstName;
 
-        private string _lastName;
+        public string FirstName
+        {
+            get { return _firstName; }
+            set { _firstName = value; }
+        }
 
-         
-        //private DateTime _termDate;
+        private string _lastName;
+        public string LastName
+        {
+            get { return _lastName; }
+            set { _lastName = value; }
+        }
+
+        private DateTime _effDate;
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime EffDate
+        {
+            get { return _effDate; }
+            set { _effDate = value; }
+        }
+        private DateTime? _termDate;
+        public DateTime? TermDate
+        {
+            get { return _termDate; }
+            set { _termDate = value; }
+        }
 
         private string _status;
-
+        public string Status
+        {
+            get { return _status; }
+            set { _status = value; }
+        }
+        public ProfileResource ProfileResource { get; set; }
         private int _resourceID;
+        [ForeignKey("ProfileResource")]
+        public int ResourceID
+        {
+            get { return _resourceID; }
+            set { _resourceID = value; }
+        }
 
-       
+
+
+
 
         private readonly List<ProfileComChannel> _profileComChannels;
 

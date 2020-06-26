@@ -17,15 +17,16 @@ namespace OPM.Infrastructure
     public class ProfileContext : DbContext, IUnitOfWork
     {
         public const string DEFAULT_SCHEMA = "OPM";
-        public DbSet<DistributionGroup> Groups { get; set; }
-        public DbSet<ProfileDistributionGroup> ProfileGroups { get; set; }
-        public DbSet<EntityProfile> EntityProfile { get; set; }
+        public DbSet<DistributionGroup> DistributionGroups { get; set; }
+        public DbSet<ProfileDistributionGroup> ProfileDistributionGroups { get; set; }
+        public DbSet<EntityProfile> EntityProfiles { get; set; }
         public DbSet<ProfileComChannel> ProfileComChannels { get; set; }
-     
+        public DbSet<ProfileResource> ProfileResources { get; set; }
+        public DbSet<NotificationHistory> NotificationHistories { get; set; }
+        
 
         private readonly IMediator _mediator;
         private IDbContextTransaction _currentTransaction;
-
         private ProfileContext(DbContextOptions<ProfileContext> options) : base(options) { }
 
         public IDbContextTransaction GetCurrentTransaction() => _currentTransaction;
@@ -122,8 +123,7 @@ namespace OPM.Infrastructure
         public ProfileContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ProfileContext>()
-                .UseSqlServer("Server=.;Initial Catalog=Microsoft.eShopOnContainers.Services.OrderingDb;Integrated Security=true");
-
+                .UseSqlServer("Server=DC01VI2MHPDV01.WV.CORE.HIM\\OPMDEV;Initial Catalog=OPM;Integrated Security = False; Persist Security Info = False; User ID = sa; Password = Pass@word");
             return new ProfileContext(optionsBuilder.Options, new NoMediator());
         }
 
