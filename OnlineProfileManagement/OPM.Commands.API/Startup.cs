@@ -15,6 +15,8 @@ using Microsoft.Extensions.Logging;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using OPM.Commands.API.Infrastructure.AutofacModules;
+using OPM.Commands.API.IntegrationEvents.EventHandling;
+using OPM.Commands.API.IntegrationEvents.Events;
 using OPM.Infrastructure;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -22,7 +24,11 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using MMS.IntegrationEventLogEF;
 using MMS.IntegrationEventLogEF.Services;
 using OPM.Commands.API.IntegrationEvents;
- 
+using MMS.EventBusRabbitMQ;
+using MMS.EventBus.Abstractions;
+using RabbitMQ.Client;
+
+
 
 namespace OPM.Commands.API
 {
@@ -46,8 +52,8 @@ namespace OPM.Commands.API
             var container = new ContainerBuilder();
             container.Populate(services);
             container.RegisterModule(new MediatorModule());
-            container.RegisterModule(new ApplicationModule(Configuration["ProfileDBConnectionString"]));
-
+            //container.RegisterModule(new ApplicationModule(Configuration["ProfileDBConnectionString"]));
+            RegisterEventBus(services);
             return new AutofacServiceProvider(container.Build());
 
             
@@ -82,9 +88,60 @@ namespace OPM.Commands.API
                 Predicate = _ => true,
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
+
+            ConfigureEventBus(app);
         }
 
-        
+        private void ConfigureEventBus(IApplicationBuilder app)
+        {
+            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+
+            //Subscribe listen to the integration event  
+            eventBus.Subscribe<EntityRegisteredIntegrationEvent, IIntegrationEventHandler<EntityRegisteredIntegrationEvent>>();
+             
+        }
+
+        private void RegisterEventBus(IServiceCollection services)
+        {
+            var subscriptionClientName = Configuration["SubscriptionClientName"];
+
+            if (Configuration.GetValue<bool>("AzureServiceBusEnabled"))
+            {
+                services.AddSingleton<IEventBus, EventBusServiceBus>(sp =>
+                {
+                    var serviceBusPersisterConnection = sp.GetRequiredService<IServiceBusPersisterConnection>();
+                    var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
+                    var logger = sp.GetRequiredService<ILogger<EventBusServiceBus>>();
+                    var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+
+                    return new EventBusServiceBus(serviceBusPersisterConnection, logger,
+                        eventBusSubcriptionsManager, subscriptionClientName, iLifetimeScope);
+                });
+            }
+            else
+            {
+                services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
+                {
+                    var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
+                    var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
+                    var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
+                    var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+
+                    var retryCount = 5;
+                    if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
+                    {
+                        retryCount = int.Parse(Configuration["EventBusRetryCount"]);
+                    }
+
+                    return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
+                });
+            }
+
+            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+            services.AddTransient<UserLocationUpdatedIntegrationEventHandler>();
+        }
+
+ 
 
     }
 
@@ -154,7 +211,7 @@ namespace OPM.Commands.API
             return services;
         }
 
-        public static IServiceCollection AddCustomIntegrations(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddCustomIntegration(this IServiceCollection services, IConfiguration configuration)
         {
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //services.AddTransient<IIdentityService, IdentityService>();
@@ -163,20 +220,20 @@ namespace OPM.Commands.API
 
             services.AddTransient<IProfileIntegrationEventService, ProfileIntegrationEventService>();
 
-            if (configuration.GetValue<bool>("AzureServiceBusEnabled"))
-            {
-                services.AddSingleton<IServiceBusPersisterConnection>(sp =>
-                {
-                    var logger = sp.GetRequiredService<ILogger<DefaultServiceBusPersisterConnection>>();
+            //if (configuration.GetValue<bool>("AzureServiceBusEnabled"))
+            //{
+            //    services.AddSingleton<IServiceBusPersisterConnection>(sp =>
+            //    {
+            //        var logger = sp.GetRequiredService<ILogger<DefaultServiceBusPersisterConnection>>();
 
-                    var serviceBusConnectionString = configuration["EventBusConnection"];
-                    var serviceBusConnection = new ServiceBusConnectionStringBuilder(serviceBusConnectionString);
+            //        var serviceBusConnectionString = configuration["EventBusConnection"];
+            //        var serviceBusConnection = new ServiceBusConnectionStringBuilder(serviceBusConnectionString);
 
-                    return new DefaultServiceBusPersisterConnection(serviceBusConnection, logger);
-                });
-            }
-            else
-            {
+            //        return new DefaultServiceBusPersisterConnection(serviceBusConnection, logger);
+            //    });
+            //}
+            //else
+            //{
                 services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
                 {
                     var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
@@ -206,7 +263,7 @@ namespace OPM.Commands.API
 
                     return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
                 });
-            }
+           // }
 
             return services;
         }
