@@ -6,6 +6,9 @@ using OPM.Domain.SeekWork;
 using OPM.Infrastructure.Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Data;
+using Microsoft.Data.SqlClient;
+using System.Linq;
 
 namespace OPM.Infrastructure.Repositories
 {
@@ -21,6 +24,11 @@ namespace OPM.Infrastructure.Repositories
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
+        //public ProfileRepository()
+        //{
+        //    //_context = context ?? throw new ArgumentNullException(nameof(context));
+        //}
+
         public IUnitOfWork UnitOfWork
         {
             get
@@ -31,7 +39,7 @@ namespace OPM.Infrastructure.Repositories
 
         public EntityProfile Add(EntityProfile profile)
         {
-            return _context.EntityProfile.Add(profile).Entity;
+            return _context.EntityProfiles.Add(profile).Entity;
         }
         public void Update(EntityProfile profile)
         {
@@ -45,7 +53,10 @@ namespace OPM.Infrastructure.Repositories
 
         public Task<EntityProfile> GetAsync(string EntityID)
         {
-            throw new NotImplementedException();
+            return   Task.FromResult(_context.EntityProfiles.Where(obj => obj.EntityID == EntityID).FirstOrDefault<EntityProfile>()); 
+
+            //return GetEntityDetail(EntityID);
+
         }
 
         public IEnumerable<Task<EntityProfile>> GetMultiple(List<string> EntityIDs)
@@ -62,5 +73,37 @@ namespace OPM.Infrastructure.Repositories
         {
             throw new NotImplementedException();
         }
+
+        private Task<EntityProfile> GetEntityDetail(string entityid)
+        {
+            using (SqlConnection connection = new SqlConnection(
+                "Server=localhost,5433;Database=OPM;User Id=SA;Password=Pass@word;"))
+            {
+                try
+                {
+                    DataSet ds = new DataSet();
+                    SqlDataAdapter sqlDA = new SqlDataAdapter("USP_GET_EntityProfileByEntityID", connection);
+                    sqlDA.SelectCommand.Parameters.AddWithValue("@EntityID", entityid);
+                    sqlDA.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    sqlDA.Fill(ds);
+
+                    EntityProfile entprof;
+                    if (ds != null && ds.Tables.Count > 0)
+                    {
+                        entprof = new EntityProfile("", "", "", "", "", "", 1);
+
+                        return Task.FromResult(entprof);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }   
+            }
+            return null;
+
+        }
+
+
     }
 }

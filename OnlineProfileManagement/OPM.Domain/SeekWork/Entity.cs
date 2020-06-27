@@ -1,6 +1,7 @@
 ﻿using System;
 using MediatR;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace OPM.Domain.SeekWork
 {
@@ -10,6 +11,7 @@ namespace OPM.Domain.SeekWork
     {
         int? _requestedHashCode;
         int _Id;        
+        [Key]
         public virtual  int Id 
         {
             get

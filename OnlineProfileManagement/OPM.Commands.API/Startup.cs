@@ -25,6 +25,7 @@ using MMS.IntegrationEventLogEF;
 using MMS.IntegrationEventLogEF.Services;
 using OPM.Commands.API.IntegrationEvents;
 using MMS.EventBusRabbitMQ;
+
 using MMS.EventBus.Abstractions;
 using RabbitMQ.Client;
 
@@ -46,7 +47,7 @@ namespace OPM.Commands.API
         {
             services.AddHealthChecks(Configuration)
                 .AddCustomDbContext(Configuration)
-                .AddCustomIntegration(Configuration);
+                .AddCustomIntegrations(Configuration);
 
             services.AddControllers();
             var container = new ContainerBuilder();
@@ -219,6 +220,7 @@ namespace OPM.Commands.API
                 sp => (DbConnection c) => new IntegrationEventLogService(c));
 
             services.AddTransient<IProfileIntegrationEventService, ProfileIntegrationEventService>();
+
 
             //if (configuration.GetValue<bool>("AzureServiceBusEnabled"))
             //{

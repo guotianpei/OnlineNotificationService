@@ -13,7 +13,7 @@ namespace OPM.Infrastructure.EntityConfigurations
 
         public void Configure(EntityTypeBuilder<EntityProfile> builder)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

@@ -30,4 +30,3 @@ namespace OPM.Queries.API.Extension
         }
     }
 }
-}

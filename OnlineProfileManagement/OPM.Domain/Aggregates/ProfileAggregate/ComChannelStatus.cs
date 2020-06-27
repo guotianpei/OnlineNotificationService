@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Collections.Generic;
 using OPM.Domain.SeekWork;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OPM.Domain.Aggregates.ProfileAggregate
 {
-
+    [NotMapped]
     public class ComChannelStatus : Enumeration
     {
         public static ComChannelStatus VALIDATING = new ComChannelStatus(1, nameof(VALIDATING).ToLowerInvariant());
