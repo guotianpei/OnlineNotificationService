@@ -10,8 +10,8 @@ using OPM.Infrastructure;
 namespace OPM.Infrastructure.Migrations
 {
     [DbContext(typeof(ProfileContext))]
-    [Migration("20200626014920_InitialModel")]
-    partial class InitialModel
+    [Migration("20200701012009_InitialSchema")]
+    partial class InitialSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,7 +49,7 @@ namespace OPM.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DistributionGroups");
+                    b.ToTable("DistributionGroup");
                 });
 
             modelBuilder.Entity("OPM.Domain.Aggregates.DistributionGroupsAggregate.ProfileDistributionGroup", b =>
@@ -76,7 +76,7 @@ namespace OPM.Infrastructure.Migrations
 
                     b.HasIndex("GroupID");
 
-                    b.ToTable("ProfileDistributionGroups");
+                    b.ToTable("ProfileDistributionGroup");
                 });
 
             modelBuilder.Entity("OPM.Domain.Aggregates.ProfileAggregate.EntityProfile", b =>
@@ -119,7 +119,7 @@ namespace OPM.Infrastructure.Migrations
 
                     b.HasIndex("ResourceID");
 
-                    b.ToTable("EntityProfiles");
+                    b.ToTable("EntityProfile");
                 });
 
             modelBuilder.Entity("OPM.Domain.Aggregates.ProfileAggregate.NotificationHistory", b =>
@@ -153,7 +153,7 @@ namespace OPM.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("NotificationHistories");
+                    b.ToTable("NotificationHistory");
                 });
 
             modelBuilder.Entity("OPM.Domain.Aggregates.ProfileAggregate.ProfileComChannel", b =>
@@ -190,7 +190,7 @@ namespace OPM.Infrastructure.Migrations
 
                     b.HasIndex("EntityProfileId");
 
-                    b.ToTable("ProfileComChannels");
+                    b.ToTable("ProfileComChannel");
                 });
 
             modelBuilder.Entity("OPM.Domain.Aggregates.ProfileAggregate.ProfileResource", b =>
@@ -213,7 +213,7 @@ namespace OPM.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProfileResources");
+                    b.ToTable("ProfileResource");
                 });
 
             modelBuilder.Entity("OPM.Domain.Aggregates.DistributionGroupsAggregate.ProfileDistributionGroup", b =>

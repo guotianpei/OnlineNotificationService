@@ -7,6 +7,7 @@ using System.Text;
 
 namespace OPM.Domain.Aggregates.ProfileAggregate
 {
+    [Table("NotificationHistory")]
     public class NotificationHistory:Entity,IAggregateRoot
     {
         public Guid TrackingID { get; set; }

@@ -27,19 +27,19 @@ namespace OPM.Infrastructure
 
         private readonly IMediator _mediator;
         private IDbContextTransaction _currentTransaction;
-        private ProfileContext(DbContextOptions<ProfileContext> options) : base(options) { }
+        public ProfileContext(DbContextOptions<ProfileContext> options) : base(options) { }
 
         public IDbContextTransaction GetCurrentTransaction() => _currentTransaction;
 
         public bool HasActiveTransaction => _currentTransaction != null;
 
-        public ProfileContext(DbContextOptions<ProfileContext> options, IMediator mediator) : base(options)
-        {
-            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        //public ProfileContext(DbContextOptions<ProfileContext> options, IMediator mediator) : base(options)
+        //{
+        //    _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
 
 
-            System.Diagnostics.Debug.WriteLine("ProfileContext::ctor ->" + this.GetHashCode());
-        }
+        //    System.Diagnostics.Debug.WriteLine("ProfileContext::ctor ->" + this.GetHashCode());
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         { 
@@ -122,9 +122,10 @@ namespace OPM.Infrastructure
     {
         public ProfileContext CreateDbContext(string[] args)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<ProfileContext>()
-                .UseSqlServer("Server=DC01VI2MHPDV01.WV.CORE.HIM\\OPMDEV;Initial Catalog=OPM;Integrated Security = False; Persist Security Info = False; User ID = sa; Password = Pass@word");
-            return new ProfileContext(optionsBuilder.Options, new NoMediator());
+            //var optionsBuilder = new DbContextOptionsBuilder<ProfileContext>()
+            //    .UseSqlServer("Server=DC01VI2MHPDV01.WV.CORE.HIM\\OPMDEV;Initial Catalog=OPM;Integrated Security = False; Persist Security Info = False; User ID = sa; Password = Pass@word");
+            //return new ProfileContext(optionsBuilder.Options, new NoMediator());
+            return null;
         }
 
         class NoMediator : IMediator

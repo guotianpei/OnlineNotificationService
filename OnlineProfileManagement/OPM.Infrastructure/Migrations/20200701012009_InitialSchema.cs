@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OPM.Infrastructure.Migrations
 {
-    public partial class InitialModel : Migration
+    public partial class InitialSchema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "DistributionGroups",
+                name: "DistributionGroup",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -21,11 +21,11 @@ namespace OPM.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DistributionGroups", x => x.Id);
+                    table.PrimaryKey("PK_DistributionGroup", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "NotificationHistories",
+                name: "NotificationHistory",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -39,11 +39,11 @@ namespace OPM.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NotificationHistories", x => x.Id);
+                    table.PrimaryKey("PK_NotificationHistory", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProfileResources",
+                name: "ProfileResource",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -54,11 +54,11 @@ namespace OPM.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProfileResources", x => x.Id);
+                    table.PrimaryKey("PK_ProfileResource", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProfileDistributionGroups",
+                name: "ProfileDistributionGroup",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -70,17 +70,17 @@ namespace OPM.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProfileDistributionGroups", x => x.Id);
+                    table.PrimaryKey("PK_ProfileDistributionGroup", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProfileDistributionGroups_DistributionGroups_GroupID",
+                        name: "FK_ProfileDistributionGroup_DistributionGroup_GroupID",
                         column: x => x.GroupID,
-                        principalTable: "DistributionGroups",
+                        principalTable: "DistributionGroup",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "EntityProfiles",
+                name: "EntityProfile",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -97,17 +97,17 @@ namespace OPM.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EntityProfiles", x => x.Id);
+                    table.PrimaryKey("PK_EntityProfile", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EntityProfiles_ProfileResources_ResourceID",
+                        name: "FK_EntityProfile_ProfileResource_ResourceID",
                         column: x => x.ResourceID,
-                        principalTable: "ProfileResources",
+                        principalTable: "ProfileResource",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProfileComChannels",
+                name: "ProfileComChannel",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -122,50 +122,50 @@ namespace OPM.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProfileComChannels", x => x.Id);
+                    table.PrimaryKey("PK_ProfileComChannel", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProfileComChannels_EntityProfiles_EntityProfileId",
+                        name: "FK_ProfileComChannel_EntityProfile_EntityProfileId",
                         column: x => x.EntityProfileId,
-                        principalTable: "EntityProfiles",
+                        principalTable: "EntityProfile",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_EntityProfiles_ResourceID",
-                table: "EntityProfiles",
+                name: "IX_EntityProfile_ResourceID",
+                table: "EntityProfile",
                 column: "ResourceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfileComChannels_EntityProfileId",
-                table: "ProfileComChannels",
+                name: "IX_ProfileComChannel_EntityProfileId",
+                table: "ProfileComChannel",
                 column: "EntityProfileId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfileDistributionGroups_GroupID",
-                table: "ProfileDistributionGroups",
+                name: "IX_ProfileDistributionGroup_GroupID",
+                table: "ProfileDistributionGroup",
                 column: "GroupID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "NotificationHistories");
+                name: "NotificationHistory");
 
             migrationBuilder.DropTable(
-                name: "ProfileComChannels");
+                name: "ProfileComChannel");
 
             migrationBuilder.DropTable(
-                name: "ProfileDistributionGroups");
+                name: "ProfileDistributionGroup");
 
             migrationBuilder.DropTable(
-                name: "EntityProfiles");
+                name: "EntityProfile");
 
             migrationBuilder.DropTable(
-                name: "DistributionGroups");
+                name: "DistributionGroup");
 
             migrationBuilder.DropTable(
-                name: "ProfileResources");
+                name: "ProfileResource");
         }
     }
 }

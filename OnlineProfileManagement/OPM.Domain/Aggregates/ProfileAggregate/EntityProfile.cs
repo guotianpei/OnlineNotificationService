@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OPM.Domain.Aggregates.ProfileAggregate
 {
+    [Table("EntityProfile")]
     public class EntityProfile : Entity, IAggregateRoot
     {
 

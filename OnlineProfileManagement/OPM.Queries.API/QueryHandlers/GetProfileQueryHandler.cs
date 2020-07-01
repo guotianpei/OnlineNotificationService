@@ -32,13 +32,13 @@ namespace OPM.Queries.API.QueryHandlers
         public async Task<ProfileViewModel> Handle(GetProfileQuery request, CancellationToken cancellationToken)
         {
             var profile = await _profileRepository.GetAsync(request.entityID);
-            if(profile !=null)
+
+            if (profile !=null)
             {
-                //TO-DO: Mapping return to ProfileViewModel object
-                //var profileViewModel =
-                //return profileViewModel;
+                ProfileViewModel profileViewModel = new ProfileViewModel();
+                profileViewModel.EntityProfile = profile;
+                return profileViewModel;
             }
-            
             return null;
         }
     }

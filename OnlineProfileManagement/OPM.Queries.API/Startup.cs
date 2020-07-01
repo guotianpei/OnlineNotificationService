@@ -35,11 +35,16 @@ namespace OPM.Queries.API
             //services.AddSingleton<DbContextOptions<ProfileContext>, DbContextOptions<ProfileContext>>();   
             services.AddScoped<IProfileRepository, ProfileRepository>();           
             services.AddMediatR(typeof(Startup));
-            //services.AddMediatR(typeof().GetTypeInfo().Assembly);
-            //services.AddMediatR(typeof().GetTypeInfo().Assembly);
-
-
             services.AddControllers();
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "HTTP Web API Demo",
+                    Version = "v1",
+                    Description = "Swagger in Web API"
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +64,10 @@ namespace OPM.Queries.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            app.UseSwagger().UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "OPM Query API");
             });
         }
     }

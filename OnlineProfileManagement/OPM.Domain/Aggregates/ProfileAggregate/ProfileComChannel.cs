@@ -5,6 +5,7 @@ using OPM.Domain.SeekWork;
 
 namespace OPM.Domain.Aggregates.ProfileAggregate
 {
+    [Table("ProfileComChannel")]
     public class ProfileComChannel :Entity, IAggregateRoot
     {
 

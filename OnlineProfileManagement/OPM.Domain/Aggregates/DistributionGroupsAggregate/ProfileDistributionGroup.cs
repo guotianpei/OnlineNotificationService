@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OPM.Domain.Aggregates.DistributionGroupsAggregate
 {
+    [Table("ProfileDistributionGroup")]
     public class ProfileDistributionGroup :Entity, IAggregateRoot
     {
         [ForeignKey("DistributionGroup")]

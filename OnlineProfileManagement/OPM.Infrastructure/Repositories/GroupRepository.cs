@@ -8,32 +8,12 @@ using OPM.Infrastructure.Repositories.Interfaces;
 namespace OPM.Infrastructure.Repositories
 {
     //test commit
-    public class GroupRepository :IGroupRepository
+    public class GroupRepository : GenericRepository<DistributionGroup>,IGroupRepository
     {
-        public GroupRepository()
-        {
+        public GroupRepository(ProfileContext context) : base(context)
+        { 
         }
 
         public IUnitOfWork UnitOfWork => throw new NotImplementedException();
-
-        public DistributionGroup Add(DistributionGroup group)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<DistributionGroup> FindByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<DistributionGroup> GetAsync(int groupId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(DistributionGroup group)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

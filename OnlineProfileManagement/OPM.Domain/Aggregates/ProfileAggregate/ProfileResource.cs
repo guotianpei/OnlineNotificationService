@@ -7,6 +7,7 @@ using System.Text;
 
 namespace OPM.Domain.Aggregates.ProfileAggregate
 {
+    [Table("ProfileResource")]
     public class ProfileResource:Entity, IAggregateRoot
     {
         [Required]

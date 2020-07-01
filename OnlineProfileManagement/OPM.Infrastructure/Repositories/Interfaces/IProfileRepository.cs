@@ -8,17 +8,17 @@ using OPM.Domain.SeekWork;
 
 namespace OPM.Infrastructure.Repositories.Interfaces
 {
-    public interface IProfileRepository : IRepository<EntityProfile>
+    public interface IProfileRepository : IGenericRepository<EntityProfile>, IRepository<EntityProfile>
     {
 
-        EntityProfile Add(EntityProfile profile);
+        //EntityProfile Add(EntityProfile profile);
 
-        void Update(EntityProfile profile);
+        //void Update(EntityProfile profile);
         
-        Task<EntityProfile> FindByIdAsync(int id);
+        //Task<EntityProfile> FindByIdAsync(int id);
 
         Task<EntityProfile> GetAsync(string EntityID);
 
-        List<Task<EntityProfile>> GetMultiple(List<string> EntityIDs);
+        //List<Task<EntityProfile>> GetMultiple(List<string> EntityIDs);
     }
 }

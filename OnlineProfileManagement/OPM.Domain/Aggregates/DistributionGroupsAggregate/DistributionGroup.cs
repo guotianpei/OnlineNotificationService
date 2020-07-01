@@ -5,6 +5,7 @@ using OPM.Domain.SeekWork;
 
 namespace OPM.Domain.Aggregates.DistributionGroupsAggregate
 {
+    [Table("DistributionGroup")]
     public class DistributionGroup : Entity, IAggregateRoot
     {
         [Required]
