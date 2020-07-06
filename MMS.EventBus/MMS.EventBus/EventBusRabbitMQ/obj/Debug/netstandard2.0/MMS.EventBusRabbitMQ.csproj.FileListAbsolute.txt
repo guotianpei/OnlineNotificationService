@@ -10,3 +10,15 @@ C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\MMS.EventBus\MMS.Event
 C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\obj\Debug\netstandard2.0\MMS.EventBusRabbitMQ.csproj.CopyComplete
 C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\obj\Debug\netstandard2.0\MMS.EventBusRabbitMQ.dll
 C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\obj\Debug\netstandard2.0\MMS.EventBusRabbitMQ.pdb
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\bin\Debug\netstandard2.0\MMS.EventBusRabbitMQ.deps.json
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\bin\Debug\netstandard2.0\MMS.EventBusRabbitMQ.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\bin\Debug\netstandard2.0\MMS.EventBusRabbitMQ.pdb
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\bin\Debug\netstandard2.0\MMS.EventBus.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\bin\Debug\netstandard2.0\MMS.EventBus.pdb
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\obj\Debug\netstandard2.0\MMS.EventBusRabbitMQ.csprojAssemblyReference.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\obj\Debug\netstandard2.0\MMS.EventBusRabbitMQ.AssemblyInfoInputs.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\obj\Debug\netstandard2.0\MMS.EventBusRabbitMQ.AssemblyInfo.cs
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\obj\Debug\netstandard2.0\MMS.EventBusRabbitMQ.csproj.CoreCompileInputs.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\obj\Debug\netstandard2.0\MMS.EventBusRabbitMQ.csproj.CopyComplete
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\obj\Debug\netstandard2.0\MMS.EventBusRabbitMQ.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\obj\Debug\netstandard2.0\MMS.EventBusRabbitMQ.pdb

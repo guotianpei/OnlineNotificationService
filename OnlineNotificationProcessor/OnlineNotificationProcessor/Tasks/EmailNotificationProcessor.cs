@@ -13,16 +13,16 @@ using MMS.EventBus.Abstractions;
 
 namespace OnlineNotificationProcessor.Tasks
 {
-    class EmailNotificationEventConsumerService : BackgroundService
+    class EmailNotificationProcessor : BackgroundService
     {
-        private readonly ILogger<EmailNotificationEventConsumerService> _logger;
+        private readonly ILogger<EmailNotificationProcessor> _logger;
         private readonly BackgroundTaskSettings _settings;
         private readonly IEventBus _eventBus;
 
 
-        public EmailNotificationEventConsumerService(IOptions<BackgroundTaskSettings> settings,
+        public EmailNotificationProcessor(IOptions<BackgroundTaskSettings> settings,
             IEventBus eventBus,
-            ILogger<EmailNotificationEventConsumerService> logger)
+            ILogger<EmailNotificationProcessor> logger)
         {
             _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
             _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));

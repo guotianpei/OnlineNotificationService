@@ -15,15 +15,15 @@ namespace OnlineNotificationProcessor.Tasks
     //This background service will operate as following:
     //1. consumer notification event from event bus, the event contains user's contact info; 
     //2. compose email by calling email template management service
-    public class NotificationEventConsumerService : BackgroundService
+    public class NotificationBackgroundProcessor : BackgroundService
     {
-        private readonly ILogger<NotificationEventConsumerService> _logger;
+        private readonly ILogger<NotificationBackgroundProcessor> _logger;
         private readonly BackgroundTaskSettings _settings;
-        private readonly IEventBus _eventBus;
+        private readonly IEventBus _eventBus; BackgroundService
 
-        public NotificationEventConsumerService(IOptions<BackgroundTaskSettings> settings,
+        public NotificationBackgroundProcessor(IOptions<BackgroundTaskSettings> settings,
             IEventBus eventBus,
-            ILogger<NotificationEventConsumerService> logger)
+            ILogger<NotificationBackgroundProcessor> logger)
         {
             _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
             _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
@@ -40,7 +40,8 @@ namespace OnlineNotificationProcessor.Tasks
             while (!stoppingToken.IsCancellationRequested)
             {
                 _logger.LogDebug("NotificationEventConsumerService background task is doing background work.");
-                //Get email notification event. Call template management service, compose msg body
+                //Looking for pending notification "NotPublished"
+                //Get email notification from . Call template management service, compose msg body
                 //Depends on the type of notification, publish either email or SMS Into notification table.
 
             }

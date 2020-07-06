@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "OB+V8b6iu1piqTCB6rWjuYlnRHk3UJLLIlXJI7+zLTXXJtU2JgrMVtbh5eiZHZn5XWPsKSIqjQfcohAObj6rxA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tguo4\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\tguo4\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\tguo4\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

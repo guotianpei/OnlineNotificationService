@@ -9,9 +9,9 @@ using Microsoft.Extensions.Logging;
 
 namespace OnlineNotificationProcessor.Tasks
 {
-    class SMSNotificationEventConsumerService : BackgroundService
+    class SMSNotificationProcessor : BackgroundService
     {
-        public SMSNotificationEventConsumerService()
+        public SMSNotificationProcessor()
         {
         }
 

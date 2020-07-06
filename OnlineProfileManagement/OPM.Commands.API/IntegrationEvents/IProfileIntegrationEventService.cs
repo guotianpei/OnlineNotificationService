@@ -6,7 +6,7 @@ using MMS.EventBus.Events;
 
 namespace OPM.Commands.API.IntegrationEvents
 {
-    interface IProfileIntegrationEventService
+    public interface IProfileIntegrationEventService
     {
         Task PublishEventsThroughEventBusAsync(Guid transactionId);
         Task AddAndSaveEventAsync(IntegrationEvent evt);

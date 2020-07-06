@@ -32,10 +32,9 @@ namespace OPM.Commands.API.Controllers
         //_mediator.Send(command)
         //2. API HealthCheck
         //3. Logging request
+        //Request include header "x-requestid" which is GUID to unique identify request.
         [Route("CreateProfile")]
-        [HttpPut]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [HttpPost]
         public async Task<IActionResult> CreateEntityProfileAsync([FromBody]CreateEntityProfileCommand command, [FromHeader(Name = "x-requestid")] string requestId)
         {
 

@@ -7,7 +7,7 @@ using Serilog.Context;
 using System;
 using System.Threading;
 using OPM.Commands.API.Extensions;
-
+using OPM.Commands.API.IntegrationEvents;
 using System.Threading.Tasks;
 namespace OPM.Commands.API.Bahaviors
 {
@@ -15,14 +15,14 @@ namespace OPM.Commands.API.Bahaviors
     {
         private readonly ILogger<TransactionBehavior<TRequest, TResponse>> _logger;
         private readonly ProfileContext _dbContext;
-        //private readonly IOrderingIntegrationEventService _orderingIntegrationEventService;
+        private readonly IProfileIntegrationEventService _profileIntegrationEventService;
 
         public TransactionBehavior(ProfileContext dbContext,
-            //IOrderingIntegrationEventService orderingIntegrationEventService,
+            IProfileIntegrationEventService profileIntegrationEventService,
             ILogger<TransactionBehavior<TRequest, TResponse>> logger)
         {
             _dbContext = dbContext ?? throw new ArgumentException(nameof(ProfileContext));
-            //_orderingIntegrationEventService = orderingIntegrationEventService ?? throw new ArgumentException(nameof(orderingIntegrationEventService));
+            _profileIntegrationEventService = profileIntegrationEventService ?? throw new ArgumentException(nameof(profileIntegrationEventService));
             _logger = logger ?? throw new ArgumentException(nameof(ILogger));
         }
 
@@ -58,7 +58,7 @@ namespace OPM.Commands.API.Bahaviors
                         transactionId = transaction.TransactionId;
                     }
 
-                    //await _orderingIntegrationEventService.PublishEventsThroughEventBusAsync(transactionId);
+                    await _profileIntegrationEventService.PublishEventsThroughEventBusAsync(transactionId);
                 });
 
                 return response;

@@ -40,9 +40,9 @@ namespace OnlineNotificationProcessor
 
             //configure background task
 
-            services.AddSingleton<IHostedService, NotificationEventConsumerService>();
-            services.AddSingleton<IHostedService, EmailNotificationEventConsumerService>();
-            services.AddSingleton<IHostedService, SMSNotificationEventConsumerService>();
+            services.AddSingleton<IHostedService, NotificationBackgroundProcessor>();
+            services.AddSingleton<IHostedService, EmailNotificationProcessor>();
+            services.AddSingleton<IHostedService, SMSNotificationProcessor>();
 
             //configure event bus related services
 

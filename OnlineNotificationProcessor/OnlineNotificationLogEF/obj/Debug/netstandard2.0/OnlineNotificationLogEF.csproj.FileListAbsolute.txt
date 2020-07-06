@@ -1,0 +1,5 @@
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineNotificationProcessor\OnlineNotificationLogEF\bin\Debug\netstandard2.0\OnlineNotificationLogEF.deps.json
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineNotificationProcessor\OnlineNotificationLogEF\bin\Debug\netstandard2.0\OnlineNotificationLogEF.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineNotificationProcessor\OnlineNotificationLogEF\obj\Debug\netstandard2.0\OnlineNotificationLogEF.csprojAssemblyReference.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineNotificationProcessor\OnlineNotificationLogEF\obj\Debug\netstandard2.0\OnlineNotificationLogEF.AssemblyInfoInputs.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineNotificationProcessor\OnlineNotificationLogEF\obj\Debug\netstandard2.0\OnlineNotificationLogEF.AssemblyInfo.cs

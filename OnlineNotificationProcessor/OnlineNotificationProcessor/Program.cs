@@ -19,9 +19,9 @@ namespace OnlineNotificationProcessor
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddHostedService<NotificationEventConsumerService>();
-                    services.AddHostedService<SMSNotificationEventConsumerService>();
-                    services.AddHostedService<EmailNotificationEventConsumerService>();
+                    services.AddHostedService<NotificationBackgroundProcessor>();
+                    services.AddHostedService<SMSNotificationProcessor>();
+                    services.AddHostedService<EmailNotificationProcessor>();
 
                 });
     }
