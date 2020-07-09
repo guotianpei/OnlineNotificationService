@@ -35,6 +35,7 @@
     <PackageReference Include="Serilog.Sinks.Http" Version="5.2.1" />
     <PackageReference Include="Serilog.Sinks.Seq" Version="4.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="3.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\MMS.EventBusRabbitMQ.csproj" />

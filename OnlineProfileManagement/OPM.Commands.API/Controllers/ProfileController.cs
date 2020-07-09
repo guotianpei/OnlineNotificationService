@@ -11,7 +11,6 @@ using OPM.Commands.API.Commands;
 namespace OPM.Commands.API.Controllers
 {
     [ApiController]
-    [Route("[WriteController]")]
     public class ProfileController : ControllerBase
     {
 
@@ -35,10 +34,8 @@ namespace OPM.Commands.API.Controllers
         //Request include header "x-requestid" which is GUID to unique identify request.
         [Route("CreateProfile")]
         [HttpPost]
-        public async Task<IActionResult> CreateEntityProfileAsync([FromBody]CreateEntityProfileCommand command, [FromHeader(Name = "x-requestid")] string requestId)
+        public async Task<IActionResult> CreateEntityProfileAsync(CreateEntityProfileCommand command, [FromHeader(Name = "x-requestid")] string requestId)
         {
-
-           
             bool commandResult = false;
 
             if (Guid.TryParse(requestId, out Guid guid) && guid != Guid.Empty)

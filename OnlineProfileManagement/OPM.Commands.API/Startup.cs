@@ -28,8 +28,11 @@ using MMS.EventBusRabbitMQ;
 using MMS.EventBus;
 using MMS.EventBus.Abstractions;
 using RabbitMQ.Client;
-
-
+using OPM.Infrastructure.Repositories.Interfaces;
+using OPM.Infrastructure.Repositories;
+using MediatR;
+using Autofac.Core.Lifetime;
+using System.Reflection;
 
 namespace OPM.Commands.API
 {
@@ -43,29 +46,47 @@ namespace OPM.Commands.API
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddHealthChecks(Configuration)
-                .AddCustomDbContext(Configuration)
-                .AddEventBusIntegration(Configuration);
-               
+                .AddCustomDbContext(Configuration);
+            //.AddEventBusIntegration(Configuration);
+            //services.AddDbContextPool<ProfileContext>(options => options.UseSqlServer(Configuration["ProfileDBConnectionString"]));
 
+            //services.AddSingleton<DbContextOptions<ProfileContext>, DbContextOptions<ProfileContext>>();   
+            services.AddScoped<IProfileRepository, ProfileRepository>();
+            
+            services.AddMediatR(typeof(Startup));
             //Load ProfileService configuration
             services.Configure<ProfileSettings>(Configuration);
+
 
             //TO-DO: Service authorization
             //ConfigureAuthService(services);
 
             services.AddControllers();
-            var container = new ContainerBuilder();
-            container.Populate(services);
-            container.RegisterModule(new MediatorModule());
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "HTTP Web API Demo",
+                    Version = "v1",
+                    Description = "Swagger in Web API"
+                });
+            });
+
             //container.RegisterModule(new ApplicationModule(Configuration["ProfileDBConnectionString"]));
-            RegisterEventBus(services);
+            //RegisterEventBus(services);
 
-            return new AutofacServiceProvider(container.Build());
-
-            
+            //var container = new ContainerBuilder();
+            //container.Populate(services);
+            //container.RegisterModule(new MediatorModule());
+            //return new AutofacServiceProvider(container.Build());
+            //AutofacServiceProvider prov = new AutofacServiceProvider(container.Build());
+        }
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new MediatorModule());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -98,7 +119,12 @@ namespace OPM.Commands.API
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
 
-            RegisterIntegrationEventHander(app);
+            //RegisterIntegrationEventHander(app);
+
+            app.UseSwagger().UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "OPM Command API");
+            });
         }
 
         private void RegisterIntegrationEventHander(IApplicationBuilder app)
@@ -208,16 +234,16 @@ namespace OPM.Commands.API
                    );
 
             //TO-DO Integration event log
-            services.AddDbContext<IntegrationEventLogContext>(options =>
-            {
-                options.UseSqlServer(configuration["IntegrationEventLogConnectionString"],
-                                     sqlServerOptionsAction: sqlOptions =>
-                                     {
-                                         sqlOptions.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
-                                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
-                                         sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
-                                     });
-            });
+            //services.AddDbContext<IntegrationEventLogContext>(options =>
+            //{
+            //    options.UseSqlServer(configuration["IntegrationEventLogConnectionString"],
+            //                         sqlServerOptionsAction: sqlOptions =>
+            //                         {
+            //                             sqlOptions.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
+            //                             //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
+            //                             sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+            //                         });
+            //});
 
             return services;
         }

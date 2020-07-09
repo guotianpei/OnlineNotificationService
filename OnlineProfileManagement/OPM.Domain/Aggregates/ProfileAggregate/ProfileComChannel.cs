@@ -5,7 +5,6 @@ using OPM.Domain.SeekWork;
 
 namespace OPM.Domain.Aggregates.ProfileAggregate
 {
-    [Table("ProfileComChannel")]
     public class ProfileComChannel :Entity, IAggregateRoot
     {
 
@@ -15,18 +14,14 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         //private string _entityID;
 
         private Guid _userID;
-
         public Guid UserID
         {
             get { return _userID; }
             set { _userID = value; }
         }
-        [Required]
         public string ComChannel { get; set; }
-        [Required]
         public string Value { get; private set; }
         private bool _enabled;
-        [Required]
         public bool Enabled
         {
             get { return _enabled; }
@@ -44,14 +39,8 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             get { return _termDate; }
             set { _termDate = value; }
         }
-        [Required]
         public ComChannelStatus Status { get; private set; }
-
         public ComChannelTypes ChannelType { get; private set; }
-
-
-
-
         protected ProfileComChannel() { }
 
         public ProfileComChannel(ComChannelTypes type, string value, bool enabled, int preference, ComChannelStatus status)
@@ -98,9 +87,6 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             
 
         }
-
-        
-
          
     }
 }

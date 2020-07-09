@@ -25,8 +25,8 @@ namespace OPM.Commands.API.Infrastructure.AutofacModules
                 .AsClosedTypesOf(typeof(IRequestHandler<,>));
 
             // Register the DomainEventHandler classes (they implement INotificationHandler<>) in assembly holding the Domain Events
-            builder.RegisterAssemblyTypes(typeof(ComChannelAddedDomainEventHandler).GetTypeInfo().Assembly)
-                .AsClosedTypesOf(typeof(INotificationHandler<>));
+            //builder.RegisterAssemblyTypes(typeof(ComChannelAddedDomainEventHandler).GetTypeInfo().Assembly)
+            //    .AsClosedTypesOf(typeof(INotificationHandler<>));
 
             // Register the Command's Validators (Validators based on FluentValidation library)
             builder
@@ -48,7 +48,7 @@ namespace OPM.Commands.API.Infrastructure.AutofacModules
             //Register behaviors in behavior pipeline.
             builder.RegisterGeneric(typeof(LoggingBehavior<,>)).As(typeof(IPipelineBehavior<,>));
             builder.RegisterGeneric(typeof(ValidatorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
-            builder.RegisterGeneric(typeof(TransactionBehavior<,>)).As(typeof(IPipelineBehavior<,>));
+            //builder.RegisterGeneric(typeof(TransactionBehavior<,>)).As(typeof(IPipelineBehavior<,>));
 
 
         }

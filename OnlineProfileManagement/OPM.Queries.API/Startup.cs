@@ -31,8 +31,7 @@ namespace OPM.Queries.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<ProfileContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ProfileDBConnection")));
-            //services.AddSingleton<DbContextOptions<ProfileContext>, DbContextOptions<ProfileContext>>();   
+            services.AddCustomDbContext(Configuration);
             services.AddScoped<IProfileRepository, ProfileRepository>();           
             services.AddMediatR(typeof(Startup));
             services.AddControllers();
@@ -71,4 +70,24 @@ namespace OPM.Queries.API
             });
         }
     }
-}
+    static class CustomExtensionMethods
+    {
+        public static IServiceCollection AddCustomDbContext(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddEntityFrameworkSqlServer()
+                   .AddDbContext<ProfileContext>(options =>
+                   {
+                       options.UseSqlServer(configuration.GetConnectionString("ProfileDBConnectionString"),
+                           sqlServerOptionsAction: sqlOptions =>
+                           {
+                               sqlOptions.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
+                               sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                           });
+                   },
+                       ServiceLifetime.Scoped  //Showing explicitly that the DbContext is shared across the HTTP request scope (graph of objects started in the HTTP request)
+                   );
+
+            return services;
+        }
+    }
+    }

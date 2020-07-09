@@ -27,26 +27,26 @@ namespace OPM.Infrastructure
 
         private readonly IMediator _mediator;
         private IDbContextTransaction _currentTransaction;
-        public ProfileContext(DbContextOptions<ProfileContext> options) : base(options) { }
+        private ProfileContext(DbContextOptions<ProfileContext> options) : base(options) { }
 
         public IDbContextTransaction GetCurrentTransaction() => _currentTransaction;
 
         public bool HasActiveTransaction => _currentTransaction != null;
 
-        //public ProfileContext(DbContextOptions<ProfileContext> options, IMediator mediator) : base(options)
-        //{
-        //    _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
-
-
-        //    System.Diagnostics.Debug.WriteLine("ProfileContext::ctor ->" + this.GetHashCode());
-        //}
+        public ProfileContext(DbContextOptions<ProfileContext> options, IMediator mediator) : base(options)
+        {
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            System.Diagnostics.Debug.WriteLine("ProfileContext::ctor ->" + this.GetHashCode());
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         { 
-
             modelBuilder.ApplyConfiguration(new EntityProfileConfiguration());
-            modelBuilder.ApplyConfiguration(new ProfileEntityTypeConfiguration());
-            // Other entities' configuration ...
+            modelBuilder.ApplyConfiguration(new NotificationHistoryConfiguration());
+            modelBuilder.ApplyConfiguration(new ProfileComChannelConfiguration());
+            modelBuilder.ApplyConfiguration(new ProfileResourceConfiguration());
+            modelBuilder.ApplyConfiguration(new DistributionGroupConfiguration());
+            modelBuilder.ApplyConfiguration(new ProfileDistributionGroupConfiguration());
         }
 
         public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
@@ -122,10 +122,11 @@ namespace OPM.Infrastructure
     {
         public ProfileContext CreateDbContext(string[] args)
         {
-            //var optionsBuilder = new DbContextOptionsBuilder<ProfileContext>()
-            //    .UseSqlServer("Server=DC01VI2MHPDV01.WV.CORE.HIM\\OPMDEV;Initial Catalog=OPM;Integrated Security = False; Persist Security Info = False; User ID = sa; Password = Pass@word");
-            //return new ProfileContext(optionsBuilder.Options, new NoMediator());
-            return null;
+            configuration["ProfileDBConnectionString"]
+            var optionsBuilder = new DbContextOptionsBuilder<ProfileContext>()
+                .UseSqlServer("Server=DC01VI2MHPDV01.WV.CORE.HIM\\OPMDEV;Initial Catalog=OPM;Integrated Security = False; Persist Security Info = False; User ID = sa; Password = Pass@word");
+            return new ProfileContext(optionsBuilder.Options, new NoMediator());
+            //return null;
         }
 
         class NoMediator : IMediator
