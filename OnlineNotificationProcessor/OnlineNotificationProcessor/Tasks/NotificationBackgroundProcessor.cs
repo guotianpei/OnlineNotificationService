@@ -19,7 +19,7 @@ namespace OnlineNotificationProcessor.Tasks
     {
         private readonly ILogger<NotificationBackgroundProcessor> _logger;
         private readonly BackgroundTaskSettings _settings;
-        private readonly IEventBus _eventBus; BackgroundService
+        private readonly IEventBus _eventBus;
 
         public NotificationBackgroundProcessor(IOptions<BackgroundTaskSettings> settings,
             IEventBus eventBus,

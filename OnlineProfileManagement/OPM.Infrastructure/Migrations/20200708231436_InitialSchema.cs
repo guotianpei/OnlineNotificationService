@@ -16,7 +16,7 @@ namespace OPM.Infrastructure.Migrations
                     GroupName = table.Column<string>(nullable: false),
                     GroupDescription = table.Column<string>(nullable: false),
                     GroupMapping = table.Column<string>(nullable: false),
-                    EffDate = table.Column<DateTime>(nullable: false),
+                    EffDate = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()"),
                     TermDate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
@@ -35,7 +35,7 @@ namespace OPM.Infrastructure.Migrations
                     ComChannel = table.Column<string>(nullable: false),
                     Recipient = table.Column<string>(nullable: false),
                     MessageBody = table.Column<string>(nullable: false),
-                    NotificationDate = table.Column<DateTime>(nullable: false)
+                    NotificationDate = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()")
                 },
                 constraints: table =>
                 {
@@ -49,7 +49,7 @@ namespace OPM.Infrastructure.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ResourceName = table.Column<string>(nullable: false),
-                    EffDate = table.Column<DateTime>(nullable: false),
+                    EffDate = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()"),
                     TermDate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
@@ -65,7 +65,7 @@ namespace OPM.Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     GroupID = table.Column<int>(nullable: false),
                     UserID = table.Column<Guid>(nullable: false),
-                    EffDate = table.Column<DateTime>(nullable: false),
+                    EffDate = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()"),
                     TermDate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
@@ -90,7 +90,7 @@ namespace OPM.Infrastructure.Migrations
                     EntityType = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    EffDate = table.Column<DateTime>(nullable: false),
+                    EffDate = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()"),
                     TermDate = table.Column<DateTime>(nullable: true),
                     Status = table.Column<string>(nullable: true),
                     ResourceID = table.Column<int>(nullable: false)

@@ -23,29 +23,29 @@ namespace OPM.Commands.API.Commands
     public class CreateEntityProfileCommand :IRequest<bool>
     {
         [DataMember]
-        public string EntityId { get; private set; }
+        public string EntityId { get; set; }
 
 
         [DataMember]
-        public string EntityName { get; private set; }
+        public string EntityName { get; set; }
 
         [DataMember]
-        public string EntityType { get; private set; }
+        public string EntityType { get; set; }
 
         [DataMember]
-        public string FirstName { get; private set; }
+        public string FirstName { get; set; }
 
         [DataMember]
-        public string LastName { get; private set; }
+        public string LastName { get; set; }
 
         [DataMember]
-        public string Status { get; private set; }
+        public string Status { get; set; }
 
         [DataMember]
-        public int ResourceID { get; private set; }
+        public int ResourceID { get; set; }
 
         [DataMember]
-        public string ResourceName { get; private set; }
+        public string ResourceName { get; set; }
 
 
         [DataMember]

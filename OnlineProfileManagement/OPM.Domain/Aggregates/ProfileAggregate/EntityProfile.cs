@@ -8,7 +8,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OPM.Domain.Aggregates.ProfileAggregate
 {
-    [Table("EntityProfile")]
     public class EntityProfile : Entity, IAggregateRoot
     {
 
@@ -26,7 +25,6 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         //to the Profile, must go thru ProfileRepository.Update(Profile)
 
         private string _entityID;
-        [Required]
         public string EntityID
         {
             get { return _entityID; }
@@ -63,7 +61,6 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         }
 
         private DateTime _effDate;
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime EffDate
         {
             get { return _effDate; }

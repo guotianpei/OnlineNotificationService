@@ -33,7 +33,7 @@ namespace OPM.Infrastructure.Repositories
         }
         public Task<EntityProfile> GetAsync(string EntityID)
         {
-            return Task.FromResult(_context.EntityProfiles.Where(obj => obj.EntityID == EntityID).FirstOrDefault<EntityProfile>()); 
+            return Task.FromResult(_context.EntityProfiles.Where(obj => obj.EntityID == EntityID).Include("ProfileResource").FirstOrDefault<EntityProfile>()); 
         }
 
     }

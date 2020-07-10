@@ -11,7 +11,6 @@ namespace OPM.Domain.SeekWork
     {
         int? _requestedHashCode;
         int _Id;        
-        [Key]
         public virtual  int Id 
         {
             get
