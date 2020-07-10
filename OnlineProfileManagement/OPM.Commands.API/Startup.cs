@@ -210,7 +210,7 @@ namespace OPM.Commands.API
             //TO-DO Integration event log
             services.AddDbContext<IntegrationEventLogContext>(options =>
             {
-                options.UseSqlServer(configuration["IntegrationEventLogConnectionString"],
+                options.UseSqlServer(configuration["ProfileDBConnectionString"],
                                      sqlServerOptionsAction: sqlOptions =>
                                      {
                                          sqlOptions.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
