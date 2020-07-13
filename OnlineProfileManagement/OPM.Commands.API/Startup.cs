@@ -50,10 +50,10 @@ namespace OPM.Commands.API
         {
             services.AddHealthChecks(Configuration)
                 .AddCustomDbContext(Configuration);
-            //Start: Uncomment below code for EventBusIntegration
             //.AddEventBusIntegration(Configuration);
-            //End: Uncomment below code for EventBusIntegration
-           
+            //services.AddDbContextPool<ProfileContext>(options => options.UseSqlServer(Configuration["ProfileDBConnectionString"]));
+
+            //services.AddSingleton<DbContextOptions<ProfileContext>, DbContextOptions<ProfileContext>>();   
             services.AddScoped<IProfileRepository, ProfileRepository>();
             
             services.AddMediatR(typeof(Startup));
@@ -76,15 +76,13 @@ namespace OPM.Commands.API
             });
 
             //container.RegisterModule(new ApplicationModule(Configuration["ProfileDBConnectionString"]));
-
-            //Start: Uncomment below code for EventBusIntegration
             //RegisterEventBus(services);
+
             //var container = new ContainerBuilder();
             //container.Populate(services);
             //container.RegisterModule(new MediatorModule());
             //return new AutofacServiceProvider(container.Build());
-            //End: Uncomment below code for EventBusIntegration
-
+            //AutofacServiceProvider prov = new AutofacServiceProvider(container.Build());
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {
@@ -120,9 +118,8 @@ namespace OPM.Commands.API
                 Predicate = _ => true,
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
-            //Start: Uncomment below code for EventBusIntegration
+
             //RegisterIntegrationEventHander(app);
-            //End: Uncomment below code for EventBusIntegration
 
             app.UseSwagger().UseSwaggerUI(c =>
             {
@@ -235,7 +232,7 @@ namespace OPM.Commands.API
                    },
                        ServiceLifetime.Scoped  //Showing explicitly that the DbContext is shared across the HTTP request scope (graph of objects started in the HTTP request)
                    );
-            //Start: Uncomment below code for EventBusIntegration
+
             //TO-DO Integration event log
             //services.AddDbContext<IntegrationEventLogContext>(options =>
             //{
@@ -247,7 +244,7 @@ namespace OPM.Commands.API
             //                             sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
             //                         });
             //});
-            //End: Uncomment below code for EventBusIntegration
+
             return services;
         }
 
