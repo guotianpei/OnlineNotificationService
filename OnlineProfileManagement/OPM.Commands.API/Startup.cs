@@ -76,7 +76,7 @@ namespace OPM.Commands.API
             });
 
             //container.RegisterModule(new ApplicationModule(Configuration["ProfileDBConnectionString"]));
-            //RegisterEventBus(services);
+            RegisterEventBus(services);
 
             //var container = new ContainerBuilder();
             //container.Populate(services);
@@ -119,7 +119,7 @@ namespace OPM.Commands.API
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
 
-            //RegisterIntegrationEventHander(app);
+            RegisterIntegrationEventHander(app);
 
             app.UseSwagger().UseSwaggerUI(c =>
             {
@@ -127,14 +127,12 @@ namespace OPM.Commands.API
             });
         }
 
+        //Subscribe listeners/handlers for intersted integration event of the service 
         private void RegisterIntegrationEventHander(IApplicationBuilder app)
         {
-            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
-
-            //Subscribe listeners/handlers for intersted integration event of the service  
+            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();             
             eventBus.Subscribe<EntityRegisteredIntegrationEvent, IIntegrationEventHandler<EntityRegisteredIntegrationEvent>>();
-             
-        }
+          }
 
         private void RegisterEventBus(IServiceCollection services)
         {
@@ -197,23 +195,13 @@ namespace OPM.Commands.API
                     name: "ProfileDB-check",
                     tags: new string[] { "Profiledb" });
 
-            //if (configuration.GetValue<bool>("AzureServiceBusEnabled"))
-            //{
-            //    hcBuilder
-            //        .AddAzureServiceBusTopic(
-            //            configuration["EventBusConnection"],
-            //            topicName: "eshop_event_bus",
-            //            name: "ordering-servicebus-check",
-            //            tags: new string[] { "servicebus" });
-            //}
-            //else
-            //{
-                hcBuilder
-                    .AddRabbitMQ(
-                        $"amqp://{configuration["EventBusConnection"]}",
-                        name: "ordering-rabbitmqbus-check",
-                        tags: new string[] { "rabbitmqbus" });
-            //}
+            
+            hcBuilder
+                .AddRabbitMQ(
+                    $"amqp://{configuration["EventBusConnection"]}",
+                    name: "ordering-rabbitmqbus-check",
+                    tags: new string[] { "rabbitmqbus" });
+            
 
             return services;
         }
@@ -233,7 +221,7 @@ namespace OPM.Commands.API
                        ServiceLifetime.Scoped  //Showing explicitly that the DbContext is shared across the HTTP request scope (graph of objects started in the HTTP request)
                    );
 
-            //TO-DO Integration event log
+            
 
             services.AddDbContext<IntegrationEventLogContext>(options =>
             {
@@ -245,18 +233,6 @@ namespace OPM.Commands.API
                                          sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                                      });
             });
-
-            services.AddDbContext<IntegrationEventLogContext>(options =>
-            {
-                options.UseSqlServer(configuration["ProfileDBConnectionString"],
-                                     sqlServerOptionsAction: sqlOptions =>
-                                     {
-                                         sqlOptions.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
-                                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
-                                         sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
-                                     });
-            });
-
 
             return services;
         }
