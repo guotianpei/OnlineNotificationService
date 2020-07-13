@@ -22,7 +22,6 @@ namespace OPM.Infrastructure.EntityConfigurations
                 .HasOne(ep=>ep.ProfileResource)
                 .WithMany()
                 .HasForeignKey(ep=>ep.ResourceID)
-                .OnDelete(DeleteBehavior.Cascade)
                 .IsRequired();
 
             builder
