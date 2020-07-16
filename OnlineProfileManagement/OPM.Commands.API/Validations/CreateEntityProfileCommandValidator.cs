@@ -8,7 +8,7 @@ namespace OPM.Commands.API.Validations
 {
     public class CreateEntityProfileCommandValidator :AbstractValidator<CreateEntityProfileCommand>
     {
-        public CreateEntityProfileCommandValidator(ILogger<CreateEntityProfileCommand> logger)
+        public CreateEntityProfileCommandValidator(ILogger<CreateEntityProfileCommandValidator> logger)
         {
             RuleFor(command => command.EntityId).NotEmpty();
             RuleFor(command => command.EntityName).NotEmpty();

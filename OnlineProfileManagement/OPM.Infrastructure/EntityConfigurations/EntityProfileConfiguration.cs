@@ -19,14 +19,24 @@ namespace OPM.Infrastructure.EntityConfigurations
                 .HasKey(ep => ep.Id);
 
             builder
+                .Ignore(ep => ep.DomainEvents);
+
+            builder
                 .HasOne(ep=>ep.ProfileResource)
                 .WithMany()
                 .HasForeignKey(ep=>ep.ResourceID)
-                .OnDelete(DeleteBehavior.Cascade)
                 .IsRequired();
 
             builder
                 .Property(ep => ep.EntityID)
+                .IsRequired();
+
+            builder
+                .HasMany(ep => ep.ProfileComChannels)
+                .WithOne()
+                .HasForeignKey(ep => ep.EntityID)
+                .HasPrincipalKey(ep => ep.EntityID)
+                .OnDelete(DeleteBehavior.Cascade)
                 .IsRequired();
 
             builder

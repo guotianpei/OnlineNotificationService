@@ -33,6 +33,7 @@ using OPM.Infrastructure.Repositories;
 using MediatR;
 using Autofac.Core.Lifetime;
 using System.Reflection;
+using FluentValidation.AspNetCore;
 
 namespace OPM.Commands.API
 {
@@ -50,10 +51,10 @@ namespace OPM.Commands.API
         {
             services.AddHealthChecks(Configuration)
                 .AddCustomDbContext(Configuration);
+            //Start: uncomment below code for EventBusIntegration
             //.AddEventBusIntegration(Configuration);
-            //services.AddDbContextPool<ProfileContext>(options => options.UseSqlServer(Configuration["ProfileDBConnectionString"]));
+            //End: uncomment below code for EventBusIntegration
 
-            //services.AddSingleton<DbContextOptions<ProfileContext>, DbContextOptions<ProfileContext>>();   
             services.AddScoped<IProfileRepository, ProfileRepository>();
             
             services.AddMediatR(typeof(Startup));
@@ -64,7 +65,12 @@ namespace OPM.Commands.API
             //TO-DO: Service authorization
             //ConfigureAuthService(services);
 
-            services.AddControllers();
+            services.AddControllers().AddFluentValidation(s =>
+            {
+                s.RegisterValidatorsFromAssemblyContaining<Startup>();
+                s.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+            });
+
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
@@ -76,7 +82,9 @@ namespace OPM.Commands.API
             });
 
             //container.RegisterModule(new ApplicationModule(Configuration["ProfileDBConnectionString"]));
-            RegisterEventBus(services);
+            //Start: uncomment below code for EventBusIntegration
+            //RegisterEventBus(services);
+            //End: uncomment below code for EventBusIntegration
 
             //var container = new ContainerBuilder();
             //container.Populate(services);
@@ -118,8 +126,9 @@ namespace OPM.Commands.API
                 Predicate = _ => true,
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
-
-            RegisterIntegrationEventHander(app);
+            //Start: uncomment below code for EventBusIntegration
+            //RegisterIntegrationEventHander(app);
+            //End: uncomment below code for EventBusIntegration
 
             app.UseSwagger().UseSwaggerUI(c =>
             {
@@ -221,19 +230,19 @@ namespace OPM.Commands.API
                        ServiceLifetime.Scoped  //Showing explicitly that the DbContext is shared across the HTTP request scope (graph of objects started in the HTTP request)
                    );
 
-            
 
-            services.AddDbContext<IntegrationEventLogContext>(options =>
-            {
-                options.UseSqlServer(configuration["ProfileDBConnectionString"],
-                                     sqlServerOptionsAction: sqlOptions =>
-                                     {
-                                         sqlOptions.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
-                                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
-                                         sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
-                                     });
-            });
-
+            //Start: uncomment below code for EventBusIntegration
+            //services.AddDbContext<IntegrationEventLogContext>(options =>
+            //{
+            //    options.UseSqlServer(configuration["ProfileDBConnectionString"],
+            //                         sqlServerOptionsAction: sqlOptions =>
+            //                         {
+            //                             sqlOptions.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
+            //                             //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
+            //                             sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+            //                         });
+            //});
+            //End: uncomment below code for EventBusIntegration
             return services;
         }
 

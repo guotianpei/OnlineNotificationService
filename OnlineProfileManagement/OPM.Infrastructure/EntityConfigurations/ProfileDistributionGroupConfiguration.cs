@@ -21,6 +21,9 @@ namespace OPM.Infrastructure.EntityConfigurations
                 .HasKey(pdg => pdg.Id);
 
             builder
+                .Ignore(pdg => pdg.DomainEvents);
+
+            builder
                 .HasOne(pdg => pdg.DistributionGroup)
                 .WithMany()
                 .HasForeignKey(pdg => pdg.GroupID)

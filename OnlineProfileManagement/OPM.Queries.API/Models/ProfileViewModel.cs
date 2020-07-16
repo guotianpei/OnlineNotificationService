@@ -9,7 +9,7 @@ namespace OPM.Queries.API.Models
 {
     public class ProfileViewModel
     {
-        public List<ProfileComChannel> profileComChannels { get; }
+        //public List<ProfileComChannel> profileComChannels { get; }
         public EntityProfile EntityProfile { get; set; }
 
     }

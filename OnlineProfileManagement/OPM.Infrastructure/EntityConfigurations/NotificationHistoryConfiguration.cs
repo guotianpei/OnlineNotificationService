@@ -21,6 +21,9 @@ namespace OPM.Infrastructure.EntityConfigurations
                 .HasKey(nh => nh.Id);
 
             builder
+                .Ignore(nh => nh.DomainEvents);
+
+            builder
                 .Property(nh => nh.ComChannel)
                 .IsRequired();
 

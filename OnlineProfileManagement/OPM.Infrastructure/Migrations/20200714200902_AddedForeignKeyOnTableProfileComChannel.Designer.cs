@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OPM.Infrastructure;
 
 namespace OPM.Infrastructure.Migrations
 {
     [DbContext(typeof(ProfileContext))]
-    partial class ProfileContextModelSnapshot : ModelSnapshot
+    [Migration("20200714200902_AddedForeignKeyOnTableProfileComChannel")]
+    partial class AddedForeignKeyOnTableProfileComChannel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,7 +95,7 @@ namespace OPM.Infrastructure.Migrations
 
                     b.Property<string>("EntityID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EntityName")
                         .HasColumnType("nvarchar(max)");
@@ -172,9 +174,9 @@ namespace OPM.Infrastructure.Migrations
                     b.Property<bool>("Enabled")
                         .HasColumnType("bit");
 
-                    b.Property<string>("EntityID")
+                    b.Property<int?>("EntityID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("int");
 
                     b.Property<int>("Preference")
                         .HasColumnType("int");
@@ -243,7 +245,6 @@ namespace OPM.Infrastructure.Migrations
                     b.HasOne("OPM.Domain.Aggregates.ProfileAggregate.EntityProfile", null)
                         .WithMany("ProfileComChannels")
                         .HasForeignKey("EntityID")
-                        .HasPrincipalKey("EntityID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

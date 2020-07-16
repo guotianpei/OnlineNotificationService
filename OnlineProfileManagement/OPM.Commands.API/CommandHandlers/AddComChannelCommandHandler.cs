@@ -46,8 +46,7 @@ namespace OPM.Commands.API.CommandHandlers
             }
             foreach (var channel in request.ComChannels)
             {
-                
-                profileToUpdate.AddProfileComChannel(channel.Types,channel.Value, channel.Enabled, channel.Preference );
+                profileToUpdate.AddProfileComChannel(channel.ComChannelId,channel.Value, channel.Enabled, channel.Preference );
             }
             return await _profileRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
                 

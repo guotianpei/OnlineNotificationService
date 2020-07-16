@@ -81,23 +81,21 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         }
         public ProfileResource ProfileResource { get; set; }
         private int _resourceID;
-        [ForeignKey("ProfileResource")]
         public int ResourceID
         {
             get { return _resourceID; }
             set { _resourceID = value; }
         }
 
-
-
-
-
         private readonly List<ProfileComChannel> _profileComChannels;
 
         public IReadOnlyCollection<ProfileComChannel> ProfileComChannels => _profileComChannels;
 
         protected EntityProfile()
-        { }
+        {
+            //Check with Rachel
+            _profileComChannels = new List<ProfileComChannel>();
+        }
 
         public EntityProfile(string entityId, string entityName, string entityType, string fName, string lName,  string status, int resourceId ) :this()
         {
@@ -110,7 +108,6 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             _lastName = lName;
             _status = status;
             _resourceID = resourceId;
-
             //Add ProfileCreatedDomainEvent for any side effect to be raised by the event.
             ProfileCreatedDomainEvent();
         }
@@ -124,7 +121,7 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         // in order to maintain consistency between the whole Aggregate.
         //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/net-core-microservice-domain-model
 
-        public void AddProfileComChannel(ComChannelTypes type, string value, bool enabled, int preference)
+        public void AddProfileComChannel(int comChannelId, string value, bool enabled, int preference)
         {
 
             //TO-DO:
@@ -133,6 +130,9 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             //Existing type/different value -> add new & term old;
             //if type doesn't exist
 
+            //Check with Rachel
+            ComChannelTypes type = ComChannelTypes.FromValue<ComChannelTypes>(comChannelId);
+           
             ComChannelStatus status = ComChannelStatus.VALIDATING;
             //if is same.
             var existingChannel = _profileComChannels.SingleOrDefault(c => c.IsEqualTo(type, value));
@@ -154,13 +154,14 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             if (existingType == null)
             {
                 //Add new channel.
+                
                 var comChannel = new ProfileComChannel(type, value, enabled, preference, status);
 
                 _profileComChannels.Add(comChannel);
 
                 //Raise side effect-- for to be validated channel, to send out validation text/email.
 
-                ComChannelAddedDomainEvent(comChannel);
+                //ComChannelAddedDomainEvent(comChannel);
 
 
                 //if (type == ComChannelTypes.Email || type == ComChannelTypes.TEXT)

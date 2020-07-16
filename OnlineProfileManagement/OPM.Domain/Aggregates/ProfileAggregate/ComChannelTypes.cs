@@ -13,6 +13,10 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         public static ComChannelTypes SecureMessage = new ComChannelTypes(2, nameof(SecureMessage).ToLowerInvariant());
         public static ComChannelTypes TEXT = new ComChannelTypes(3, nameof(TEXT).ToLowerInvariant());
 
+        public ComChannelTypes()
+        {
+
+        }
         public ComChannelTypes(int id, string name) : base(id, name)
         {
 

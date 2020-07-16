@@ -21,6 +21,9 @@ namespace OPM.Infrastructure.EntityConfigurations
                 .HasKey(pr => pr.Id);
 
             builder
+                .Ignore(pr => pr.DomainEvents);
+
+            builder
                 .Property(pr => pr.ResourceName)
                 .IsRequired();
 

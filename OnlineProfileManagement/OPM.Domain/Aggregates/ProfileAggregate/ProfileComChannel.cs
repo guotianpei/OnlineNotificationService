@@ -19,6 +19,7 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             get { return _userID; }
             set { _userID = value; }
         }
+        public string EntityID { get; set; }
         public string ComChannel { get; set; }
         public string Value { get; private set; }
         private bool _enabled;
@@ -51,7 +52,7 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             _enabled = enabled;
             _preference = preference;
             Status = status;
-
+            ComChannel = type.Name;
         }
 
         //If the communication channel exists and is active.
