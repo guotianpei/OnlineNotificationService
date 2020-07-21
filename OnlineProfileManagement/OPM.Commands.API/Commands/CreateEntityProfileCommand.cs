@@ -43,10 +43,7 @@ namespace OPM.Commands.API.Commands
         [DataMember]
         public int ResourceID { get; set; }
 
-        [DataMember]
         public string ResourceName { get; set; }
-
-        private readonly List<ComChannel> _comChannels;
 
         [DataMember]
         public IEnumerable<ComChannel> ComChannels { get; set; }
@@ -65,7 +62,7 @@ namespace OPM.Commands.API.Commands
             FirstName = firstName;
             LastName = lastName;
             ResourceName = resourceName;
-            _comChannels = comChannels;
+            ComChannels = comChannels;
         }
 
     }

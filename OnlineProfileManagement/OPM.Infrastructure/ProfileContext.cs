@@ -123,7 +123,7 @@ namespace OPM.Infrastructure
         public ProfileContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ProfileContext>()
-                .UseSqlServer("Server=DC01VI2MHPDV01.WV.CORE.HIM\\OPMDEV;Initial Catalog=OPM;Integrated Security = False; Persist Security Info = False; User ID = sa; Password = Pass@word");
+                .UseSqlServer("Server=DC01VI2WSSDV01.WV.CORE.HIM\\OPMDEV;Initial Catalog=OPM;Integrated Security = False; Persist Security Info = False; User ID = sa; Password = Pass@word");
             return new ProfileContext(optionsBuilder.Options, new NoMediator());
             //return null;
         }

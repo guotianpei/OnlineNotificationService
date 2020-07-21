@@ -11,7 +11,7 @@ namespace OPM.Commands.API.Validations
 {
     public class ComChannelCommandValidator : AbstractValidator<AddComChannelCommand>
     {
-        public ComChannelCommandValidator(ILogger<AddComChannelCommand> logger)
+        public ComChannelCommandValidator(ILogger<ComChannelCommandValidator> logger)
         {
             RuleFor(command => command.EntityID).NotEmpty();
 

@@ -30,6 +30,21 @@ namespace OPM.Infrastructure.EntityConfigurations
             builder
                 .Property(pr => pr.EffDate)
                 .HasDefaultValueSql("GETDATE()");
+
+            //builder
+            //    .HasData
+            //    (
+            //     new ProfileResource
+            //     {
+            //         Id = 1,
+            //         ResourceName = "TPA"
+            //     },
+            //     new ProfileResource
+            //     {
+            //         Id = 2,
+            //         ResourceName = "PEA"
+            //     }
+            //    );
         }
     }
 }

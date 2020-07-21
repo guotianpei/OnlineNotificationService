@@ -121,7 +121,7 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         // in order to maintain consistency between the whole Aggregate.
         //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/net-core-microservice-domain-model
 
-        public void AddProfileComChannel(int comChannelId, string value, bool enabled, int preference)
+        public void AddProfileComChannel(string ComChannelType, string value, bool enabled, int preference)
         {
 
             //TO-DO:
@@ -130,8 +130,7 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             //Existing type/different value -> add new & term old;
             //if type doesn't exist
 
-            //Check with Rachel
-            ComChannelTypes type = ComChannelTypes.FromValue<ComChannelTypes>(comChannelId);
+            ComChannelTypes type = ComChannelTypes.FromDisplayName<ComChannelTypes>(ComChannelType);
            
             ComChannelStatus status = ComChannelStatus.VALIDATING;
             //if is same.

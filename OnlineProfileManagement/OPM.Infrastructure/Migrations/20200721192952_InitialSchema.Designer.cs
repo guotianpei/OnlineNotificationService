@@ -10,8 +10,8 @@ using OPM.Infrastructure;
 namespace OPM.Infrastructure.Migrations
 {
     [DbContext(typeof(ProfileContext))]
-    [Migration("20200715021802_AddedForeignKeyOnTableProfileComChannelEntityID")]
-    partial class AddedForeignKeyOnTableProfileComChannelEntityID
+    [Migration("20200721192952_InitialSchema")]
+    partial class InitialSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -183,9 +183,6 @@ namespace OPM.Infrastructure.Migrations
 
                     b.Property<DateTime?>("TermDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<Guid>("UserID")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Value")
                         .IsRequired()

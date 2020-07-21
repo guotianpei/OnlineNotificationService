@@ -34,7 +34,7 @@ namespace OPM.Commands.API.Controllers
         //Request include header "x-requestid" which is GUID to unique identify request.
         [Route("CreateProfile")]
         [HttpPost]
-        public async Task<IActionResult> CreateEntityProfileAsync(CreateEntityProfileCommand command, [FromHeader(Name = "x-requestid")] string requestId)
+        public async Task<IActionResult> CreateEntityProfileAsync([FromBody]CreateEntityProfileCommand command, [FromHeader(Name = "x-requestid")] string requestId)
         {
             bool commandResult = false;
 
@@ -52,7 +52,5 @@ namespace OPM.Commands.API.Controllers
 
             return Ok();
         }
-
-
     }
 }

@@ -40,7 +40,7 @@ namespace OPM.Commands.API.CommandHandlers
 
             foreach (var channel in request.ComChannels)
             {
-                profile.AddProfileComChannel(channel.ComChannelId, channel.Value, channel.Enabled, channel.Preference);
+                profile.AddProfileComChannel(channel.ComChannelType.ToLower().Trim(), channel.Value, channel.Enabled, channel.Preference);
             }
 
             await _profileRepository.Add(profile);

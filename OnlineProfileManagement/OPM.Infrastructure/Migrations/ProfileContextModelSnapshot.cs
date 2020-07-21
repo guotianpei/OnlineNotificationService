@@ -182,9 +182,6 @@ namespace OPM.Infrastructure.Migrations
                     b.Property<DateTime?>("TermDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("UserID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Value")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
