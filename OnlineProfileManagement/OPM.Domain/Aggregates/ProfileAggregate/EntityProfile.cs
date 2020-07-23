@@ -77,7 +77,7 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         public string Status
         {
             get { return _status; }
-            set { _status = value; }
+            private set { _status = value; }
         }
         public ProfileResource ProfileResource { get; set; }
         private int _resourceID;
@@ -124,58 +124,38 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         // in order to maintain consistency between the whole Aggregate.
         //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/net-core-microservice-domain-model
 
-        public void AddProfileComChannel(ComChannelTypes type, string value, bool enabled, int preference)
+        public void AddOrUpdateProfileComChannel(int ID, ComChannelTypes type, string value, bool enabled, int preference)
         {
-
-            //TO-DO:
             //Validation logic all business rules, one value per channel type.
             //Same type/value-> do nothing;
-            //Existing type/different value -> add new & term old;
+            //Existing type/different value -> term old & add new  ;
             //if type doesn't exist
-
-            ComChannelStatus status = ComChannelStatus.VALIDATING;
             //if is same.
-            var existingChannel = _profileComChannels.SingleOrDefault(c => c.IsEqualTo(type, value));
-            //see if the channel exist.
-            var existingType = _profileComChannels.SingleOrDefault(c => c.IsTypeExist(type));
-
-            if (type==ComChannelTypes.SecureMessage)
+            if (ID != null)
             {
-                    status = ComChannelStatus.VALIDATED;
+                var existingChannel = _profileComChannels.SingleOrDefault(c => c.IsEqualTo(type, value));
+                //see if the channel exist.
+                var existingType = _profileComChannels.SingleOrDefault(c => c.IsTypeExist(type));
+                //if the channel type (email/text) exists, but different value, we terminate existing one.
+                if (existingChannel == null && existingType != null)
+                {
+                    TerminateProfileComChannel(existingChannel.Id);
+                    AddProfileComChannel(type, value);
+                }
+
+                //if type doesn't exist
+                if (existingType == null)
+                {
+                    AddProfileComChannel(type, value);
+                }
+            }
+            else { 
+                AddProfileComChannel(type, value); 
             }
 
-            //if the channel type (email/text) exists, but different value, we terminate existing one.
-            if (existingChannel == null && existingType != null)
-            {
-                TerminateProfileComChannel(existingChannel.Id);
-            }
-
-            //if type doesn't exist
-            if (existingType == null)
-            {
-                //Add new channel.
-                var comChannel = new ProfileComChannel(type, value, enabled, preference, status);
-
-                _profileComChannels.Add(comChannel);
-
-                //Raise side effect-- for to be validated channel, to send out validation text/email.
-
-                ComChannelAddedDomainEvent(comChannel);
-
-
-                //if (type == ComChannelTypes.Email || type == ComChannelTypes.TEXT)
-                //{
-                //    ValidatingComChannelDomainEvent(comChannel);
-                //}
-
-            }
 
         }
-        //private void ValidatingComChannelDomainEvent(ProfileComChannel channel)
-        //{
-        //    var validdatingcomChannelDomainEvent = new ValidatingComChannelDomainEvent(_entityID, _entityName, _firstName, _lastName, channel);
-        //    AddDomainEvent(validdatingcomChannelDomainEvent);
-        //}
+        
 
         private void ComChannelAddedDomainEvent(ProfileComChannel channel)
         {
@@ -183,6 +163,10 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             AddDomainEvent(comChanneAddedDomainEvent);
         }
 
+        public void UpdateProfileStatus(string status)
+        {
+            _status = status;
+        }
 
         public void TerminateProfileComChannel(int id)
         {
@@ -191,11 +175,26 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             {
                 existingChannel.Terminate(existingChannel.Id);
             }
-         
+        }
+
+        private void AddProfileComChannel(ComChannelTypes type, string value)
+        {
+            //Add new channel.
+            ComChannelStatus status = ComChannelStatus.VALIDATING;
+            if (type == ComChannelTypes.SecureMessage)
+            {
+                status = ComChannelStatus.VALIDATED;
+            }
+            var comChannel = new ProfileComChannel(type, value, true, 1, status);
+
+            _profileComChannels.Add(comChannel);
+
+            //Raise side effect-- for to be validated channel, to send out validation text/email.
+            ComChannelAddedDomainEvent(comChannel);
 
         }
 
-       
+
 
         private void ProfileCreatedDomainEvent()
         {

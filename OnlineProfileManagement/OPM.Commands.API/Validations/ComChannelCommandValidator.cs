@@ -9,9 +9,9 @@ using System.Collections.Generic;
 
 namespace OPM.Commands.API.Validations
 {
-    public class ComChannelCommandValidator : AbstractValidator<AddComChannelCommand>
+    public class ComChannelCommandValidator : AbstractValidator<AddOrUpdateComChannelCommand>
     {
-        public ComChannelCommandValidator(ILogger<AddComChannelCommand> logger)
+        public ComChannelCommandValidator(ILogger<AddOrUpdateComChannelCommand> logger)
         {
             RuleFor(command => command.EntityID).NotEmpty();
 

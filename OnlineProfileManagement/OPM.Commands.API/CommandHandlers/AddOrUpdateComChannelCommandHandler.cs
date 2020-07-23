@@ -11,43 +11,30 @@ using Microsoft.Extensions.Logging;
 
 namespace OPM.Commands.API.CommandHandlers
 {
-    public class AddComChannelCommandHandler: IRequestHandler<AddComChannelCommand, bool>
+    public class AddOrUpdateComChannelCommandHandler: IRequestHandler<AddOrUpdateComChannelCommand, bool>
     {
 
         private readonly IProfileRepository _profileRepository;
-        private readonly ILogger<AddComChannelCommandHandler> _logger;
+        private readonly ILogger<AddOrUpdateComChannelCommandHandler> _logger;
         private readonly IMediator _mediator;
 
-
-
-        public AddComChannelCommandHandler(IMediator mediator,
+        public AddOrUpdateComChannelCommandHandler(IMediator mediator,
             IProfileRepository profileRepository,
-            ILogger<AddComChannelCommandHandler> logger)
+            ILogger<AddOrUpdateComChannelCommandHandler> logger)
         {
             _profileRepository = profileRepository ?? throw new ArgumentNullException(nameof(profileRepository));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-
         }
 
-        public async Task<bool> Handle(AddComChannelCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(AddOrUpdateComChannelCommand request, CancellationToken cancellationToken)
         {
-            // TO-DO: Add any needed Integration event
-
-            
-            // Add/Update the Profile AggregateRoot
-            // DDD patterns comment: Add child entities and value-objects through the Profile Aggregate-Root
-            // methods and constructor so validations, invariants and business logic 
-            // make sure that consistency is preserved across the whole aggregate
+      
             var profileToUpdate = await _profileRepository.GetAsync(request.EntityID);
-            if(profileToUpdate == null)
-            {
-                return false;
-            }
+            string entityID = request.EntityID;
             foreach (var channel in request.ComChannels)
-            {
-                
-                profileToUpdate.AddProfileComChannel(channel.Types,channel.Value, channel.Enabled, channel.Preference );
+            { 
+                profileToUpdate.AddOrUpdateProfileComChannel(entityID, channel.Types,channel.Value, channel.Enabled, channel.Preference );
             }
             return await _profileRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
                 
@@ -57,12 +44,12 @@ namespace OPM.Commands.API.CommandHandlers
 
 
         // Use for Idempotency in Command process
-        public class AddComChannelCommandIdentifiedCommandHandler : IdentifiedCommandHandler<AddComChannelCommand, bool>
+        public class AddOrUpdateComChannelCommandIdentifiedCommandHandler : IdentifiedCommandHandler<AddOrUpdateComChannelCommand, bool>
         {
-            public AddComChannelCommandIdentifiedCommandHandler(
+            public AddOrUpdateComChannelCommandIdentifiedCommandHandler(
                 IMediator mediator,
                 IRequestManager requestManager,
-                ILogger<IdentifiedCommandHandler<AddComChannelCommand, bool>> logger)
+                ILogger<IdentifiedCommandHandler<AddOrUpdateComChannelCommand, bool>> logger)
                 : base(mediator, requestManager, logger)
             {
             }

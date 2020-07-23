@@ -74,9 +74,9 @@ namespace OPM.Commands.API.CommandHandlers
                             break;
 
                         
-                        case AddComChannelCommand addComChannelCommand:
-                            idProperty = nameof(AddComChannelCommand.EntityID);
-                            commandId = nameof(AddComChannelCommand.EntityID);
+                        case AddOrUpdateComChannelCommand addComChannelCommand:
+                            idProperty = nameof(AddOrUpdateComChannelCommand.EntityID);
+                            commandId = nameof(AddOrUpdateComChannelCommand.EntityID);
                             break;
 
                         //TO-DO:

@@ -53,6 +53,43 @@ namespace OPM.Commands.API.Controllers
             return Ok();
         }
 
+        [Route("UpdateProfileStatus")]
+        [HttpPost]
+        public async Task<IActionResult> UpdateEntityProfileStatusAsync(UpdateEntityProfileStatusCommand command, [FromHeader(Name = "x-requestid")] string requestId)
+        {
+            bool commandResult = false;
+
+            if (Guid.TryParse(requestId, out Guid guid) && guid != Guid.Empty)
+            {
+                commandResult = await _mediator.Send(command);
+            }
+            if (!commandResult)
+            {
+                return BadRequest();
+            }
+            return Ok();
+        }
+
+        [Route("AddOrUpdateProfileComChannel")]
+        [HttpPost]
+        public async Task<IActionResult> AddOrUpdateProfileComChannel(AddOrUpdateComChannelCommand command, [FromHeader(Name = "x-requestid")] string requestId)
+        {
+            bool commandResult = false;
+
+            if (Guid.TryParse(requestId, out Guid guid) && guid != Guid.Empty)
+            {
+                var request = new IdentifiedCommand<AddOrUpdateComChannelCommand, bool>(command, guid);
+                commandResult = await _mediator.Send(command);
+            }
+
+            if (!commandResult)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+        }
+
 
     }
 }

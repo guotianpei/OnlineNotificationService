@@ -46,14 +46,12 @@ namespace OPM.Commands.API
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddHealthChecks(Configuration)
-                .AddCustomDbContext(Configuration);
-            //.AddEventBusIntegration(Configuration);
-            //services.AddDbContextPool<ProfileContext>(options => options.UseSqlServer(Configuration["ProfileDBConnectionString"]));
-
-            //services.AddSingleton<DbContextOptions<ProfileContext>, DbContextOptions<ProfileContext>>();   
+                .AddCustomDbContext(Configuration)
+                .AddEventBusIntegration(Configuration);
+            
             services.AddScoped<IProfileRepository, ProfileRepository>();
             
             services.AddMediatR(typeof(Startup));
@@ -75,14 +73,19 @@ namespace OPM.Commands.API
                 });
             });
 
-            //container.RegisterModule(new ApplicationModule(Configuration["ProfileDBConnectionString"]));
-            RegisterEventBus(services);
+            //configure autofac
+            ConfigEventBus(services);
 
-            //var container = new ContainerBuilder();
-            //container.Populate(services);
-            //container.RegisterModule(new MediatorModule());
-            //return new AutofacServiceProvider(container.Build());
-            //AutofacServiceProvider prov = new AutofacServiceProvider(container.Build());
+            
+
+            var container = new ContainerBuilder();
+            //Rachel
+            container.RegisterModule(new MediatorModule());
+            //ConfigureContainer(container);
+            container.Populate(services);
+          
+            return new AutofacServiceProvider(container.Build());
+           
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {
@@ -134,7 +137,7 @@ namespace OPM.Commands.API
             eventBus.Subscribe<EntityRegisteredIntegrationEvent, IIntegrationEventHandler<EntityRegisteredIntegrationEvent>>();
           }
 
-        private void RegisterEventBus(IServiceCollection services)
+        private void ConfigEventBus(IServiceCollection services)
         {
             var subscriptionClientName = Configuration["SubscriptionClientName"];
 
