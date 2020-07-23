@@ -34,7 +34,8 @@ namespace OPM.Commands.API.CommandHandlers
             string entityID = request.EntityID;
             foreach (var channel in request.ComChannels)
             { 
-                profileToUpdate.AddOrUpdateProfileComChannel(entityID, channel.Types,channel.Value, channel.Enabled, channel.Preference );
+                profileToUpdate.AddOrUpdateProfileComChannel(entityID, channel.ComChannelType.ToLower().Trim(), channel.Value, channel.Enabled, channel.Preference);
+                       
             }
             return await _profileRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
                 

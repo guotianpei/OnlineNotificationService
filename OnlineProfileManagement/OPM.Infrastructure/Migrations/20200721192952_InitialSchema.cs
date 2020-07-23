@@ -98,6 +98,7 @@ namespace OPM.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EntityProfile", x => x.Id);
+                    table.UniqueConstraint("AK_EntityProfile_EntityID", x => x.EntityID);
                     table.ForeignKey(
                         name: "FK_EntityProfile_ProfileResource_ResourceID",
                         column: x => x.ResourceID,
@@ -112,23 +113,22 @@ namespace OPM.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserID = table.Column<Guid>(nullable: false),
+                    EntityID = table.Column<string>(nullable: false),
                     ComChannel = table.Column<string>(nullable: false),
                     Value = table.Column<string>(nullable: false),
                     Enabled = table.Column<bool>(nullable: false),
                     Preference = table.Column<int>(nullable: false),
-                    TermDate = table.Column<DateTime>(nullable: true),
-                    EntityProfileId = table.Column<int>(nullable: true)
+                    TermDate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProfileComChannel", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProfileComChannel_EntityProfile_EntityProfileId",
-                        column: x => x.EntityProfileId,
+                        name: "FK_ProfileComChannel_EntityProfile_EntityID",
+                        column: x => x.EntityID,
                         principalTable: "EntityProfile",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "EntityID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -137,9 +137,9 @@ namespace OPM.Infrastructure.Migrations
                 column: "ResourceID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfileComChannel_EntityProfileId",
+                name: "IX_ProfileComChannel_EntityID",
                 table: "ProfileComChannel",
-                column: "EntityProfileId");
+                column: "EntityID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProfileDistributionGroup_GroupID",

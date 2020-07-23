@@ -1,22 +1,16 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using OPM.Domain.Aggregates.ProfileAggregate;
 namespace OPM.Commands.API.Models
 {
     public class ComChannel
     {
+        public string ComChannelType { get; set; }
 
-            public ComChannelTypes Types { get; set; }
+        public string Value { get; set; }
 
-            public string Value { get; set; }
+        public bool Enabled { get; set; }
 
-
-            public bool Enabled { get; set; }
-
-
-            public int Preference { get; set; }
-
-
-            public ComChannelStatus Status { get; set; }
-        
+        public int Preference { get; set; }
     }
 }

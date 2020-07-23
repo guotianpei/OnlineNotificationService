@@ -21,6 +21,9 @@ namespace OPM.Infrastructure.EntityConfigurations
                 .HasKey(pcc => pcc.Id);
 
             builder
+                .Ignore(pcc => pcc.DomainEvents);
+
+            builder
                 .Property(pcc => pcc.ComChannel)
                 .IsRequired();
 

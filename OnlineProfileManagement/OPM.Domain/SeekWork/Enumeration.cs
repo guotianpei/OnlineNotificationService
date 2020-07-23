@@ -10,7 +10,10 @@ namespace OPM.Domain.SeekWork
         public string Name { get; private set; }
 
         public int Id { get; private set; }
+        public Enumeration()
+        {
 
+        }
         protected Enumeration(int id, string name)
         {
             Id = id;

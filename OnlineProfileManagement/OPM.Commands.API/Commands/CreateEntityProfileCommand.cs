@@ -25,7 +25,6 @@ namespace OPM.Commands.API.Commands
         [DataMember]
         public string EntityId { get; set; }
 
-
         [DataMember]
         public string EntityName { get; set; }
 
@@ -44,16 +43,10 @@ namespace OPM.Commands.API.Commands
         [DataMember]
         public int ResourceID { get; set; }
 
-        [DataMember]
         public string ResourceName { get; set; }
 
-
         [DataMember]
-        private readonly List<ComChannel> _comChannels;
-
-
-        [DataMember]
-        public IEnumerable<ComChannel> ComChannels => _comChannels;
+        public IEnumerable<ComChannel> ComChannels { get; set; }
 
         public CreateEntityProfileCommand()
         { }
@@ -69,7 +62,7 @@ namespace OPM.Commands.API.Commands
             FirstName = firstName;
             LastName = lastName;
             ResourceName = resourceName;
-            _comChannels = comChannels;
+            ComChannels = comChannels;
         }
 
     }

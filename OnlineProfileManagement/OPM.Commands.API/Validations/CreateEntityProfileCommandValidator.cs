@@ -3,12 +3,16 @@ using FluentValidation;
 using OPM.Commands.API.Commands;
 using System.Linq;
 using Microsoft.Extensions.Logging;
+using System.Collections;
+using System.Collections.Generic;
+using OPM.Commands.API.Models;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace OPM.Commands.API.Validations
 {
     public class CreateEntityProfileCommandValidator :AbstractValidator<CreateEntityProfileCommand>
     {
-        public CreateEntityProfileCommandValidator(ILogger<CreateEntityProfileCommand> logger)
+        public CreateEntityProfileCommandValidator(ILogger<CreateEntityProfileCommandValidator> logger)
         {
             RuleFor(command => command.EntityId).NotEmpty();
             RuleFor(command => command.EntityName).NotEmpty();
@@ -19,10 +23,16 @@ namespace OPM.Commands.API.Validations
                 .NotEmpty()
                 .Must(ValidEntityType)
                 .WithMessage("Invalid Entity Type");
+
             RuleFor(command => command.ResourceName)
                 .NotEmpty()
                 .Must(ValidResourceName)
                 .WithMessage("Incorrect Resource Name");
+
+            RuleFor(command => command.ComChannels)
+                .Must(ComChannelsAvailable)
+                .WithMessage("No ComChannels Available");
+
             logger.LogTrace("Instance created - {ClassName}", GetType().Name);
 
         }
@@ -37,6 +47,10 @@ namespace OPM.Commands.API.Validations
         {
             //TO-DO: Resource Name list should from cache
             return true;
+        }
+        private bool ComChannelsAvailable(IEnumerable<ComChannel> comChannels)
+        {
+            return comChannels.Any();
         }
     }
 }

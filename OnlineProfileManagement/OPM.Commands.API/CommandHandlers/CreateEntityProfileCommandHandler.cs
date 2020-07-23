@@ -38,10 +38,11 @@ namespace OPM.Commands.API.CommandHandlers
             // make sure that consistency is preserved across the whole aggregate
             var profile = new EntityProfile(request.EntityId, request.EntityName, request.EntityType,request.FirstName, request.LastName, request.Status, request.ResourceID);
 
-
+            bool newEntity = true;
             foreach (var channel in request.ComChannels)
             {
-                profile.AddOrUpdateProfileComChannel(channel.Types, channel.Value, channel.Enabled, channel.Preference);
+                profile.AddOrUpdateProfileComChannel(newEntity,channel.ComChannelType.ToLower().Trim(), channel.Value, channel.Enabled, channel.Preference);
+ 
             }
 
             await _profileRepository.Add(profile);

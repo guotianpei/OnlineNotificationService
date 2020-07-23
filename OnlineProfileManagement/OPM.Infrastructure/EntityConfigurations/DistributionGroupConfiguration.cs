@@ -22,6 +22,9 @@ namespace OPM.Infrastructure.EntityConfigurations
                 .HasKey(dg => dg.Id);
 
             builder
+                .Ignore(dg => dg.DomainEvents);
+
+            builder
                 .Property(dg => dg.GroupName)
                 .IsRequired();
 

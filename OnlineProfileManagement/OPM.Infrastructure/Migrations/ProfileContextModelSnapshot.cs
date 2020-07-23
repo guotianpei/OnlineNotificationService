@@ -93,7 +93,7 @@ namespace OPM.Infrastructure.Migrations
 
                     b.Property<string>("EntityID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("EntityName")
                         .HasColumnType("nvarchar(max)");
@@ -172,8 +172,9 @@ namespace OPM.Infrastructure.Migrations
                     b.Property<bool>("Enabled")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("EntityProfileId")
-                        .HasColumnType("int");
+                    b.Property<string>("EntityID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Preference")
                         .HasColumnType("int");
@@ -181,16 +182,13 @@ namespace OPM.Infrastructure.Migrations
                     b.Property<DateTime?>("TermDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("UserID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Value")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EntityProfileId");
+                    b.HasIndex("EntityID");
 
                     b.ToTable("ProfileComChannel");
                 });
@@ -241,7 +239,10 @@ namespace OPM.Infrastructure.Migrations
                 {
                     b.HasOne("OPM.Domain.Aggregates.ProfileAggregate.EntityProfile", null)
                         .WithMany("ProfileComChannels")
-                        .HasForeignKey("EntityProfileId");
+                        .HasForeignKey("EntityID")
+                        .HasPrincipalKey("EntityID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

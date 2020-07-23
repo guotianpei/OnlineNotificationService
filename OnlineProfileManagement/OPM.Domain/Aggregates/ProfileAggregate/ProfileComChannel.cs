@@ -13,12 +13,13 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         // aligned with DDD Aggregates and Domain Entities (Instead of properties and property collections)
         //private string _entityID;
 
-        private Guid _userID;
-        public Guid UserID
-        {
-            get { return _userID; }
-            set { _userID = value; }
-        }
+        //private Guid _userID;
+        //public Guid UserID
+        //{
+        //    get { return _userID; }
+        //    set { _userID = value; }
+        //}
+        public string EntityID { get; set; }
         public string ComChannel { get; set; }
         public string Value { get; private set; }
         private bool _enabled;
@@ -51,7 +52,7 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             _enabled = enabled;
             _preference = preference;
             Status = status;
-
+            ComChannel = type.Name;
         }
 
         //If the communication channel exists and is active.

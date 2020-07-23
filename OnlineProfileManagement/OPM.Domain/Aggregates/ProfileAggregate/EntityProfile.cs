@@ -97,7 +97,9 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         public IReadOnlyCollection<ProfileComChannel> ProfileComChannels => _profileComChannels;
 
         protected EntityProfile()
-        { }
+        {
+            _profileComChannels = new List<ProfileComChannel>();
+        }
 
         public EntityProfile(string entityId, string entityName, string entityType, string fName, string lName,  string status, int resourceId ) :this()
         {
@@ -124,15 +126,18 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         // in order to maintain consistency between the whole Aggregate.
         //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/net-core-microservice-domain-model
 
-        public void AddOrUpdateProfileComChannel(int ID, ComChannelTypes type, string value, bool enabled, int preference)
+        public void AddOrUpdateProfileComChannel(bool newEntity, string type, string value, bool enabled, int preference)
         {
             //Validation logic all business rules, one value per channel type.
             //Same type/value-> do nothing;
             //Existing type/different value -> term old & add new  ;
             //if type doesn't exist
             //if is same.
-            if (ID != null)
+            if (newEntity)
             {
+                AddProfileComChannel(type, value);
+            }
+            else { 
                 var existingChannel = _profileComChannels.SingleOrDefault(c => c.IsEqualTo(type, value));
                 //see if the channel exist.
                 var existingType = _profileComChannels.SingleOrDefault(c => c.IsTypeExist(type));
@@ -149,9 +154,9 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
                     AddProfileComChannel(type, value);
                 }
             }
-            else { 
-                AddProfileComChannel(type, value); 
-            }
+            
+               
+             
 
 
         }
@@ -177,11 +182,11 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             }
         }
 
-        private void AddProfileComChannel(ComChannelTypes type, string value)
+        private void AddProfileComChannel(string type, string value)
         {
             //Add new channel.
             ComChannelStatus status = ComChannelStatus.VALIDATING;
-            if (type == ComChannelTypes.SecureMessage)
+            if (type == ComChannelTypes.SecureMessage.ToString().Trim())
             {
                 status = ComChannelStatus.VALIDATED;
             }

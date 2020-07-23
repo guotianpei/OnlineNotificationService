@@ -21,12 +21,30 @@ namespace OPM.Infrastructure.EntityConfigurations
                 .HasKey(pr => pr.Id);
 
             builder
+                .Ignore(pr => pr.DomainEvents);
+
+            builder
                 .Property(pr => pr.ResourceName)
                 .IsRequired();
 
             builder
                 .Property(pr => pr.EffDate)
                 .HasDefaultValueSql("GETDATE()");
+
+            //builder
+            //    .HasData
+            //    (
+            //     new ProfileResource
+            //     {
+            //         Id = 1,
+            //         ResourceName = "TPA"
+            //     },
+            //     new ProfileResource
+            //     {
+            //         Id = 2,
+            //         ResourceName = "PEA"
+            //     }
+            //    );
         }
     }
 }
