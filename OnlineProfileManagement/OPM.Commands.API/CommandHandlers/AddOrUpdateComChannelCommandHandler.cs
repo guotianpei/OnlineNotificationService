@@ -29,18 +29,13 @@ namespace OPM.Commands.API.CommandHandlers
 
         public async Task<bool> Handle(AddOrUpdateComChannelCommand request, CancellationToken cancellationToken)
         {
-      
             var profileToUpdate = await _profileRepository.GetAsync(request.EntityID);
-            string entityID = request.EntityID;
             foreach (var channel in request.ComChannels)
             { 
-                profileToUpdate.AddOrUpdateProfileComChannel(entityID, channel.ComChannelType.ToLower().Trim(), channel.Value, channel.Enabled, channel.Preference);
+                profileToUpdate.AddOrUpdateProfileComChannel(request.EntityID, channel.ComChannelTypes, channel.Value, channel.Enabled, channel.Preference);
                        
             }
             return await _profileRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
-                
-
-
         }
 
 

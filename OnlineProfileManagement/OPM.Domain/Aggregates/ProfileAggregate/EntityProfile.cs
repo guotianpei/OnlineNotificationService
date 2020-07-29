@@ -88,10 +88,6 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             set { _resourceID = value; }
         }
 
-
-
-
-
         private readonly List<ProfileComChannel> _profileComChannels;
 
         public IReadOnlyCollection<ProfileComChannel> ProfileComChannels => _profileComChannels;
@@ -101,7 +97,7 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             _profileComChannels = new List<ProfileComChannel>();
         }
 
-        public EntityProfile(string entityId, string entityName, string entityType, string fName, string lName,  string status, int resourceId ) :this()
+        public EntityProfile(string entityId, string entityName, string entityType, string fName, string lName, string status, int resourceId) : this()
         {
             // Initializations ...
 
@@ -126,25 +122,26 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         // in order to maintain consistency between the whole Aggregate.
         //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/net-core-microservice-domain-model
 
-        public void AddOrUpdateProfileComChannel(bool newEntity, string type, string value, bool enabled, int preference)
+        public void AddOrUpdateProfileComChannel(string entityID, ComChannelTypes type, string value, bool enabled, int preference)
         {
             //Validation logic all business rules, one value per channel type.
             //Same type/value-> do nothing;
             //Existing type/different value -> term old & add new  ;
             //if type doesn't exist
             //if is same.
-            if (newEntity)
+            if (string.IsNullOrEmpty(entityID))
             {
                 AddProfileComChannel(type, value);
             }
-            else { 
-                var existingChannel = _profileComChannels.SingleOrDefault(c => c.IsEqualTo(type, value));
+            else
+            {
+                //var existingChannel = _profileComChannels.SingleOrDefault(c => c.IsEqualTo(type, value));
                 //see if the channel exist.
                 var existingType = _profileComChannels.SingleOrDefault(c => c.IsTypeExist(type));
                 //if the channel type (email/text) exists, but different value, we terminate existing one.
-                if (existingChannel == null && existingType != null)
+                if (existingType != null)
                 {
-                    TerminateProfileComChannel(existingChannel.Id);
+                    TerminateProfileComChannel(existingType.Id);
                     AddProfileComChannel(type, value);
                 }
 
@@ -154,13 +151,8 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
                     AddProfileComChannel(type, value);
                 }
             }
-            
-               
-             
-
-
         }
-        
+
 
         private void ComChannelAddedDomainEvent(ProfileComChannel channel)
         {
@@ -176,17 +168,17 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
         public void TerminateProfileComChannel(int id)
         {
             var existingChannel = _profileComChannels.Where(c => c.Id == id).SingleOrDefault();
-             if(existingChannel!=null)
+            if (existingChannel != null)
             {
                 existingChannel.Terminate(existingChannel.Id);
             }
         }
 
-        private void AddProfileComChannel(string type, string value)
+        private void AddProfileComChannel(ComChannelTypes type, string value)
         {
             //Add new channel.
             ComChannelStatus status = ComChannelStatus.VALIDATING;
-            if (type == ComChannelTypes.SecureMessage.ToString().Trim())
+            if (type.Name == ComChannelTypes.SecureMessage.ToString().Trim())
             {
                 status = ComChannelStatus.VALIDATED;
             }

@@ -5,7 +5,7 @@ using OPM.Domain.SeekWork;
 
 namespace OPM.Domain.Aggregates.ProfileAggregate
 {
-    public class ProfileComChannel :Entity, IAggregateRoot
+    public class ProfileComChannel : Entity, IAggregateRoot
     {
 
         // DDD Patterns comment
@@ -41,7 +41,14 @@ namespace OPM.Domain.Aggregates.ProfileAggregate
             set { _termDate = value; }
         }
         public ComChannelStatus Status { get; private set; }
-        public ComChannelTypes ChannelType { get; private set; }
+        public ComChannelTypes ChannelType
+        {
+            get
+            {
+                return (!string.IsNullOrEmpty(ComChannel)) ? ComChannelTypes.FromDisplayName<ComChannelTypes>(ComChannel.ToLower().Trim()) : null;
+            }
+            private set { }
+        }
         protected ProfileComChannel() { }
 
         public ProfileComChannel(ComChannelTypes type, string value, bool enabled, int preference, ComChannelStatus status)

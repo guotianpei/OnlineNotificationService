@@ -47,7 +47,7 @@ namespace OPM.Commands.API
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddHealthChecks(Configuration)
  
@@ -95,13 +95,13 @@ namespace OPM.Commands.API
 
             
 
-            var container = new ContainerBuilder();
-            //Rachel
-            container.RegisterModule(new MediatorModule());
-            //ConfigureContainer(container);
-            container.Populate(services);
+            //var container = new ContainerBuilder();
+            ////Rachel
+            //container.RegisterModule(new MediatorModule());
+            ////ConfigureContainer(container);
+            //container.Populate(services);
           
-            return new AutofacServiceProvider(container.Build());
+            //return new AutofacServiceProvider(container.Build());
            
         }
         public void ConfigureContainer(ContainerBuilder builder)
