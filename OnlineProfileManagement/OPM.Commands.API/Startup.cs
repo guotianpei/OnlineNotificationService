@@ -53,9 +53,9 @@ namespace OPM.Commands.API
  
                 .AddCustomDbContext(Configuration);
             //Start: uncomment below code for EventBusIntegration
-            //.AddEventBusIntegration(Configuration);
+            //.AddCustomIntegrations(Configuration);
             //End: uncomment below code for EventBusIntegration
- 
+
             services.AddScoped<IProfileRepository, ProfileRepository>();
             
             services.AddMediatR(typeof(Startup));
@@ -154,6 +154,9 @@ namespace OPM.Commands.API
             var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();             
             eventBus.Subscribe<EntityRegisteredIntegrationEvent, IIntegrationEventHandler<EntityRegisteredIntegrationEvent>>();
           }
+        
+        
+        //EventBus Subscriptions manager
 
         private void ConfigEventBus(IServiceCollection services)
         {
@@ -258,16 +261,36 @@ namespace OPM.Commands.API
             return services;
         }
 
-        public static IServiceCollection AddEventBusIntegration(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddCustomIntegrations(this IServiceCollection services, IConfiguration configuration)
         {
-            var subscriptionClientName = configuration["SubscriptionClientName"];
+            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+           // services.AddTransient<IIdentityService, IdentityService>();
+            services.AddTransient<Func<DbConnection, IIntegrationEventLogService>>(
+                sp => (DbConnection c) => new IntegrationEventLogService(c));
 
-            services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
+            services.AddTransient<IProfileIntegrationEventService, ProfileIntegrationEventService>();
+
+             
+            services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
             {
-                var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
-                var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
-                var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
-                var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+                var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
+
+
+                var factory = new ConnectionFactory()
+                {
+                    HostName = configuration["EventBusConnection"],
+                    DispatchConsumersAsync = true
+                };
+
+                if (!string.IsNullOrEmpty(configuration["EventBusUserName"]))
+                {
+                    factory.UserName = configuration["EventBusUserName"];
+                }
+
+                if (!string.IsNullOrEmpty(configuration["EventBusPassword"]))
+                {
+                    factory.Password = configuration["EventBusPassword"];
+                }
 
                 var retryCount = 5;
                 if (!string.IsNullOrEmpty(configuration["EventBusRetryCount"]))
@@ -275,17 +298,15 @@ namespace OPM.Commands.API
                     retryCount = int.Parse(configuration["EventBusRetryCount"]);
                 }
 
-                return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
+                return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
             });
-            
-
-            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
-
+             
 
             return services;
         }
 
-       
+
+
     }
 
 }
