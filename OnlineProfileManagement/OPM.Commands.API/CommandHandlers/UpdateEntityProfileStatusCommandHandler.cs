@@ -38,8 +38,6 @@ namespace OPM.Commands.API.CommandHandlers
             }
             profileToUpdate.UpdateProfileStatus(request.Status);
             return await _profileRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
-
         } 
- 
     }
 }

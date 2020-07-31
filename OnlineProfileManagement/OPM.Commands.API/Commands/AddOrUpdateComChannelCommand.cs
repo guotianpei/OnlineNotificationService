@@ -21,19 +21,14 @@ namespace OPM.Commands.API.Commands
     [DataContract]
     public class AddOrUpdateComChannelCommand : IRequest<bool>
     {
+        [DataMember]
+        public string EntityID { get; set; }
 
         [DataMember]
         private readonly List<ComChannel> _comChannels;
 
-
         [DataMember]
-        public IEnumerable<ComChannel> ComChannels => _comChannels;
-
-
-        [DataMember]
-        public string EntityID { get; private set; }
-
-
+        public IEnumerable<ComChannel> ComChannels { get; set; }
 
         public AddOrUpdateComChannelCommand()
         {   
@@ -42,7 +37,7 @@ namespace OPM.Commands.API.Commands
         public AddOrUpdateComChannelCommand(string entityId, List<ComChannel> comChannels) : this()
         { 
             EntityID = entityId;
-            _comChannels = comChannels;
+            ComChannels = comChannels;
         }
 
          

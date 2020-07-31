@@ -8,7 +8,7 @@ using OPM.Infrastructure.Repositories.Interfaces;
 using OPM.Infrastructure.Idempotency;
 using Microsoft.Extensions.Logging;
 using OPM.Queries.API.Models;
-
+using System.Collections.Generic;
 
 namespace OPM.Queries.API.QueryHandlers
 {
@@ -35,9 +35,27 @@ namespace OPM.Queries.API.QueryHandlers
 
             if (profile !=null)
             {
-                ProfileViewModel profileViewModel = new ProfileViewModel();
-                profileViewModel.EntityProfile = profile;
-                return profileViewModel;
+                List<ProfileComChannelView> profileComChannelViewList = new List<ProfileComChannelView>();
+
+                foreach(var comChannel in profile.ProfileComChannels)
+                {
+                    profileComChannelViewList.Add(new ProfileComChannelView()
+                    {
+                        Type = (comChannel.ChannelType != null) ? comChannel.ChannelType.Name : string.Empty,
+                        Value = comChannel.Value
+                    });
+                }
+                return new ProfileViewModel()
+                {
+                    ProfileComChannels = profileComChannelViewList,
+                    EntityProfile = new EntityProfileView()
+                    {
+                        EntityName = profile.EntityName,
+                        FirstName = profile.FirstName,
+                        LastName = profile.LastName,
+                        ResourceName = (profile.ProfileResource != null) ? profile.ProfileResource.ResourceName : string.Empty
+                    }
+                };
             }
             return null;
         }

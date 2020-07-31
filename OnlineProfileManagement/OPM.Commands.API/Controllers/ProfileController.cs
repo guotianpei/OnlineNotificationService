@@ -56,7 +56,7 @@ namespace OPM.Commands.API.Controllers
 
         [Route("UpdateProfileStatus")]
         [HttpPost]
-        public async Task<IActionResult> UpdateEntityProfileStatusAsync(UpdateEntityProfileStatusCommand command, [FromHeader(Name = "x-requestid")] string requestId)
+        public async Task<IActionResult> UpdateEntityProfileStatusAsync([FromBody]UpdateEntityProfileStatusCommand command, [FromHeader(Name = "x-requestid")] string requestId)
         {
             bool commandResult = false;
 
@@ -73,7 +73,7 @@ namespace OPM.Commands.API.Controllers
 
         [Route("AddOrUpdateProfileComChannel")]
         [HttpPost]
-        public async Task<IActionResult> AddOrUpdateProfileComChannel(AddOrUpdateComChannelCommand command, [FromHeader(Name = "x-requestid")] string requestId)
+        public async Task<IActionResult> AddOrUpdateProfileComChannel([FromBody]AddOrUpdateComChannelCommand command, [FromHeader(Name = "x-requestid")] string requestId)
         {
             bool commandResult = false;
 

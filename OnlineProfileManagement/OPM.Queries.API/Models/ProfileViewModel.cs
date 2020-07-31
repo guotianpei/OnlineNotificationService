@@ -9,16 +9,13 @@ namespace OPM.Queries.API.Models
 {
     public class ProfileViewModel
     {
- 
-        public List<ProfileComChannelView> profileComChannels { get; }
+        public List<ProfileComChannelView> ProfileComChannels { get; set; }
         public EntityProfileView EntityProfile { get; set; }
- 
-
     }
 
     public class ProfileComChannelView
     {
-        public ComChannelTypes Types { get; set; }
+        public string Type { get; set; }
         public string Value { get; set; }
     }
 
@@ -27,7 +24,7 @@ namespace OPM.Queries.API.Models
         public string EntityName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-         
+        public string ResourceName { get; set; }
     }
 
 
