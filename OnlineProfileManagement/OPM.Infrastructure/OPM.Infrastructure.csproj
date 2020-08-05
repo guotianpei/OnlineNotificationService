@@ -21,7 +21,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EntityConfigurations\" />
     <Folder Include="IntegrationEventMigration\" />
   </ItemGroup>
 </Project>

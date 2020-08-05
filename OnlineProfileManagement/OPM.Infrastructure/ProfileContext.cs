@@ -11,6 +11,7 @@ using System;
 using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
+using OPM.Domain.Aggregates.IntegrationEvent;
 
 namespace OPM.Infrastructure
 {
@@ -23,7 +24,7 @@ namespace OPM.Infrastructure
         public DbSet<ProfileComChannel> ProfileComChannels { get; set; }
         public DbSet<ProfileResource> ProfileResources { get; set; }
         public DbSet<NotificationHistory> NotificationHistories { get; set; }
-        
+        public DbSet<IntegrationEventLogEntry> IntegrationEventLogEntries { get; set; }
 
         private readonly IMediator _mediator;
         private IDbContextTransaction _currentTransaction;
@@ -47,6 +48,7 @@ namespace OPM.Infrastructure
             modelBuilder.ApplyConfiguration(new ProfileResourceConfiguration());
             modelBuilder.ApplyConfiguration(new DistributionGroupConfiguration());
             modelBuilder.ApplyConfiguration(new ProfileDistributionGroupConfiguration());
+            modelBuilder.ApplyConfiguration(new IntegrationEventLogConfiguration());
         }
 
         public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
