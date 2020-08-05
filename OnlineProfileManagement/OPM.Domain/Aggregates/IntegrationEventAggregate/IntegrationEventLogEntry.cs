@@ -27,7 +27,7 @@ namespace OPM.Domain.Aggregates.IntegrationEvent
         public EventStateEnum EventState {
             get
             {
-                return (!string.IsNullOrEmpty(State)) ? (EventStateEnum)Enum.Parse(typeof(EventStateEnum), State) : EventStateEnum.NotPublished;
+                return (!string.IsNullOrEmpty(State) && Enum.IsDefined(typeof(EventStateEnum), State))?(EventStateEnum)Enum.Parse(typeof(EventStateEnum), State) : EventStateEnum.NotPublished;
             }
             private set { }
         }
