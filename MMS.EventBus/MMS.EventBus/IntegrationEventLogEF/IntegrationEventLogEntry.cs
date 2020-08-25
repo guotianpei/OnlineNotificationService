@@ -18,7 +18,8 @@ namespace MMS.IntegrationEventLogEF
             CreationTime = @event.CreationDate;
             EventTypeName = @event.GetType().FullName;
             Content = JsonConvert.SerializeObject(@event);
-            State = EventStateEnum.NotPublished;
+            EventState = EventStateEnum.NotPublished;
+            State = "0";
             TimesSent = 0;
             TransactionId = transactionId.ToString();
         }
@@ -29,7 +30,16 @@ namespace MMS.IntegrationEventLogEF
         public string EventTypeShortName => EventTypeName.Split('.')?.Last();
         [NotMapped]
         public IntegrationEvent IntegrationEvent { get; private set; }
-        public EventStateEnum State { get; set; }
+
+        public EventStateEnum EventState
+        {
+            get
+            {
+                return (!string.IsNullOrEmpty(State) && Enum.IsDefined(typeof(EventStateEnum), State)) ? (EventStateEnum)Enum.Parse(typeof(EventStateEnum), State) : EventStateEnum.NotPublished;
+            }
+            set { }
+        }
+        public string State { get; set; }
         public int TimesSent { get; set; }
         public DateTime CreationTime { get; private set; }
         public string Content { get; private set; }

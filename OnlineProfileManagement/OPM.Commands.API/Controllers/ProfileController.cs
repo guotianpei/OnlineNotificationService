@@ -40,6 +40,7 @@ namespace OPM.Commands.API.Controllers
 
             if (Guid.TryParse(requestId, out Guid guid) && guid != Guid.Empty)
             {
+                command.RequestID = guid;
                 var request = new IdentifiedCommand<CreateEntityProfileCommand, bool>(command, guid);
 
                 commandResult= await _mediator.Send(command);

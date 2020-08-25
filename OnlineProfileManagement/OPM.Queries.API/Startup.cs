@@ -16,6 +16,7 @@ using OPM.Infrastructure.Repositories.Interfaces;
 using OPM.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using OPM.Queries.API.Controllers;
+using Microsoft.AspNetCore.Http;
 
 namespace OPM.Queries.API
 {
@@ -64,6 +65,7 @@ namespace OPM.Queries.API
             {
                 endpoints.MapControllers();
             });
+
             app.UseSwagger().UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "OPM Query API");
