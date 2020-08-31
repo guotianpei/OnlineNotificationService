@@ -92,6 +92,8 @@ namespace MMS.EventBusRabbitMQ
                 //creating it if necessary.
                 //https://www.rabbitmq.com/dotnet-api-guide.html#exchanges-and-queues
                 channel.ExchangeDeclare(exchange: BROKER_NAME, type: "direct");
+                channel.QueueDeclare(_queueName, true, false, false, null);
+                channel.QueueBind(_queueName, BROKER_NAME, eventName, null);
 
                 var message = JsonConvert.SerializeObject(@event);
                 var body = Encoding.UTF8.GetBytes(message);

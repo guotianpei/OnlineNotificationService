@@ -9,6 +9,7 @@ using OPM.Infrastructure.Idempotency;
 using Microsoft.Extensions.Logging;
 using OPM.Queries.API.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace OPM.Queries.API.QueryHandlers
 {
@@ -37,7 +38,7 @@ namespace OPM.Queries.API.QueryHandlers
             {
                 List<ProfileComChannelView> profileComChannelViewList = new List<ProfileComChannelView>();
 
-                foreach(var comChannel in profile.ProfileComChannels)
+                foreach(var comChannel in profile.ProfileComChannels.Where(i=>i.TermDate == null))
                 {
                     profileComChannelViewList.Add(new ProfileComChannelView()
                     {

@@ -34,6 +34,7 @@ using MediatR;
 using Autofac.Core.Lifetime;
 using System.Reflection;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Http;
 
 namespace OPM.Commands.API
 {
@@ -50,17 +51,22 @@ namespace OPM.Commands.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHealthChecks(Configuration)
- 
-                .AddCustomDbContext(Configuration);
+
+                .AddCustomDbContext(Configuration)
+                .AddCustomIntegrations(Configuration)
+                .AddEventBusIntegration(Configuration);
             //Start: uncomment below code for EventBusIntegration
             //.AddCustomIntegrations(Configuration);
             //End: uncomment below code for EventBusIntegration
 
-            services.AddScoped<IProfileRepository, ProfileRepository>();
-            
+
+            services.AddTransient<IProfileRepository, ProfileRepository>();
+
+
             services.AddMediatR(typeof(Startup));
             //Load ProfileService configuration
             services.Configure<ProfileSettings>(Configuration);
+
 
 
             //TO-DO: Service authorization
@@ -84,7 +90,6 @@ namespace OPM.Commands.API
 
 
             //configure autofac
-
             //ConfigEventBus(services);
 
             //container.RegisterModule(new ApplicationModule(Configuration["ProfileDBConnectionString"]));
@@ -93,16 +98,16 @@ namespace OPM.Commands.API
             //End: uncomment below code for EventBusIntegration
 
 
-            
+
 
             //var container = new ContainerBuilder();
             ////Rachel
             //container.RegisterModule(new MediatorModule());
             ////ConfigureContainer(container);
             //container.Populate(services);
-          
+
             //return new AutofacServiceProvider(container.Build());
-           
+
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {
@@ -148,15 +153,16 @@ namespace OPM.Commands.API
             });
         }
 
-        //Subscribe listeners/handlers for intersted integration event of the service 
+        //Subscribe listeners/handlers for intersted integration event of the service
         private void RegisterIntegrationEventHander(IApplicationBuilder app)
         {
-            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();             
+            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
             eventBus.Subscribe<EntityRegisteredIntegrationEvent, IIntegrationEventHandler<EntityRegisteredIntegrationEvent>>();
           }
-        
-        
+
+
         //EventBus Subscriptions manager
+
 
         private void ConfigEventBus(IServiceCollection services)
         {
@@ -177,10 +183,10 @@ namespace OPM.Commands.API
 
                 return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
             });
-            
+
 
             services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
-           
+
         }
 
         //private void ConfigureAuthService(IServiceCollection services)
@@ -219,13 +225,13 @@ namespace OPM.Commands.API
                     name: "ProfileDB-check",
                     tags: new string[] { "Profiledb" });
 
-            
+
             hcBuilder
                 .AddRabbitMQ(
                     $"amqp://{configuration["EventBusConnection"]}",
                     name: "ordering-rabbitmqbus-check",
                     tags: new string[] { "rabbitmqbus" });
-            
+
 
             return services;
         }
@@ -246,18 +252,17 @@ namespace OPM.Commands.API
                    );
 
 
-            //Start: uncomment below code for EventBusIntegration
-            //services.AddDbContext<IntegrationEventLogContext>(options =>
-            //{
-            //    options.UseSqlServer(configuration["ProfileDBConnectionString"],
-            //                         sqlServerOptionsAction: sqlOptions =>
-            //                         {
-            //                             sqlOptions.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
-            //                             //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
-            //                             sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
-            //                         });
-            //});
-            //End: uncomment below code for EventBusIntegration
+
+            services.AddDbContext<IntegrationEventLogContext>(options =>
+            {
+                options.UseSqlServer(configuration["ProfileDBConnectionString"],
+                                     sqlServerOptionsAction: sqlOptions =>
+                                     {
+                                         sqlOptions.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
+                                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency
+                                         sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                                     });
+            });
             return services;
         }
 
@@ -270,7 +275,7 @@ namespace OPM.Commands.API
 
             services.AddTransient<IProfileIntegrationEventService, ProfileIntegrationEventService>();
 
-             
+
             services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
             {
                 var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
@@ -300,7 +305,7 @@ namespace OPM.Commands.API
 
                 return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
             });
-             
+
 
             return services;
         }

@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Collections;
 using OPM.Domain.Aggregates.ProfileAggregate;
 using OPM.Commands.API.Models;
+using Newtonsoft.Json;
 
 namespace OPM.Commands.API.Commands
 {
@@ -22,6 +23,10 @@ namespace OPM.Commands.API.Commands
     [DataContract]
     public class CreateEntityProfileCommand :IRequest<bool>
     {
+        [IgnoreDataMember]
+        [JsonIgnore]
+        public Guid RequestID { get; set; }
+
         [DataMember]
         public string EntityId { get; set; }
 
@@ -54,7 +59,7 @@ namespace OPM.Commands.API.Commands
 
         public CreateEntityProfileCommand(string entityId, string entityName,
             string entityType, string firstName, string lastName, string resourceName,
-            List<ComChannel> comChannels) : this()
+            IEnumerable<ComChannel> comChannels) : this()
         {
             EntityId = entityId;
             EntityName = entityName;

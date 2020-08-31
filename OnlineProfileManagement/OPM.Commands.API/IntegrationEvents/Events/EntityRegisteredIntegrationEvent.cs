@@ -23,10 +23,10 @@ namespace OPM.Commands.API.IntegrationEvents.Events
 
         public Guid RequestID { get; set; }
 
-        public List<ComChannel> ProfileComChannels { get; set; }
+        public IEnumerable<ComChannel> ProfileComChannels { get; set; }
 
         public EntityRegisteredIntegrationEvent(string entityId, string entityName, string entityType, string firstName,
-            string lastName, string requestorApp, Guid requestId, List<ComChannel> comChannels)
+            string lastName, string requestorApp, Guid requestId, IEnumerable<ComChannel> comChannels)
         {
             EntityID = entityId;
             EntityName = entityName;

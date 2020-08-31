@@ -1,43 +1,35 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
-using MMS.EventBus.Events;
 using System.Linq;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Reflection;
+using System.Text;
 
-namespace MMS.IntegrationEventLogEF
+namespace OPM.Domain.Aggregates.IntegrationEvent
 {
     public class IntegrationEventLogEntry
     {
         private IntegrationEventLogEntry() { }
         public IntegrationEventLogEntry(IntegrationEvent @event, Guid transactionId)
         {
-            EventId = @event.Id;            
+            EventId = @event.Id;
             CreationTime = @event.CreationDate;
             EventTypeName = @event.GetType().FullName;
             Content = JsonConvert.SerializeObject(@event);
             EventState = EventStateEnum.NotPublished;
-            State = "0";
             TimesSent = 0;
             TransactionId = transactionId.ToString();
         }
 
         public Guid EventId { get; private set; }
         public string EventTypeName { get; private set; }
-        [NotMapped]
         public string EventTypeShortName => EventTypeName.Split('.')?.Last();
-        [NotMapped]
         public IntegrationEvent IntegrationEvent { get; private set; }
-
-        public EventStateEnum EventState
-        {
+        public EventStateEnum EventState {
             get
             {
-                return (!string.IsNullOrEmpty(State) && Enum.IsDefined(typeof(EventStateEnum), State)) ? (EventStateEnum)Enum.Parse(typeof(EventStateEnum), State) : EventStateEnum.NotPublished;
+                return (!string.IsNullOrEmpty(State) && Enum.IsDefined(typeof(EventStateEnum), State))?(EventStateEnum)Enum.Parse(typeof(EventStateEnum), State) : EventStateEnum.NotPublished;
             }
-            set { }
+            private set { }
         }
         public string State { get; set; }
         public int TimesSent { get; set; }

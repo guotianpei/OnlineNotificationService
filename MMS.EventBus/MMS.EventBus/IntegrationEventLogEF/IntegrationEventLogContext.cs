@@ -28,6 +28,9 @@ namespace MMS.IntegrationEventLogEF
             builder.Property(e => e.EventId)
                 .IsRequired();
 
+            builder
+                .Ignore(ep => ep.EventState);
+
             builder.Property(e => e.Content)
                 .IsRequired();
 

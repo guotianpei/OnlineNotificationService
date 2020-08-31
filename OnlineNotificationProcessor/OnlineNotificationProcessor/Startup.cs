@@ -51,7 +51,7 @@ namespace OnlineNotificationProcessor
             {
                 var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
 
-
+                //var factory = new ConnectionFactory() { HostName = "localhost" };
                 var factory = new ConnectionFactory()
                 {
                     HostName = Configuration["EventBusConnection"],

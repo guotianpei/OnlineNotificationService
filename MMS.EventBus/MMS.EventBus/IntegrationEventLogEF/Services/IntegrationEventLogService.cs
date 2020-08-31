@@ -37,13 +37,19 @@ namespace MMS.IntegrationEventLogEF.Services
 
         public async Task<IEnumerable<IntegrationEventLogEntry>> RetrieveEventLogsPendingToPublishAsync(Guid transactionId)
         {
-            var tid = transactionId.ToString();
+            string tid = transactionId.ToString();
+            
 
-            return await _integrationEventLogContext.IntegrationEventLogs
-                .Where(e => e.TransactionId == tid && e.State == EventStateEnum.NotPublished)
-                .OrderBy(o => o.CreationTime)
-                .Select(e => e.DeserializeJsonContent(_eventTypes.Find(t=> t.Name == e.EventTypeShortName)))
-                .ToListAsync();              
+            var result = await _integrationEventLogContext.IntegrationEventLogs
+               .Where(e => e.TransactionId == tid).ToListAsync();
+
+            if (result != null && result.Any())
+            {
+                return result.OrderBy(o => o.CreationTime)
+                    .Select(e => e.DeserializeJsonContent(_eventTypes.Find(t => t.Name == e.EventTypeShortName)));
+            }
+
+            return new List<IntegrationEventLogEntry>();
         }
 
         public Task SaveEventAsync(IntegrationEvent @event, IDbContextTransaction transaction)
@@ -76,7 +82,7 @@ namespace MMS.IntegrationEventLogEF.Services
         private Task UpdateEventStatus(Guid eventId, EventStateEnum status)
         {
             var eventLogEntry = _integrationEventLogContext.IntegrationEventLogs.Single(ie => ie.EventId == eventId);
-            eventLogEntry.State = status;
+            eventLogEntry.EventState = status;
 
             if(status == EventStateEnum.InProgress)
                 eventLogEntry.TimesSent++;
