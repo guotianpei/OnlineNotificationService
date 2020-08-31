@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/jwM536V4E1aEg5+v+yD9yJ1HybmNanhyDh0IBhN5z1l6fLKUrd+BfAedi4UUdVMySTdO5umNGvhynsBY53Dvg==",
+  "dgSpecHash": "hid3cgiKcD1mB7vtNtnthc1HKEfgbgbwy/6DEvZ3V4aESfbA477eojVemoTMwwvzHAo+TV7uOUHoRgLw4vlBOQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineProfileManagement\\OPM.Infrastructure\\OPM.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -31,6 +31,7 @@
     "C:\\Users\\tguo4\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\tguo4\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\tguo4\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
+    "C:\\Users\\tguo4\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
     "C:\\Users\\tguo4\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\tguo4\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\tguo4\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

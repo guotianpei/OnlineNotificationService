@@ -2530,7 +2530,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "MediatR": "8.0.1"
+          "MediatR": "8.0.1",
+          "Newtonsoft.Json": "11.0.2"
         },
         "compile": {
           "bin/placeholder/OPM.Domain.dll": {}
