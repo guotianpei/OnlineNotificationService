@@ -4,9 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using MMS.EventBus.Events;
 
-namespace NotificationProcessor.API.IntegrationEvents
+
+namespace NotificationProcessor.API.IntegrationEvents.Events
 {
-    public class NotificationIntegrationEvent: IntegrationEvent
+    public class TemplateUpdateIntegrationEvent: IntegrationEvent
     {
 
     }

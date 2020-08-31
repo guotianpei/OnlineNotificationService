@@ -6,7 +6,7 @@ using MMS.EventBus.Events;
 
 namespace NotificationProcessor.API.IntegrationEvents
 {
-    public class NotificationIntegrationEvent: IntegrationEvent
+    public class NotificationRequestIntegrationEvent: IntegrationEvent
     {
 
     }

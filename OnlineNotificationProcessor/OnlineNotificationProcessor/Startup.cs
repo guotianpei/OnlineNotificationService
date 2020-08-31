@@ -31,7 +31,7 @@ namespace OnlineNotificationProcessor
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             //add health check for this service
-            services.AddCustomHealthCheck(Configuration);
+            //services.AddCustomHealthCheck(Configuration);
 
             //configure settings
 
@@ -41,9 +41,6 @@ namespace OnlineNotificationProcessor
             //configure background task
 
             services.AddSingleton<IHostedService, NotificationBackgroundProcessor>();
-            services.AddSingleton<IHostedService, EmailNotificationProcessor>();
-            services.AddSingleton<IHostedService, SMSNotificationProcessor>();
-
             //configure event bus related services
 
             
@@ -92,21 +89,6 @@ namespace OnlineNotificationProcessor
         {
             var subscriptionClientName = Configuration["SubscriptionClientName"];
 
-            //if (Configuration.GetValue<bool>("AzureServiceBusEnabled"))
-            //{
-            //    services.AddSingleton<IEventBus, EventBusServiceBus>(sp =>
-            //    {
-            //        var serviceBusPersisterConnection = sp.GetRequiredService<IServiceBusPersisterConnection>();
-            //        var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
-            //        var logger = sp.GetRequiredService<ILogger<EventBusServiceBus>>();
-            //        var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
-
-            //        return new EventBusServiceBus(serviceBusPersisterConnection, logger,
-            //            eventBusSubcriptionsManager, subscriptionClientName, iLifetimeScope);
-            //    });
-            //}
-            //else
-            //{
             services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
             {
                 var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
@@ -123,44 +105,10 @@ namespace OnlineNotificationProcessor
                 return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
             });
 
-        //}
+        
             services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
         }
     }
 
-    public static class CustomExtensionMethods
-    {
-        public static IServiceCollection AddCustomHealthCheck(this IServiceCollection services, IConfiguration configuration)
-        {
-            var hcBuilder = services.AddHealthChecks();
-
-            hcBuilder.AddCheck("self", () => HealthCheckResult.Healthy());
-
-            hcBuilder
-                .AddSqlServer(
-                    configuration["ConnectionString"],
-                    name: "OrderingTaskDB-check",
-                    tags: new string[] { "orderingtaskdb" });
-
-            if (configuration.GetValue<bool>("AzureServiceBusEnabled"))
-            {
-                //hcBuilder
-                //    .AddAzureServiceBusTopic(
-                //        configuration["EventBusConnection"],
-                //        topicName: "eshop_event_bus",
-                //        name: "orderingtask-servicebus-check",
-                //        tags: new string[] { "servicebus" });
-            }
-            else
-            {
-                hcBuilder
-                    .AddRabbitMQ(
-                        $"amqp://{configuration["EventBusConnection"]}",
-                        name: "orderingtask-rabbitmqbus-check",
-                        tags: new string[] { "rabbitmqbus" });
-            }
-
-            return services;
-        }
-    }
+   
 }

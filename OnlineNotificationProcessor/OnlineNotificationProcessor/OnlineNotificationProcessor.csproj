@@ -20,4 +20,8 @@
     <ProjectReference Include="..\..\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\MMS.EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\MMS.EventBus\MMS.EventBus\EventBus\MMS.EventBus.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Queries\" />
+  </ItemGroup>
 </Project>

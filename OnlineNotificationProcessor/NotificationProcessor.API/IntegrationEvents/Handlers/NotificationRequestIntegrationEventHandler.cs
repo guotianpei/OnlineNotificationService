@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace NotificationProcessor.API.IntegrationEvents
 {
-    public class NotificationIntegrationEventHandler
+
+    public class NotificationRequestIntegrationEventHandler
     {
     }
 }

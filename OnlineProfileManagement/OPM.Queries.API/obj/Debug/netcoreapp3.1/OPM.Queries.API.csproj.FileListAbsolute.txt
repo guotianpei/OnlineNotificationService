@@ -185,3 +185,12 @@ C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationServ
 C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\FluentValidation.dll
 =======
 >>>>>>> 5887e303d28734153e2d2bd20c006e90862d21c8
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Autofac.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.csproj.CoreCompileInputs.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\obj\Debug\netcoreapp3.1\OPM.Queries.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Queries.API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll

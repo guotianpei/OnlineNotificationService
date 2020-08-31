@@ -44,8 +44,6 @@
     <ProjectReference Include="..\OPM.Domain\OPM.Domain.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-    <ProjectReference Include="..\OPM.Infrastructure\OPM.Infrastructure.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
+    <ProjectReference Include="..\OPM.Infrastructure\OPM.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

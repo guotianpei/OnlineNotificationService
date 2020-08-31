@@ -10,13 +10,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
-using MMS.IntegrationEventLogEF;
-using MMS.IntegrationEventLogEF.Services;
-using OPM.Infrastructure;
-using MMS.EventBus.Abstractions;
-using Microsoft.Extensions.Logging;
-using System.Data.Common;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace OPM.Commands.API.IntegrationEvents
 {

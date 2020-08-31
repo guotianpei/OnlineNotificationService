@@ -53,7 +53,6 @@ namespace OPM.Commands.API
             services.AddHealthChecks(Configuration)
 
                 .AddCustomDbContext(Configuration)
-                .AddCustomIntegrations(Configuration)
                 .AddEventBusIntegration(Configuration);
             //Start: uncomment below code for EventBusIntegration
             //.AddCustomIntegrations(Configuration);
@@ -266,7 +265,7 @@ namespace OPM.Commands.API
             return services;
         }
 
-        public static IServiceCollection AddCustomIntegrations(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddEventBusIntegration(this IServiceCollection services, IConfiguration configuration)
         {
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
            // services.AddTransient<IIdentityService, IdentityService>();
