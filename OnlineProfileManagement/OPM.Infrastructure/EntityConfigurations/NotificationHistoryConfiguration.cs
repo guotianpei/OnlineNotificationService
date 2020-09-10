@@ -15,13 +15,18 @@ namespace OPM.Infrastructure.EntityConfigurations
         public void Configure(EntityTypeBuilder<NotificationHistory> builder)
         {
             builder
-                .ToTable("NotificationHistory");
+                .ToTable("NotificationLog");
 
             builder
                 .HasKey(nh => nh.Id);
 
             builder
                 .Ignore(nh => nh.DomainEvents);
+
+            //builder
+            //    .HasOne(nh => nh.EntityProfile)
+            //    .WithMany()
+            //    .HasForeignKey(nh => nh.EntityID);
 
             builder
                 .Property(nh => nh.ComChannel)

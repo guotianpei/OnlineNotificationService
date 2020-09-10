@@ -53,14 +53,10 @@ namespace OPM.Commands.API
             services.AddHealthChecks(Configuration)
 
                 .AddCustomDbContext(Configuration)
+                .AddCustomIntegrations(Configuration)
                 .AddEventBusIntegration(Configuration);
-            //Start: uncomment below code for EventBusIntegration
-            //.AddCustomIntegrations(Configuration);
-            //End: uncomment below code for EventBusIntegration
-
 
             services.AddTransient<IProfileRepository, ProfileRepository>();
-
 
             services.AddMediatR(typeof(Startup));
             //Load ProfileService configuration
@@ -152,15 +148,12 @@ namespace OPM.Commands.API
             });
         }
 
-        //Subscribe listeners/handlers for intersted integration event of the service
+        //Subscribe listeners/handlers for intersted integration event of the service 
         private void RegisterIntegrationEventHander(IApplicationBuilder app)
         {
             var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
             eventBus.Subscribe<EntityRegisteredIntegrationEvent, IIntegrationEventHandler<EntityRegisteredIntegrationEvent>>();
-          }
-
-
-        //EventBus Subscriptions manager
+        }
 
 
         private void ConfigEventBus(IServiceCollection services)
@@ -258,20 +251,19 @@ namespace OPM.Commands.API
                                      sqlServerOptionsAction: sqlOptions =>
                                      {
                                          sqlOptions.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
-                                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency
+                                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
                                          sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                                      });
             });
             return services;
         }
 
-        public static IServiceCollection AddEventBusIntegration(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddCustomIntegrations(this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-           // services.AddTransient<IIdentityService, IdentityService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<Func<DbConnection, IIntegrationEventLogService>>(
                 sp => (DbConnection c) => new IntegrationEventLogService(c));
-
             services.AddTransient<IProfileIntegrationEventService, ProfileIntegrationEventService>();
 
 
@@ -305,10 +297,34 @@ namespace OPM.Commands.API
                 return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
             });
 
+            return services;
+        }
+        public static IServiceCollection AddEventBusIntegration(this IServiceCollection services, IConfiguration configuration)
+        {
+            var subscriptionClientName = configuration["SubscriptionClientName"];
+
+            services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
+            {
+                var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
+                var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
+                var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
+                var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+
+                var retryCount = 5;
+                if (!string.IsNullOrEmpty(configuration["EventBusRetryCount"]))
+                {
+                    retryCount = int.Parse(configuration["EventBusRetryCount"]);
+                }
+
+                return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
+            });
+
+
+            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+
 
             return services;
         }
-
 
 
     }

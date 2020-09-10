@@ -12,9 +12,10 @@ namespace NotificationProcessor.API.Model
     {
         public Guid TrackingID { get; set; }
 
-        public Guid EntityID { get; set; }
+        public string EntityID { get; set; }
 
-        public ComChannelTypes ComChannel { get; set; }
+        //public ComChannelTypes ComChannel { get; set; }
+        public string ComChannel { get; set; }
 
         public string Recipient { get; set; }
 
@@ -24,12 +25,9 @@ namespace NotificationProcessor.API.Model
 
         public DateTime NotificationDate { get; set; }
 
-        public NotificationStateEnum NotificationStage { get; set; }
-
+        //public NotificationStateEnum NotificationStage { get; set; }
+        public string NotificationStage { get; set; }
         public NotificationLog() { }
 
-       
-    }
-
-   
+    } 
 }
