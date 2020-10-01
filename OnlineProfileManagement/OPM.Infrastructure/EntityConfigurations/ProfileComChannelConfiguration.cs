@@ -35,6 +35,12 @@ namespace OPM.Infrastructure.EntityConfigurations
                 .Property(pcc => pcc.Enabled)
                 .IsRequired();
 
+            builder
+            .Property(e => e.Status)
+            .HasConversion(
+            v => v.ToString(),
+            v => (ComChannelStatus)Enum.Parse(typeof(ComChannelStatus), v));
+
         }
     }
 }

@@ -30,18 +30,18 @@ namespace NotificationProcessor.API.IntegrationEvents
             {
                 _logger.LogInformation("----- Handling integration event: {IntegrationEventId} at {AppName} - ({@IntegrationEvent})", @event.Id, Program.AppName, @event);
 
-                NotificationLog notificationLog = new NotificationLog()
+                NotificationTransactionLog notificationLog = new NotificationTransactionLog()
                 {
                     TrackingID = Guid.NewGuid(),
                     EntityID = @event.EntityID,
                     ComChannel = "test@gmail.com",
                     Recipient = "Command.API",
                     TopicID = @event.TopicID,
-                    NotificationDate = DateTime.Now,
+                    //NotificationDate = DateTime.Now,
                     NotificationStage = "Pending",
                     MessageBody="test"
                 };
-                await _notificationContext.NotificationLogs.AddAsync(notificationLog);
+                await _notificationContext.NotificationTransactionLogs.AddAsync(notificationLog);
                 await _notificationContext.SaveChangesAsync();
                 await _notificationIntegrationEventService.SaveEventAndNotificationLogChangesAsync(@event);
 

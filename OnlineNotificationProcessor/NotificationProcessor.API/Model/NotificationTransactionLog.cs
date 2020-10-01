@@ -8,7 +8,7 @@ using NotificationProcessor.API.Infrastructure;
 
 namespace NotificationProcessor.API.Model
 {
-    public class NotificationLog
+    public class NotificationTransactionLog
     {
         public Guid TrackingID { get; set; }
 
@@ -23,11 +23,12 @@ namespace NotificationProcessor.API.Model
 
         public string MessageBody { get; set; }
 
-        public DateTime NotificationDate { get; set; }
-
-        //public NotificationStateEnum NotificationStage { get; set; }
+        public DateTime TransactionDateTime { get; set; }
+        public int RetryCounts { get; set; }
         public string NotificationStage { get; set; }
-        public NotificationLog() { }
+        public int ResponseCode { get; set; }
+        public string ResponseDescription { get; set; }
+        public NotificationTransactionLog() { }
 
     } 
 }

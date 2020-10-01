@@ -8,17 +8,17 @@ using NotificationProcessor.API.Model;
 
 namespace NotificationProcessor.API.Infrastructure.EntityConfiguration
 {
-    public class NotificationLogEntityTypeConfiguration : IEntityTypeConfiguration<NotificationLog>
+    public class NotificationTransactionLogConfiguration : IEntityTypeConfiguration<NotificationTransactionLog>
     {
-        public NotificationLogEntityTypeConfiguration()
+        public NotificationTransactionLogConfiguration()
         {
 
         }
 
-        public void Configure(EntityTypeBuilder<NotificationLog> builder)
+        public void Configure(EntityTypeBuilder<NotificationTransactionLog> builder)
         {
             builder
-                .ToTable("NotificationLog");
+                .ToTable("NotificationTransactionLog");
 
             builder
                 .HasKey(nh => nh.TrackingID);
@@ -48,7 +48,7 @@ namespace NotificationProcessor.API.Infrastructure.EntityConfiguration
                 .IsRequired();
 
             builder
-                .Property(nh => nh.NotificationDate)
+                .Property(nh => nh.TransactionDateTime)
                 .HasDefaultValueSql("GETDATE()");
         }
     }
