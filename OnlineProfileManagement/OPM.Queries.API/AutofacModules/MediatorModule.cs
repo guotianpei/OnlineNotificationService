@@ -8,7 +8,8 @@ using MediatR;
 using OPM.Queries.API.Queries;
 using OPM.Queries.API.QueryHandlers;
 using OPM.Queries.API.Behaviors;
-
+using OPM.Queries.API.Validations;
+using System.Reflection;
 
 namespace OPM.Queries.API.AutofacModules
 {
@@ -32,7 +33,7 @@ namespace OPM.Queries.API.AutofacModules
 
             // Register the Query's Validators (Validators based on FluentValidation library)
             //builder
-            //   .RegisterAssemblyTypes(typeof(CreateEntityProfileCommandValidator).GetTypeInfo().Assembly)
+            //   .RegisterAssemblyTypes(typeof(GetProfileQueryValidator).GetTypeInfo().Assembly)
             //   .Where(t => t.IsClosedTypeOf(typeof(IValidator<>)))
             //   .AsImplementedInterfaces();
             //builder
@@ -51,7 +52,6 @@ namespace OPM.Queries.API.AutofacModules
             builder.RegisterGeneric(typeof(LoggingBehavior<,>)).As(typeof(IPipelineBehavior<,>));
             builder.RegisterGeneric(typeof(ValidatorBehavior<,>)).As(typeof(IPipelineBehavior<,>));
     
-
         }
     }
 }

@@ -17,6 +17,12 @@ using OPM.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using OPM.Queries.API.Controllers;
 using Microsoft.AspNetCore.Http;
+using Autofac;
+using OPM.Queries.API.AutofacModules;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using HealthChecks.UI.Client;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 
 namespace OPM.Queries.API
 {
@@ -35,7 +41,14 @@ namespace OPM.Queries.API
             services.AddCustomDbContext(Configuration);
             services.AddScoped<IProfileRepository, ProfileRepository>();           
             services.AddMediatR(typeof(Startup));
-            services.AddControllers();
+            //services.AddControllers();
+
+            services.AddControllers().AddFluentValidation(s =>
+            {
+                s.RegisterValidatorsFromAssemblyContaining<Startup>();
+                s.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+            });
+
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
@@ -45,6 +58,10 @@ namespace OPM.Queries.API
                     Description = "Swagger in Web API"
                 });
             });
+        }
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new MediatorModule());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

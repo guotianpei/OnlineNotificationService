@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using MediatR;
 using OPM.Queries.API.Queries;
 using OPM.Queries.API.Models;
+using OPM.Queries.API.Validations;
+using FluentValidation.AspNetCore;
 
 namespace OPM.Queries.API.Controllers
 {
@@ -17,10 +19,12 @@ namespace OPM.Queries.API.Controllers
     {
 
         private readonly ILogger<ProfileController> _logger;
+        private readonly ILogger<GetProfileQueryValidator> _valLogger;
 
-        public ProfileController(ILogger<ProfileController> logger, IMediator mediator) : base(mediator)
+        public ProfileController(ILogger<ProfileController> logger, ILogger<GetProfileQueryValidator> valLogger, IMediator mediator) : base(mediator)
         {
             _logger = logger;
+            _valLogger = valLogger;
         }
 
 
@@ -58,8 +62,23 @@ namespace OPM.Queries.API.Controllers
         //[Route("GetEntityProfile")]
         public async Task<ActionResult> GetEntityProfileAsync(string entityId)
         {
-            var profile = await QueryAsync(new GetProfileQuery(entityId));
+            GetProfileQuery query = new GetProfileQuery(entityId);
+            var validator = new GetProfileQueryValidator(_valLogger);
+            var results = validator.Validate(query);
+            results.AddToModelState(ModelState, null);
 
+            if (!results.IsValid)
+            {
+                return BadRequest(ModelState);
+                //use the below code for detailed validation messages
+                //return new BadRequestObjectResult(new
+                //{
+                //    ErrorCode = "Your validation error code",
+                //    Message = results
+                //});
+            }
+
+            var profile = await QueryAsync(query);
             if (profile == null)
             {
                 return NotFound();
