@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using MediatR;
 using OPM.Queries.API.Queries;
 using OPM.Queries.API.Models;
+using OPM.Infrastructure.Repositories.QueryRequests;
 
 namespace OPM.Queries.API.Controllers
 {
@@ -66,12 +67,30 @@ namespace OPM.Queries.API.Controllers
             }
             return Ok(profile);
         }
+
+        //GetProfileComChannelQuery request
+
+        [HttpPost]
+        [Route("GetProfileComChannelByIDs")]
+        public async Task<ActionResult> GetProfileComChannelByIDs(GetProfileComChannelQuery request)
+        {
+            var profile = await QueryAsync(request);
+
+            if (profile == null)
+            {
+                return NotFound();
+            }
+            return Ok(profile);
+        }
+
+
     }
 
 
     public class ApiControllerBase : ControllerBase
     {
         private readonly IMediator _mediator;
+       
 
         public ApiControllerBase(IMediator mediator)
         {
