@@ -1,45 +1,15 @@
-/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/obj/Debug/netcoreapp3.1/OPM.Infrastructure.csprojAssemblyReference.cache
-/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/obj/Debug/netcoreapp3.1/OPM.Infrastructure.csproj.CoreCompileInputs.cache
-/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/obj/Debug/netcoreapp3.1/OPM.Infrastructure.AssemblyInfoInputs.cache
-/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/obj/Debug/netcoreapp3.1/OPM.Infrastructure.AssemblyInfo.cs
-/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/bin/Debug/netcoreapp3.1/OPM.Infrastructure.deps.json
-/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/bin/Debug/netcoreapp3.1/OPM.Infrastructure.dll
-/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/bin/Debug/netcoreapp3.1/OPM.Infrastructure.pdb
-/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/bin/Debug/netcoreapp3.1/OPM.Domain.dll
-/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/bin/Debug/netcoreapp3.1/OPM.Domain.pdb
-/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/obj/Debug/netcoreapp3.1/OPM.Infrastructure.csproj.CopyComplete
-/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/obj/Debug/netcoreapp3.1/OPM.Infrastructure.dll
-/Applications/Development/GitHub/Online/OnlineProfileManagement/OPM.Infrastructure/obj/Debug/netcoreapp3.1/OPM.Infrastructure.pdb
-<<<<<<< HEAD
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.deps.json
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.dll
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.pdb
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Domain.dll
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Domain.pdb
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.csprojAssemblyReference.cache
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.AssemblyInfoInputs.cache
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.AssemblyInfo.cs
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.csproj.CopyComplete
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.dll
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.pdb
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.runtimeconfig.json
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.runtimeconfig.dev.json
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.csproj.CoreCompileInputs.cache
-C:\Users\tguo4\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.genruntimeconfig.cache
-=======
->>>>>>> 5887e303d28734153e2d2bd20c006e90862d21c8
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.deps.json
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.runtimeconfig.json
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.runtimeconfig.dev.json
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.dll
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.pdb
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Domain.dll
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Domain.pdb
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.csprojAssemblyReference.cache
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.AssemblyInfoInputs.cache
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.AssemblyInfo.cs
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.csproj.CoreCompileInputs.cache
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.csproj.CopyComplete
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.dll
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.pdb
-C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.genruntimeconfig.cache
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.deps.json
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.runtimeconfig.json
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.runtimeconfig.dev.json
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.dll
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Infrastructure.pdb
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Domain.dll
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\bin\Debug\netcoreapp3.1\OPM.Domain.pdb
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.csprojAssemblyReference.cache
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.AssemblyInfoInputs.cache
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.AssemblyInfo.cs
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.csproj.CoreCompileInputs.cache
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.csproj.CopyComplete
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.dll
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.pdb
+C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Infrastructure\obj\Debug\netcoreapp3.1\OPM.Infrastructure.genruntimeconfig.cache
