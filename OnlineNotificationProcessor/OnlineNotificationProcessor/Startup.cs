@@ -41,44 +41,46 @@ namespace OnlineNotificationProcessor
             //configure background task
 
             services.AddSingleton<IHostedService, NotificationBackgroundProcessor>();
-            services.AddSingleton<IHostedService, EmailNotificationProcessor>();
-            services.AddSingleton<IHostedService, SMSNotificationProcessor>();
+            services.AddSingleton<ISendNotification, SendEmailNotification>();
+            services.AddSingleton<ISendNotification, SendSMSNotification>();
+            //services.AddSingleton<IHostedService, SendEmailNotification>();
+            //services.AddSingleton<IHostedService, SendSMSNotification>();
 
             //configure event bus related services
 
-            
-            services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
-            {
-                var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
 
-                //var factory = new ConnectionFactory() { HostName = "localhost" };
-                var factory = new ConnectionFactory()
-                {
-                    HostName = Configuration["EventBusConnection"],
-                    DispatchConsumersAsync = true
-                };
+            //services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
+            //{
+            //    var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
 
-                if (!string.IsNullOrEmpty(Configuration["EventBusUserName"]))
-                {
-                    factory.UserName = Configuration["EventBusUserName"];
-                }
+            //    //var factory = new ConnectionFactory() { HostName = "localhost" };
+            //    var factory = new ConnectionFactory()
+            //    {
+            //        HostName = Configuration["EventBusConnection"],
+            //        DispatchConsumersAsync = true
+            //    };
 
-                if (!string.IsNullOrEmpty(Configuration["EventBusPassword"]))
-                {
-                    factory.Password = Configuration["EventBusPassword"];
-                }
+            //    if (!string.IsNullOrEmpty(Configuration["EventBusUserName"]))
+            //    {
+            //        factory.UserName = Configuration["EventBusUserName"];
+            //    }
 
-                var retryCount = 5;
-                if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
-                {
-                    retryCount = int.Parse(Configuration["EventBusRetryCount"]);
-                }
+            //    if (!string.IsNullOrEmpty(Configuration["EventBusPassword"]))
+            //    {
+            //        factory.Password = Configuration["EventBusPassword"];
+            //    }
 
-                return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
-            });
-           
+            //    var retryCount = 5;
+            //    if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
+            //    {
+            //        retryCount = int.Parse(Configuration["EventBusRetryCount"]);
+            //    }
 
-            RegisterEventBus(services);
+            //    return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
+            //});
+
+
+            //RegisterEventBus(services);
 
             //create autofac based service provider
             var container = new ContainerBuilder();
@@ -107,24 +109,24 @@ namespace OnlineNotificationProcessor
             //}
             //else
             //{
-            services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
-            {
-                var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
-                var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
-                var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
-                var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+        //    services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
+        //    {
+        //        var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
+        //        var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
+        //        var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
+        //        var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
 
-                var retryCount = 5;
-                if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
-                {
-                    retryCount = int.Parse(Configuration["EventBusRetryCount"]);
-                }
+        //        var retryCount = 5;
+        //        if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
+        //        {
+        //            retryCount = int.Parse(Configuration["EventBusRetryCount"]);
+        //        }
 
-                return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
-            });
+        //        return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
+        //    });
 
-        //}
-            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+        ////}
+        //    services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
         }
     }
 

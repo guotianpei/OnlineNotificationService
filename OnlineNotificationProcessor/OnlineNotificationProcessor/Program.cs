@@ -20,8 +20,8 @@ namespace OnlineNotificationProcessor
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<NotificationBackgroundProcessor>();
-                    services.AddHostedService<SMSNotificationProcessor>();
-                    services.AddHostedService<EmailNotificationProcessor>();
+                    //services.AddHostedService<SendSMSNotification>();
+                    //services.AddHostedService<SendEmailNotification>();
 
                 });
     }

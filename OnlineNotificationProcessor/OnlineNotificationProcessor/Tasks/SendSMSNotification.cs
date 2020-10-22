@@ -5,19 +5,22 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
+using OnlineNotificationProcessor.Models;
 
 namespace OnlineNotificationProcessor.Tasks
 {
-    class SMSNotificationProcessor : BackgroundService
+    class SendSMSNotification : ISendNotification
     {
-        public SMSNotificationProcessor()
+        public SendSMSNotification()
         {
+
+
         }
 
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        public NotificationResponse SendNotification(NotificationData notdata)
         {
-            throw new NotImplementedException();
+            return null;
         }
+        
     }
 }
