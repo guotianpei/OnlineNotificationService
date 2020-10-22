@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201006220244_GetProfileComChannelByIDs.cs" />
+    <Compile Remove="Migrations\20201006220244_GetProfileComChannelByIDs.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OPM.Domain\OPM.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
