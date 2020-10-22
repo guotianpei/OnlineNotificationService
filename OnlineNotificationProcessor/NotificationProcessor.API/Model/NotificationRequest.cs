@@ -7,7 +7,7 @@ namespace NotificationProcessor.API.Model
 {
     public class NotificationRequest
     {
-        public int ID { get; set; }
+        public Guid ID { get; set; }
         public string EntityID { get; set; }
         public string ComChannel { get; set; }
         public string RequestMessageData { get; set; }
