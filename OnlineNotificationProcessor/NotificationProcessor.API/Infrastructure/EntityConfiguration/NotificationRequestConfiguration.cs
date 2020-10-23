@@ -40,6 +40,10 @@ namespace NotificationProcessor.API.Infrastructure.EntityConfiguration
             builder
                .Property(nr => nr.TopicID)
                .IsRequired();
+
+            builder
+                .Property(nr => nr.ID)
+                .HasDefaultValueSql("newid()");
         }
     }
 }

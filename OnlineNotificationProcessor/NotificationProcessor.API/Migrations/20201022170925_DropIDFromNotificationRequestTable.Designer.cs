@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NotificationProcessor.API.Infrastructure;
 
 namespace NotificationProcessor.API.Migrations
 {
     [DbContext(typeof(NotificationContext))]
-    partial class NotificationContextModelSnapshot : ModelSnapshot
+    [Migration("20201022170925_DropIDFromNotificationRequestTable")]
+    partial class DropIDFromNotificationRequestTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,11 +127,6 @@ namespace NotificationProcessor.API.Migrations
 
             modelBuilder.Entity("NotificationProcessor.API.Model.NotificationRequest", b =>
                 {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("newid()");
-
                     b.Property<string>("ComChannel")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -149,8 +146,6 @@ namespace NotificationProcessor.API.Migrations
 
                     b.Property<int>("TopicID")
                         .HasColumnType("int");
-
-                    b.HasKey("ID");
 
                     b.ToTable("NotificationRequest");
                 });
