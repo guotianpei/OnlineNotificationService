@@ -1,8 +1,9 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\tguo4\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\tguo4\\.nuget\\packages"
+      "C:\\Users\\sterupally\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\sterupally\\.nuget\\packages",
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ]
   }
 }

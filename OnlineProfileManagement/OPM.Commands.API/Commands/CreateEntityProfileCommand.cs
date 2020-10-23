@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Collections;
 using OPM.Domain.Aggregates.ProfileAggregate;
 using OPM.Commands.API.Models;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace OPM.Commands.API.Commands
 {

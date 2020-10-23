@@ -8,6 +8,9 @@ using Microsoft.Extensions.Logging;
 using MediatR;
 using OPM.Queries.API.Queries;
 using OPM.Queries.API.Models;
+using OPM.Infrastructure.Repositories.QueryRequests;
+using OPM.Queries.API.Validations;
+using FluentValidation.AspNetCore;
 
 namespace OPM.Queries.API.Controllers
 {
@@ -17,10 +20,12 @@ namespace OPM.Queries.API.Controllers
     {
 
         private readonly ILogger<ProfileController> _logger;
+        private readonly ILogger<GetProfileQueryValidator> _valLogger;
 
-        public ProfileController(ILogger<ProfileController> logger, IMediator mediator) : base(mediator)
+        public ProfileController(ILogger<ProfileController> logger, ILogger<GetProfileQueryValidator> valLogger, IMediator mediator) : base(mediator)
         {
             _logger = logger;
+            _valLogger = valLogger;
         }
 
 
@@ -58,7 +63,37 @@ namespace OPM.Queries.API.Controllers
         //[Route("GetEntityProfile")]
         public async Task<ActionResult> GetEntityProfileAsync(string entityId)
         {
-            var profile = await QueryAsync(new GetProfileQuery(entityId));
+            GetProfileQuery query = new GetProfileQuery(entityId);
+            var validator = new GetProfileQueryValidator(_valLogger);
+            var results = validator.Validate(query);
+            results.AddToModelState(ModelState, null);
+
+            if (!results.IsValid)
+            {
+                return BadRequest(ModelState);
+                //use the below code for detailed validation messages
+                //return new BadRequestObjectResult(new
+                //{
+                //    ErrorCode = "Your validation error code",
+                //    Message = results
+                //});
+            }
+
+            var profile = await QueryAsync(query);
+            if (profile == null)
+            {
+                return NotFound();
+            }
+            return Ok(profile);
+        }
+
+        //GetProfileComChannelQuery request
+
+        [HttpPost]
+        [Route("GetProfileComChannelByIDs")]
+        public async Task<ActionResult> GetProfileComChannelByIDs(GetProfileComChannelQuery request)
+        {
+            var profile = await QueryAsync(request);
 
             if (profile == null)
             {
@@ -66,12 +101,15 @@ namespace OPM.Queries.API.Controllers
             }
             return Ok(profile);
         }
+
+
     }
 
 
     public class ApiControllerBase : ControllerBase
     {
         private readonly IMediator _mediator;
+       
 
         public ApiControllerBase(IMediator mediator)
         {

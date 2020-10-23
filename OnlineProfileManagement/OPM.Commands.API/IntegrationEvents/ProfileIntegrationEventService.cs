@@ -11,6 +11,7 @@ using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace OPM.Commands.API.IntegrationEvents
 {
     public class ProfileIntegrationEventService : IProfileIntegrationEventService
@@ -18,15 +19,18 @@ namespace OPM.Commands.API.IntegrationEvents
         private readonly Func<DbConnection, IIntegrationEventLogService> _integrationEventLogServiceFactory;
         private readonly IEventBus _eventBus;
         private readonly ProfileContext _profileContext;
+        private readonly IntegrationEventLogContext _eventLogContext;
         private readonly IIntegrationEventLogService _eventLogService;
         private readonly ILogger<ProfileIntegrationEventService> _logger;
+
         public ProfileIntegrationEventService(IEventBus eventBus,
-            ProfileContext profileContext,
-            IntegrationEventLogContext eventLogContext,
-            Func<DbConnection, IIntegrationEventLogService> integrationEventLogServiceFactory,
-            ILogger<ProfileIntegrationEventService> logger)
+           ProfileContext profileContext,
+           IntegrationEventLogContext eventLogContext,
+           Func<DbConnection, IIntegrationEventLogService> integrationEventLogServiceFactory,
+           ILogger<ProfileIntegrationEventService> logger)
         {
             _profileContext = profileContext ?? throw new ArgumentNullException(nameof(profileContext));
+            _eventLogContext = eventLogContext ?? throw new ArgumentNullException(nameof(eventLogContext));
             _integrationEventLogServiceFactory = integrationEventLogServiceFactory ?? throw new ArgumentNullException(nameof(integrationEventLogServiceFactory));
             _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
             _eventLogService = _integrationEventLogServiceFactory(_profileContext.Database.GetDbConnection());

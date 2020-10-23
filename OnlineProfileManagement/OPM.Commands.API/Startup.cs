@@ -55,12 +55,9 @@ namespace OPM.Commands.API
                 .AddCustomDbContext(Configuration)
                 .AddCustomIntegrations(Configuration)
                 .AddEventBusIntegration(Configuration);
-            //Start: uncomment below code for EventBusIntegration
-            //.AddEventBusIntegration(Configuration);
-            //End: uncomment below code for EventBusIntegration
 
             services.AddTransient<IProfileRepository, ProfileRepository>();
-            
+
             services.AddMediatR(typeof(Startup));
             //Load ProfileService configuration
             services.Configure<ProfileSettings>(Configuration);
@@ -96,16 +93,16 @@ namespace OPM.Commands.API
             //End: uncomment below code for EventBusIntegration
 
 
-            
+
 
             //var container = new ContainerBuilder();
             ////Rachel
             //container.RegisterModule(new MediatorModule());
             ////ConfigureContainer(container);
             //container.Populate(services);
-          
+
             //return new AutofacServiceProvider(container.Build());
-           
+
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {
@@ -154,11 +151,11 @@ namespace OPM.Commands.API
         //Subscribe listeners/handlers for intersted integration event of the service 
         private void RegisterIntegrationEventHander(IApplicationBuilder app)
         {
-            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();             
+            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
             eventBus.Subscribe<EntityRegisteredIntegrationEvent, IIntegrationEventHandler<EntityRegisteredIntegrationEvent>>();
-          }
+        }
 
-        
+
         private void ConfigEventBus(IServiceCollection services)
         {
             var subscriptionClientName = Configuration["SubscriptionClientName"];
@@ -178,10 +175,10 @@ namespace OPM.Commands.API
 
                 return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
             });
-            
+
 
             services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
-           
+
         }
 
         //private void ConfigureAuthService(IServiceCollection services)
@@ -220,13 +217,13 @@ namespace OPM.Commands.API
                     name: "ProfileDB-check",
                     tags: new string[] { "Profiledb" });
 
-            
+
             hcBuilder
                 .AddRabbitMQ(
                     $"amqp://{configuration["EventBusConnection"]}",
                     name: "ordering-rabbitmqbus-check",
                     tags: new string[] { "rabbitmqbus" });
-            
+
 
             return services;
         }
@@ -321,7 +318,7 @@ namespace OPM.Commands.API
 
                 return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
             });
-            
+
 
             services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
 
@@ -329,7 +326,7 @@ namespace OPM.Commands.API
             return services;
         }
 
-       
+
     }
 
 }

@@ -14,20 +14,19 @@ namespace OPM.Commands.API.IntegrationEvents.Events
 
         public string LastName { get;}
 
-        public IEnumerable<ComChannel> ComChannels { get; }
+        public string ComChannelType { get; }
 
-        public string Status { get;}
+        public string ComChannelValue { get; }
 
-       
 
         public ComChannelAddedIntegrationEvent(string firstName, 
-            string lastName, IEnumerable<ComChannel> comChannels, string status)
+            string lastName,  string comChannelType, string value)
         {
             FirstName = firstName;
             LastName = lastName;
-            ComChannels = comChannels;
-            Status = status;
-
+            ComChannelType = comChannelType;
+            ComChannelValue = value;
+             
         }
     }
 }

@@ -17,6 +17,14 @@ namespace OPM.Queries.API.Models
     {
         public string Type { get; set; }
         public string Value { get; set; }
+
+        //New
+        public int Preference { get; set; }
+        public DateTime? TermDate { get; set; }
+
+        public string ComChannel { get; set; }
+        public string Status { get; set; }
+        
     }
 
     public class EntityProfileView

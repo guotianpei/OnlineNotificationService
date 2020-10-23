@@ -25,9 +25,6 @@ namespace OPM.Commands.API.Commands
         public string EntityID { get; set; }
 
         [DataMember]
-        private readonly List<ComChannel> _comChannels;
-
-        [DataMember]
         public IEnumerable<ComChannel> ComChannels { get; set; }
 
         public AddOrUpdateComChannelCommand()

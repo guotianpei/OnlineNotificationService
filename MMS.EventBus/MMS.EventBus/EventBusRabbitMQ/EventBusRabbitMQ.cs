@@ -88,7 +88,9 @@ namespace MMS.EventBusRabbitMQ
             {
 
                 _logger.LogTrace("Declaring RabbitMQ exchange to publish event: {EventId}", @event.Id);
-
+                //Declaring either type of object simply ensures that one of that name exists, 
+                //creating it if necessary.
+                //https://www.rabbitmq.com/dotnet-api-guide.html#exchanges-and-queues
                 channel.ExchangeDeclare(exchange: BROKER_NAME, type: "direct");
                 channel.QueueDeclare(_queueName, true, false, false, null);
                 channel.QueueBind(_queueName, BROKER_NAME, eventName, null);

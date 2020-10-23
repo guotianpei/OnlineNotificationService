@@ -168,6 +168,9 @@ namespace OPM.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("EntityID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("MessageBody")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -177,19 +180,22 @@ namespace OPM.Infrastructure.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
 
+                    b.Property<string>("NotificationStage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Recipient")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TopicID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("TrackingID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.ToTable("NotificationHistory");
+                    b.ToTable("NotificationLog");
                 });
 
             modelBuilder.Entity("OPM.Domain.Aggregates.ProfileAggregate.ProfileComChannel", b =>
@@ -212,6 +218,9 @@ namespace OPM.Infrastructure.Migrations
 
                     b.Property<int>("Preference")
                         .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("TermDate")
                         .HasColumnType("datetime2");
