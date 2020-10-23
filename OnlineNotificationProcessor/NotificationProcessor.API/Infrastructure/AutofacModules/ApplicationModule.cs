@@ -27,7 +27,7 @@ namespace NotificationProcessor.API.Infrastructure.AutofacModules
                 .As<NotificationContext>()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterAssemblyTypes(typeof(NotificationRequestIntegrationEventHandler).GetTypeInfo().Assembly)
+            builder.RegisterAssemblyTypes(typeof(NotificationRequestedIntegrationEventHandler).GetTypeInfo().Assembly)
             .AsClosedTypesOf(typeof(IIntegrationEventHandler<>));
 
         }

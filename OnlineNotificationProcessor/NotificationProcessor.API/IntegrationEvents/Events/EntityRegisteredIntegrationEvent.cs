@@ -9,15 +9,24 @@ namespace NotificationProcessor.API.IntegrationEvents.Events
 {
     public class EntityRegisteredIntegrationEvent : IntegrationEvent
     {
-        public Guid TrackingID { get; set; }
-
+        
         public string EntityID { get; set; }
+        
+        public string EntityName { get; set; }
 
-        //public ComChannelTypes ComChannel { get; set; }
-        public string ComChannel { get; set; }
+        public string EntityType { get; set; }
 
-        public string Recipient { get; set; }
+        public string FirstName { get; set; }
 
-        public int TopicID { get; set; }
+        public string LastName { get; set; }
+
+        public bool? Active { get; set; }
+
+        public string Email { get; set; }
+
+        public string SMS { get; set; }
+
+        public string SecureMassage { get; set; }
+
     }
 }

@@ -12,38 +12,41 @@ using System.Threading.Tasks;
 namespace NotificationProcessor.API.IntegrationEvents
 {
 
-    public class NotificationRequestIntegrationEventHandler : IIntegrationEventHandler<EntityRegisteredIntegrationEvent>
+    public class NotificationRequestedIntegrationEventHandler : IIntegrationEventHandler<NotificationRequestedIntegrationEvent>
     {
         private readonly NotificationContext _notificationContext;
-        private readonly ILogger<NotificationRequestIntegrationEventHandler> _logger;
+        private readonly ILogger<NotificationRequestedIntegrationEventHandler> _logger;
         private readonly INotificationIntegrationEventService _notificationIntegrationEventService;
-        public NotificationRequestIntegrationEventHandler(NotificationContext notificationContext,ILogger<NotificationRequestIntegrationEventHandler> logger,
+        public NotificationRequestedIntegrationEventHandler(NotificationContext notificationContext,ILogger<NotificationRequestedIntegrationEventHandler> logger,
              INotificationIntegrationEventService notificationIntegrationEventService)
         {
             _notificationContext = notificationContext;
             _logger = logger;
             _notificationIntegrationEventService = notificationIntegrationEventService;
         }
-        public async Task Handle(EntityRegisteredIntegrationEvent @event)
+        
+        //Handler will consume integration event, which will save request to NotificationRequest table.
+        public async Task Handle(NotificationRequestedIntegrationEvent @event)
         {
             using (LogContext.PushProperty("IntegrationEventContext", $"{@event.Id}-{Program.AppName}"))
             {
                 _logger.LogInformation("----- Handling integration event: {IntegrationEventId} at {AppName} - ({@IntegrationEvent})", @event.Id, Program.AppName, @event);
 
-                NotificationTransactionLog notificationLog = new NotificationTransactionLog()
+                //Save Notification Request into NotificationRequest table
+                NotificationRequest notificationRequest = new NotificationRequest()
                 {
-                    TrackingID = Guid.NewGuid(),
+                    //ID = Guid.NewGuid(),
                     EntityID = @event.EntityID,
-                    ComChannel = "test@gmail.com",
-                    Recipient = "Command.API",
+                    ComChannel = "test@gmail.com",                    
                     TopicID = @event.TopicID,
-                    //NotificationDate = DateTime.Now,
+                    RequestMessageData = "Custom data from requestor",
                     NotificationStage = "Pending",
-                    MessageBody="test"
+                    
                 };
-                await _notificationContext.NotificationTransactionLogs.AddAsync(notificationLog);
-                await _notificationContext.SaveChangesAsync();
-                await _notificationIntegrationEventService.SaveEventAndNotificationLogChangesAsync(@event);
+
+                await _notificationContext.NotificationRequests.AddAsync(notificationRequest);
+                await _notificationContext.SaveChangesAsync();              
+                
 
             }
         }

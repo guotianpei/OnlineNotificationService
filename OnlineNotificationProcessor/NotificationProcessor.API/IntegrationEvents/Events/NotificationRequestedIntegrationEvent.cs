@@ -7,15 +7,15 @@ using NotificationProcessor.API.Model;
 
 namespace NotificationProcessor.API.IntegrationEvents
 {
-    public class NotificationRequestIntegrationEvent: IntegrationEvent
+    public class NotificationRequestedIntegrationEvent: IntegrationEvent
     {
         public Guid TrackingID { get; set; }
 
-        public Guid EntityID { get; set; }
+        public string EntityID { get; set; }
 
         public ComChannelTypes ComChannel { get; set; }
 
-        public string Recipient { get; set; }
+        public string RequestMessageData { get; set; }
 
         public int TopicID { get; set; }
     }
