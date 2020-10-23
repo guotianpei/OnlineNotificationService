@@ -28,5 +28,6 @@ namespace NotificationProcessor.API.IntegrationEvents.Events
 
         public string SecureMassage { get; set; }
 
+
     }
 }

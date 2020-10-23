@@ -42,6 +42,7 @@ namespace NotificationProcessor.API.IntegrationEvents
                     TemplateFile = @event.TemplateFile,
                     EffectiveDate = @event.EffectiveDate,
                     TerminateDate=@event.TerminateDate,
+
                 };
 
                 //await _notificationContext.NotificationTransactionLogs.AddAsync(notificationLog);

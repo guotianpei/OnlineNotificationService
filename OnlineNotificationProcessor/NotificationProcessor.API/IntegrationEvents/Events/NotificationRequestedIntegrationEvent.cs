@@ -18,5 +18,6 @@ namespace NotificationProcessor.API.IntegrationEvents
         public string RequestMessageData { get; set; }
 
         public int TopicID { get; set; }
+
     }
 }

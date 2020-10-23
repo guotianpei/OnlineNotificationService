@@ -24,6 +24,7 @@ namespace NotificationProcessor.API.IntegrationEvents.Events
         public string TemplateFile { get; set; }
 
         public DateTime EffectiveDate { get; set; }
+
         public DateTime TerminateDate { get; set; }
     }
 }

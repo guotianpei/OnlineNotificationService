@@ -42,7 +42,8 @@ namespace NotificationProcessor.API.IntegrationEvents.Handlers
                     Active=@event.Active,
                     Email =@event.Email,
                     SMS=@event.SMS,
-                    SecureMassage=@event.SecureMassage                    
+                    SecureMassage=@event.SecureMassage    
+                    
                 };
 
                 //await _notificationContext.NotificationTransactionLogs.AddAsync(notificationLog);

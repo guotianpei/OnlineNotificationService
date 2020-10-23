@@ -41,6 +41,7 @@ namespace NotificationProcessor.API.IntegrationEvents
                     TopicID = @event.TopicID,
                     RequestMessageData = "Custom data from requestor",
                     NotificationStage = "Pending",
+
                     
                 };
 
