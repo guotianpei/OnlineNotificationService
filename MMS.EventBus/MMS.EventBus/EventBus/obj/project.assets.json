@@ -220,23 +220,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sterupally\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\tguo4\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj",
+      "projectUniqueName": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj",
       "projectName": "MMS.EventBus",
-      "projectPath": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj",
-      "packagesPath": "C:\\Users\\sterupally\\.nuget\\packages\\",
-      "outputPath": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\obj\\",
+      "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj",
+      "packagesPath": "C:\\Users\\tguo4\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\sterupally\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tguo4\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -281,7 +277,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

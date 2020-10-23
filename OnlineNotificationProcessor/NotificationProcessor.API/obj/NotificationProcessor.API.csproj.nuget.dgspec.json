@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHub\\OnlineNotificationService\\OnlineNotificationProcessor\\NotificationProcessor.API\\NotificationProcessor.API.csproj": {}
+    "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineNotificationProcessor\\NotificationProcessor.API\\NotificationProcessor.API.csproj": {}
   },
   "projects": {
-    "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\MMS.EventBusRabbitMQ.csproj": {
+    "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\MMS.EventBusRabbitMQ.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\MMS.EventBusRabbitMQ.csproj",
+        "projectUniqueName": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\MMS.EventBusRabbitMQ.csproj",
         "projectName": "MMS.EventBusRabbitMQ",
-        "projectPath": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\MMS.EventBusRabbitMQ.csproj",
-        "packagesPath": "C:\\Users\\sterupally\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\obj\\",
+        "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\MMS.EventBusRabbitMQ.csproj",
+        "packagesPath": "C:\\Users\\tguo4\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\sterupally\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tguo4\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,8 +27,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj": {
-                "projectPath": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj"
+              "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj": {
+                "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj"
               }
             }
           }
@@ -90,24 +87,21 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj": {
+    "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj",
+        "projectUniqueName": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj",
         "projectName": "MMS.EventBus",
-        "projectPath": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj",
-        "packagesPath": "C:\\Users\\sterupally\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\obj\\",
+        "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj",
+        "packagesPath": "C:\\Users\\tguo4\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\sterupally\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tguo4\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -152,24 +146,21 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\IntegrationEventLogEF\\MMS.IntegrationEventLogEF.csproj": {
+    "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\IntegrationEventLogEF\\MMS.IntegrationEventLogEF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\IntegrationEventLogEF\\MMS.IntegrationEventLogEF.csproj",
+        "projectUniqueName": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\IntegrationEventLogEF\\MMS.IntegrationEventLogEF.csproj",
         "projectName": "MMS.IntegrationEventLogEF",
-        "projectPath": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\IntegrationEventLogEF\\MMS.IntegrationEventLogEF.csproj",
-        "packagesPath": "C:\\Users\\sterupally\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\IntegrationEventLogEF\\obj\\",
+        "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\IntegrationEventLogEF\\MMS.IntegrationEventLogEF.csproj",
+        "packagesPath": "C:\\Users\\tguo4\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\IntegrationEventLogEF\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\sterupally\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tguo4\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -182,8 +173,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj": {
-                "projectPath": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj"
+              "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj": {
+                "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj"
               }
             }
           }
@@ -236,24 +227,21 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\GitHub\\OnlineNotificationService\\OnlineNotificationProcessor\\NotificationProcessor.API\\NotificationProcessor.API.csproj": {
+    "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineNotificationProcessor\\NotificationProcessor.API\\NotificationProcessor.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\OnlineNotificationService\\OnlineNotificationProcessor\\NotificationProcessor.API\\NotificationProcessor.API.csproj",
+        "projectUniqueName": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineNotificationProcessor\\NotificationProcessor.API\\NotificationProcessor.API.csproj",
         "projectName": "NotificationProcessor.API",
-        "projectPath": "C:\\GitHub\\OnlineNotificationService\\OnlineNotificationProcessor\\NotificationProcessor.API\\NotificationProcessor.API.csproj",
-        "packagesPath": "C:\\Users\\sterupally\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\OnlineNotificationService\\OnlineNotificationProcessor\\NotificationProcessor.API\\obj\\",
+        "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineNotificationProcessor\\NotificationProcessor.API\\NotificationProcessor.API.csproj",
+        "packagesPath": "C:\\Users\\tguo4\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineNotificationProcessor\\NotificationProcessor.API\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\sterupally\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tguo4\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -266,14 +254,14 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\MMS.EventBusRabbitMQ.csproj": {
-                "projectPath": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\MMS.EventBusRabbitMQ.csproj"
+              "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\MMS.EventBusRabbitMQ.csproj": {
+                "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\MMS.EventBusRabbitMQ.csproj"
               },
-              "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj": {
-                "projectPath": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj"
+              "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj": {
+                "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBus\\MMS.EventBus.csproj"
               },
-              "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\IntegrationEventLogEF\\MMS.IntegrationEventLogEF.csproj": {
-                "projectPath": "C:\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\IntegrationEventLogEF\\MMS.IntegrationEventLogEF.csproj"
+              "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\IntegrationEventLogEF\\MMS.IntegrationEventLogEF.csproj": {
+                "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\IntegrationEventLogEF\\MMS.IntegrationEventLogEF.csproj"
               }
             }
           }
@@ -346,7 +334,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
