@@ -35,12 +35,9 @@ namespace OPM.Queries.API.QueryHandlers
             ProfileComChannelRequest comChannelRequest = new ProfileComChannelRequest();
             comChannelRequest.EntityIDs = request.EntityIDs;
             comChannelRequest.ComChannel = request.Comchannel;
-            comChannelRequest.Enabled = request.Enabled;
-
-            comChannelRequest.EntityID = request.EntityIDs;
+            comChannelRequest.IsActive = request.IsActive;
 
             var returnComChannels = await _profileRepository.GetProfileComChannelByIDs(comChannelRequest);
-            //var returnComChannels = await _profileRepository.GetProfileComChannelsByID(comChannelRequest);
 
             if (returnComChannels != null)
             {
@@ -63,13 +60,6 @@ namespace OPM.Queries.API.QueryHandlers
                 return new ProfileViewModel()
                 { 
                     ProfileComChannels = profileComChannelViewList,
-                    //EntityProfile = new EntityProfileView()
-                    //{
-                    //    //EntityName = profile.EntityName,
-                    //    //FirstName = profile.FirstName,
-                    //    //LastName = profile.LastName,
-                    //    //ResourceName = (profile.ProfileResource != null) ? profile.ProfileResource.ResourceName : string.Empty
-                    //}
                 };
             }
             else

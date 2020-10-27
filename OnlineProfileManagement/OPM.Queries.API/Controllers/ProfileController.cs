@@ -10,7 +10,7 @@ using OPM.Queries.API.Queries;
 using OPM.Queries.API.Models;
 using OPM.Infrastructure.Repositories.QueryRequests;
 using OPM.Queries.API.Validations;
-using FluentValidation.AspNetCore;
+using FluentValidation.AspNetCore; 
 
 namespace OPM.Queries.API.Controllers
 {
@@ -21,11 +21,16 @@ namespace OPM.Queries.API.Controllers
 
         private readonly ILogger<ProfileController> _logger;
         private readonly ILogger<GetProfileQueryValidator> _valLogger;
+        private readonly ILogger<GetProfileComChannelQueryValidator> _valComChannelQueryLogger;
 
-        public ProfileController(ILogger<ProfileController> logger, ILogger<GetProfileQueryValidator> valLogger, IMediator mediator) : base(mediator)
+        
+        public ProfileController(ILogger<ProfileController> logger, ILogger<GetProfileQueryValidator> valLogger,
+           ILogger<GetProfileComChannelQueryValidator> valComChannelQueryLogger,
+           IMediator mediator) : base(mediator)
         {
             _logger = logger;
             _valLogger = valLogger;
+            _valComChannelQueryLogger = valComChannelQueryLogger;
         }
 
 
@@ -93,6 +98,17 @@ namespace OPM.Queries.API.Controllers
         [Route("GetProfileComChannelByIDs")]
         public async Task<ActionResult> GetProfileComChannelByIDs(GetProfileComChannelQuery request)
         {
+            //Validate the query request
+            //GetProfileQuery query = new GetProfileQuery(entityId);
+            var validator = new GetProfileComChannelQueryValidator(this._valComChannelQueryLogger);
+            var results = validator.Validate(request);
+            results.AddToModelState(ModelState, null);
+
+            if (!results.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var profile = await QueryAsync(request);
 
             if (profile == null)

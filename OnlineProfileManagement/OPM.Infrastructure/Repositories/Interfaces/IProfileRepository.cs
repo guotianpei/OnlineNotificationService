@@ -20,7 +20,6 @@ namespace OPM.Infrastructure.Repositories.Interfaces
 
         Task<EntityProfile> GetAsync(string EntityID);
         Task<List<ProfileComChannel>> GetProfileComChannelByIDs(ProfileComChannelRequest request);
-        Task<List<ProfileComChannel>> GetProfileComChannelsByID(ProfileComChannelRequest request);
 
         //List<Task<EntityProfile>> GetMultiple(List<string> EntityIDs);
     }

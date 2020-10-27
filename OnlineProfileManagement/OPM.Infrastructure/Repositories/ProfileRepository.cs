@@ -74,24 +74,7 @@ namespace OPM.Infrastructure.Repositories
             }
         }
 
-        public Task<List<ProfileComChannel>> GetProfileComChannelsByID(ProfileComChannelRequest request)
-        {
-
-            if (request.ComChannel != null && request.ComChannel.Trim().Length > 0)
-            {
-                return Task.FromResult(_context.ProfileComChannels.Where(obj => obj.EntityID == request.EntityID
-                                                            && obj.ComChannel == request.ComChannel)
-                                                            .ToList<ProfileComChannel>()
-                                                           );
-            }
-            else
-            {
-                return Task.FromResult(_context.ProfileComChannels.Where(obj => obj.EntityID == request.EntityID)
-                                                           .ToList<ProfileComChannel>()
-                                                          );
-            }
-        }
-
+       
         public Task<List<ProfileComChannel>> GetProfileComChannelByIDs(ProfileComChannelRequest request)
         {
 
@@ -133,9 +116,9 @@ namespace OPM.Infrastructure.Repositories
                                                                 .ToList<ProfileComChannel>();
                 }
                 
-                if (request.Enabled)
+                if (request.IsActive)
                 {
-                    profileComChannels = profileComChannels.Where(obj => obj.Enabled == request.Enabled)
+                    profileComChannels = profileComChannels.Where(obj => obj.Enabled == request.IsActive)
                                                                .ToList<ProfileComChannel>();
                 } 
 

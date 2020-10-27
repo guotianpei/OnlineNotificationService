@@ -11,7 +11,7 @@ namespace OPM.Queries.API.Queries
         //public string EntityID { get; set; }
         public string EntityIDs { get; set; }
         public string Comchannel { get; set; }
-        public bool Enabled { get; set; }
+        public bool IsActive { get; set; }
 
         public GetProfileComChannelQuery()
         {
