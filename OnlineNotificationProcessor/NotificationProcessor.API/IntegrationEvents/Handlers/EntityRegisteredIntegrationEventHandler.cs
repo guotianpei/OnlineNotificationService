@@ -38,17 +38,18 @@ namespace NotificationProcessor.API.IntegrationEvents.Handlers
                     EntityName = @event.EntityName,
                     EntityType = @event.EntityType,
                     FirstName = @event.FirstName,
-                    LastName=@event.LastName,
-                    Active=@event.Active,
-                    Email =@event.Email,
-                    SMS=@event.SMS,
-                    SecureMassage=@event.SecureMassage    
-                    
+                    LastName = @event.LastName,
+                    Active = @event.Active,
+                    Email = @event.Email,
+                    SMS = @event.SMS,
+                    SecureMassage = @event.SecureMassage
+
                 };
 
                 //await _notificationContext.NotificationTransactionLogs.AddAsync(notificationLog);
                 await _notificationContext.EntityProfiles.AddAsync(profileToUpdate);
                 await _notificationContext.SaveChangesAsync();
             }
+        }
     }
 }

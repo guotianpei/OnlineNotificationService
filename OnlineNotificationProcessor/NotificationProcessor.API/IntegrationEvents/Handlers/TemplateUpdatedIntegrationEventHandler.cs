@@ -34,7 +34,7 @@ namespace NotificationProcessor.API.IntegrationEvents
                 //Save Notification Request into NotificationRequest table
                 NotificationTemplate templateToUpdate = new NotificationTemplate()
                 {
-                    ID = @event.ID,
+                    //ID = @event.ID,
                     TopicName = @event.TopicName,
                     //ComChannel = !string.IsNullOrEmpty(@event.ComChannel.ToString()) ? ComChannelTypes.FromDisplayName<ComChannelTypes>(@event.ComChannel.ToString(),
                     From = @event.From,

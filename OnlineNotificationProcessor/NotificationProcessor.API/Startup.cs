@@ -85,7 +85,7 @@ namespace NotificationProcessor.API
         protected virtual void ConfigureEventBus(IApplicationBuilder app)
         {
             var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
-            eventBus.Subscribe<EntityRegisteredIntegrationEvent, NotificationRequestIntegrationEventHandler>();
+            eventBus.Subscribe<NotificationRequestedIntegrationEvent, NotificationRequestedIntegrationEventHandler>();
         }
 
     }
@@ -182,7 +182,7 @@ namespace NotificationProcessor.API
                 });
 
             services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
-            services.AddTransient<NotificationRequestIntegrationEventHandler>();
+            services.AddTransient<NotificationRequestedIntegrationEventHandler>();
             
             return services;
         }

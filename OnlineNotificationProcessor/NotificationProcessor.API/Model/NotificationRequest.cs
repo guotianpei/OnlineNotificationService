@@ -8,7 +8,7 @@ namespace NotificationProcessor.API.Model
     public class NotificationRequest
     {
         //Rachel: GUID, instead of int ID, and also can we generate ID in DB, instead of in the request?
-        public int ID { get; set; }
+        public Guid ID { get; set; }
 
         public string EntityID { get; set; }
 
