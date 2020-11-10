@@ -19,7 +19,7 @@ namespace NotificationProcessor.API.Model
         public int TopicID { get; set; }
 
         public string NotificationStage { get; set; }
-        //public DateTime RequestDatetime { get; set; }//Rachel: will be default as current date
+        public DateTime RequestDatetime { get; set; }//Rachel: will be default as current date
 
     }
 }

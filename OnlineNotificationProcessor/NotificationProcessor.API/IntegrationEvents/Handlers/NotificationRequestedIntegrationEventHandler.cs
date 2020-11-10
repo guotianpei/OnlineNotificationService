@@ -35,14 +35,11 @@ namespace NotificationProcessor.API.IntegrationEvents
                 //Save Notification Request into NotificationRequest table
                 NotificationRequest notificationRequest = new NotificationRequest()
                 {
-                    //ID = Guid.NewGuid(),
                     EntityID = @event.EntityID,
-                    ComChannel = "test@gmail.com",                    
+                    ComChannel = @event.ComChannel.Name, //"test@gmail.com"                 
                     TopicID = @event.TopicID,
                     RequestMessageData = "Custom data from requestor",
-                    NotificationStage = "Pending",
-
-                    
+                    NotificationStage = "Pending"
                 };
 
                 await _notificationContext.NotificationRequests.AddAsync(notificationRequest);

@@ -21,6 +21,7 @@ using NotificationProcessor.API.Infrastructure;
 using NotificationProcessor.API.Infrastructure.AutofacModules;
 using NotificationProcessor.API.IntegrationEvents;
 using NotificationProcessor.API.IntegrationEvents.Events;
+using NotificationProcessor.API.IntegrationEvents.Handlers;
 using RabbitMQ.Client;
 
 namespace NotificationProcessor.API
@@ -85,6 +86,7 @@ namespace NotificationProcessor.API
         protected virtual void ConfigureEventBus(IApplicationBuilder app)
         {
             var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+            eventBus.Subscribe<EntityRegisteredIntegrationEvent, EntityRegisteredIntegrationEventHandler>();
             eventBus.Subscribe<NotificationRequestedIntegrationEvent, NotificationRequestedIntegrationEventHandler>();
         }
 
@@ -182,6 +184,7 @@ namespace NotificationProcessor.API
                 });
 
             services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+            services.AddTransient<EntityRegisteredIntegrationEventHandler>();
             services.AddTransient<NotificationRequestedIntegrationEventHandler>();
             
             return services;

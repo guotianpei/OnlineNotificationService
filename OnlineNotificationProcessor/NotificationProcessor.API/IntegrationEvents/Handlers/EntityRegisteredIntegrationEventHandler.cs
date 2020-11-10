@@ -39,11 +39,11 @@ namespace NotificationProcessor.API.IntegrationEvents.Handlers
                     EntityType = @event.EntityType,
                     FirstName = @event.FirstName,
                     LastName = @event.LastName,
-                    Active = @event.Active,
-                    Email = @event.Email,
-                    SMS = @event.SMS,
-                    SecureMassage = @event.SecureMassage
-
+                    Active = true,
+                    Email = (@event.ProfileComChannels != null && @event.ProfileComChannels.Count() > 0 && @event.ProfileComChannels.Any(c => c.ComChannelType.ToLowerInvariant() == ComChannelTypes.Email.ToString())) ? @event.ProfileComChannels.SingleOrDefault(c => c.ComChannelType.ToLowerInvariant() == ComChannelTypes.Email.ToString()).Value : "",
+                    SMS = (@event.ProfileComChannels != null && @event.ProfileComChannels.Count() > 0 && @event.ProfileComChannels.Any(c => c.ComChannelType.ToLowerInvariant() == ComChannelTypes.TEXT.ToString())) ? @event.ProfileComChannels.SingleOrDefault(c => c.ComChannelType.ToLowerInvariant() == ComChannelTypes.TEXT.ToString()).Value : "",
+                    SecureMassage = (@event.ProfileComChannels != null && @event.ProfileComChannels.Count() > 0 && @event.ProfileComChannels.Any(c => c.ComChannelType.ToLowerInvariant() == ComChannelTypes.SecureMessage.ToString())) ? @event.ProfileComChannels.SingleOrDefault(c => c.ComChannelType.ToLowerInvariant() == ComChannelTypes.SecureMessage.ToString()).Value : "",
+                    LastUpdateDateTime = DateTime.Now
                 };
 
                 //await _notificationContext.NotificationTransactionLogs.AddAsync(notificationLog);

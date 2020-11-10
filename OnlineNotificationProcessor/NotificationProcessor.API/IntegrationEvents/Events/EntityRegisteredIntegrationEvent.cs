@@ -9,9 +9,8 @@ namespace NotificationProcessor.API.IntegrationEvents.Events
 {
     public class EntityRegisteredIntegrationEvent : IntegrationEvent
     {
-        
         public string EntityID { get; set; }
-        
+
         public string EntityName { get; set; }
 
         public string EntityType { get; set; }
@@ -20,14 +19,24 @@ namespace NotificationProcessor.API.IntegrationEvents.Events
 
         public string LastName { get; set; }
 
-        public bool? Active { get; set; }
+        public string RequestorApp { get; set; }
 
-        public string Email { get; set; }
+        public Guid RequestID { get; set; }
 
-        public string SMS { get; set; }
+        public IEnumerable<ComChannel> ProfileComChannels { get; set; }
 
-        public string SecureMassage { get; set; }
+        public EntityRegisteredIntegrationEvent(string entityId, string entityName, string entityType, string firstName,
+            string lastName, string requestorApp, Guid requestId, IEnumerable<ComChannel> comChannels)
+        {
+            EntityID = entityId;
+            EntityName = entityName;
+            EntityType = entityType;
+            FirstName = firstName;
+            LastName = lastName;
+            RequestorApp = requestorApp;
+            RequestID = requestId;
+            ProfileComChannels = comChannels;
 
-
+        }
     }
 }

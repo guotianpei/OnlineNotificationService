@@ -44,6 +44,10 @@ namespace NotificationProcessor.API.Infrastructure.EntityConfiguration
             builder
                 .Property(nr => nr.ID)
                 .HasDefaultValueSql("newid()");
+
+            builder
+                .Property(ep => ep.RequestDatetime)
+                .HasDefaultValueSql("GETDATE()");
         }
     }
 }
