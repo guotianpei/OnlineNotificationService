@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20201022165922_UpdatedIDFromIntToGuidForNotificationRequestTable.cs" />
-    <Compile Remove="Migrations\20201022165922_UpdatedIDFromIntToGuidForNotificationRequestTable.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="MediatR" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
@@ -30,12 +25,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\..\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\MMS.EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\MMS.EventBus\MMS.EventBus\EventBus\MMS.EventBus.csproj" />
     <ProjectReference Include="..\..\MMS.EventBus\MMS.EventBus\IntegrationEventLogEF\MMS.IntegrationEventLogEF.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Model\" />
     <Folder Include="Queries\" />
   </ItemGroup>
 

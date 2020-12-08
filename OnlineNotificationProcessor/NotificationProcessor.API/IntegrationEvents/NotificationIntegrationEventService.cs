@@ -4,7 +4,7 @@ using MMS.EventBus.Abstractions;
 using MMS.EventBus.Events;
 using MMS.IntegrationEventLogEF.Services;
 using MMS.IntegrationEventLogEF.Utilities;
-using NotificationProcessor.API.Infrastructure;
+using Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;

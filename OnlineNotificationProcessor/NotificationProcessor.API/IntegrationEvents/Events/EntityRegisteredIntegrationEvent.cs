@@ -1,5 +1,5 @@
-﻿using MMS.EventBus.Events;
-using NotificationProcessor.API.Model;
+﻿using Domain;
+using MMS.EventBus.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -17,7 +17,7 @@ using MMS.EventBus.Abstractions;
 using MMS.EventBusRabbitMQ;
 using MMS.IntegrationEventLogEF;
 using MMS.IntegrationEventLogEF.Services;
-using NotificationProcessor.API.Infrastructure;
+using Infrastructure;
 using NotificationProcessor.API.Infrastructure.AutofacModules;
 using NotificationProcessor.API.IntegrationEvents;
 using NotificationProcessor.API.IntegrationEvents.Events;

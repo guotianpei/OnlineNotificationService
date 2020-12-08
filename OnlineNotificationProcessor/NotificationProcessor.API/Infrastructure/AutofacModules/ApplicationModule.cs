@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Infrastructure;
 
 namespace NotificationProcessor.API.Infrastructure.AutofacModules
 {

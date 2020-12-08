@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Domain;
+using Microsoft.Extensions.Logging;
 using MMS.EventBus.Abstractions;
-using NotificationProcessor.API.Infrastructure;
+using Infrastructure;
 using NotificationProcessor.API.IntegrationEvents.Events;
-using NotificationProcessor.API.Model;
 using Serilog.Context;
 using System;
 using System.Collections.Generic;

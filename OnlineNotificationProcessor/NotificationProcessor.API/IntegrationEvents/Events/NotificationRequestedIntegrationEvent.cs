@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain;
 using MMS.EventBus.Events;
-using NotificationProcessor.API.Model;
 
 namespace NotificationProcessor.API.IntegrationEvents
 {
