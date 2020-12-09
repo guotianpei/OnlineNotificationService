@@ -9,6 +9,7 @@ namespace Domain
 {
     public class ComChannel
     {
+        //Rachel testing commit and merge
         public string ComChannelType { get; set; }
         [IgnoreDataMember]
         [JsonIgnore]
