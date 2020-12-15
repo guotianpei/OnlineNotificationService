@@ -1992,6 +1992,36 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "MediatR": "8.0.1",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "bin/placeholder/Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Domain.dll": {}
+        }
+      },
+      "Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "MediatR": "8.0.1",
+          "Microsoft.EntityFrameworkCore": "3.1.3",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.3"
+        },
+        "compile": {
+          "bin/placeholder/Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infrastructure.dll": {}
+        }
+      },
       "MMS.EventBus/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -6943,6 +6973,16 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "Domain/1.0.0": {
+      "type": "project",
+      "path": "../../Domain/Domain.csproj",
+      "msbuildProject": "../../Domain/Domain.csproj"
+    },
+    "Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../../Infrastructure/Infrastructure.csproj",
+      "msbuildProject": "../../Infrastructure/Infrastructure.csproj"
+    },
     "MMS.EventBus/1.0.0": {
       "type": "project",
       "path": "../../MMS.EventBus/MMS.EventBus/EventBus/MMS.EventBus.csproj",
@@ -6962,6 +7002,8 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Autofac.Extensions.DependencyInjection >= 6.0.0",
+      "Domain >= 1.0.0",
+      "Infrastructure >= 1.0.0",
       "MMS.EventBus >= 1.0.0",
       "MMS.EventBusRabbitMQ >= 1.0.0",
       "MMS.IntegrationEventLogEF >= 1.0.0",
@@ -7001,6 +7043,12 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\Domain\\Domain.csproj"
+            },
+            "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\Infrastructure\\Infrastructure.csproj"
+            },
             "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\MMS.EventBusRabbitMQ.csproj": {
               "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\MMS.EventBus\\MMS.EventBus\\EventBusRabbitMQ\\MMS.EventBusRabbitMQ.csproj"
             },

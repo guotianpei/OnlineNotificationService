@@ -22,9 +22,15 @@ namespace Domain
 
         public DateTime TransactionDateTime { get; set; }
         public int RetryCounts { get; set; }
-        public string NotificationStage { get; set; }
+
+        //The stage cannot be set from public/outside of the object.
+        //only thru the methods defined on the class, to avoid spaghetti code
+        public NotificationState NotificationStage { get; private set; }
+
         public int ResponseCode { get; set; }
+
         public string ResponseDescription { get; set; }
+
         public NotificationTransactionLog() { }
 
     } 
