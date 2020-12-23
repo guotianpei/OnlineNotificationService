@@ -5,7 +5,7 @@ using MMS.EventBus.Abstractions;
 using OPM.Commands.API.CommandHandlers;
 using OPM.Infrastructure.Idempotency;
 using OPM.Infrastructure.Repositories;
-using OPM.Infrastructure.Repositories.Interfaces;
+using OPM.ONP.Infrastructure.Repositories.Interfaces;
 
 namespace OPM.Commands.API.Infrastructure.AutofacModules
 {

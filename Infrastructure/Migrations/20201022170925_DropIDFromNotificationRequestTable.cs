@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Infrastructure.Migrations
+namespace ONP.Infrastructure.Migrations
 {
     public partial class DropIDFromNotificationRequestTable : Migration
     {

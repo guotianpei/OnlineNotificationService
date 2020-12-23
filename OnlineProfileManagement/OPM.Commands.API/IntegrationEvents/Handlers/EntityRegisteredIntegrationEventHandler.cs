@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MMS.EventBus.Abstractions;
 using OPM.Commands.API.IntegrationEvents.Events;
-using OPM.Infrastructure.Repositories.Interfaces;
+using OPM.ONP.Infrastructure.Repositories.Interfaces;
 using OPM.Infrastructure.Idempotency;
 using Microsoft.Extensions.Logging;
 using MediatR;

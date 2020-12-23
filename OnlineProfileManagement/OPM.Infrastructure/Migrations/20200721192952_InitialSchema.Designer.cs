@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OPM.Infrastructure;
 
-namespace OPM.Infrastructure.Migrations
+namespace OPM.ONP.Infrastructure.Migrations
 {
     [DbContext(typeof(ProfileContext))]
     [Migration("20200721192952_InitialSchema")]

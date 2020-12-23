@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\OTM.Commands.API.fsproj": {}
+    "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\OTM.Commands.API.fsproj": {}
   },
   "projects": {
-    "C:\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\OTM.Commands.API.fsproj": {
+    "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\OTM.Commands.API.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\OTM.Commands.API.fsproj",
+        "projectUniqueName": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\OTM.Commands.API.fsproj",
         "projectName": "OTM.Commands.API",
-        "projectPath": "C:\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\OTM.Commands.API.fsproj",
-        "packagesPath": "C:\\Users\\sterupally\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\obj\\",
+        "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\OTM.Commands.API.fsproj",
+        "packagesPath": "C:\\Users\\tguo4\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Commands.API\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\sterupally\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tguo4\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,7 +35,7 @@
           "dependencies": {
             "FSharp.Core": {
               "target": "Package",
-              "version": "[4.7.2, )",
+              "version": "[4.7.1, )",
               "generatePathProperty": true
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
@@ -65,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

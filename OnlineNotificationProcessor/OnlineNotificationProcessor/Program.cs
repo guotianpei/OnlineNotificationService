@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using OnlineNotificationProcessor.Tasks;
+using ONP.BackendProcessor.Tasks;
 
-namespace OnlineNotificationProcessor
+namespace ONP.BackendProcessor
 {
     public class Program
     {

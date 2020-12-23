@@ -28,7 +28,7 @@ using MMS.EventBusRabbitMQ;
 using MMS.EventBus;
 using MMS.EventBus.Abstractions;
 using RabbitMQ.Client;
-using OPM.Infrastructure.Repositories.Interfaces;
+using OPM.ONP.Infrastructure.Repositories.Interfaces;
 using OPM.Infrastructure.Repositories;
 using MediatR;
 using Autofac.Core.Lifetime;

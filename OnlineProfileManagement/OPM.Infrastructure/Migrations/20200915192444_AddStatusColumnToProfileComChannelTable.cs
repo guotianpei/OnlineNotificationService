@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace OPM.Infrastructure.Migrations
+namespace OPM.ONP.Infrastructure.Migrations
 {
     public partial class AddStatusColumnToProfileComChannelTable : Migration
     {

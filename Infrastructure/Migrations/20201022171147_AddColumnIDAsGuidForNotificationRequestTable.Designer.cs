@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Infrastructure;
 
-namespace Infrastructure.Migrations
+namespace ONP.Infrastructure.Migrations
 {
     [DbContext(typeof(NotificationContext))]
     [Migration("20201022171147_AddColumnIDAsGuidForNotificationRequestTable")]

@@ -4,7 +4,7 @@ using System.Net.Mail;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 
-namespace OnlineNotificationProcessor.Services
+namespace ONP.BackendProcessor.Services
 {
     public class EmailService
     {

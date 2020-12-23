@@ -1,10 +1,10 @@
-﻿using OnlineNotificationProcessor.Models;
+﻿using ONP.BackendProcessor.Models;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace OnlineNotificationProcessor.Tasks
+namespace ONP.BackendProcessor.Tasks
 {
     public class NotificationProcess
     {

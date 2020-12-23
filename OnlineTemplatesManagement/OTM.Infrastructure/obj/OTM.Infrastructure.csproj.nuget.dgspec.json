@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Infrastructure\\OTM.Infrastructure.csproj": {}
+    "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Infrastructure\\OTM.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Infrastructure\\OTM.Infrastructure.csproj": {
+    "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Infrastructure\\OTM.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Infrastructure\\OTM.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Infrastructure\\OTM.Infrastructure.csproj",
         "projectName": "OTM.Infrastructure",
-        "projectPath": "C:\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Infrastructure\\OTM.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\sterupally\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Infrastructure\\OTM.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\tguo4\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tguo4\\OneDrive - DXC Production\\Documents\\GitHub\\OnlineNotificationService\\OnlineTemplatesManagement\\OTM.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\sterupally\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tguo4\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

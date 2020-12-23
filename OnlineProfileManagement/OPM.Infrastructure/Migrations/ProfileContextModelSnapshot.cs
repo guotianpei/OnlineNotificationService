@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OPM.Infrastructure;
 
-namespace OPM.Infrastructure.Migrations
+namespace OPM.ONP.Infrastructure.Migrations
 {
     [DbContext(typeof(ProfileContext))]
     partial class ProfileContextModelSnapshot : ModelSnapshot

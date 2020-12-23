@@ -16,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MMS.EventBusRabbitMQ", "MMS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MMS.EventBus", "MMS.EventBus\MMS.EventBus\EventBus\MMS.EventBus.csproj", "{7CC7CD51-D808-4F62-A818-000EFEE2852E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineNotificationProcessor", "OnlineNotificationProcessor\OnlineNotificationProcessor\OnlineNotificationProcessor.csproj", "{46D97719-6A18-4C00-AB3B-AF0F7F6EC554}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ONP.BackendProcessor", "OnlineNotificationProcessor\OnlineNotificationProcessor\ONP.BackendProcessor.csproj", "{46D97719-6A18-4C00-AB3B-AF0F7F6EC554}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventBus", "EventBus", "{5CA73F30-AEF6-4AAD-A628-0429926417D6}"
 EndProject
@@ -34,11 +34,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MMS.IntegrationEventLogEF",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification", "Notification", "{DCAEC52C-DFA5-48A0-9861-23B56F5CF7F9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationProcessor.API", "OnlineNotificationProcessor\NotificationProcessor.API\NotificationProcessor.API.csproj", "{2EFCCE5D-6F4E-453A-95B2-AE41EA052803}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ONP.API", "OnlineNotificationProcessor\NotificationProcessor.API\ONP.API.csproj", "{2EFCCE5D-6F4E-453A-95B2-AE41EA052803}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{4E5B400C-3163-4E44-85F2-0D474A24E104}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ONP.Domain", "Domain\ONP.Domain.csproj", "{4E5B400C-3163-4E44-85F2-0D474A24E104}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{85519ED0-8A16-4DF1-BC06-7D5A0E0E96B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ONP.Infrastructure", "Infrastructure\ONP.Infrastructure.csproj", "{85519ED0-8A16-4DF1-BC06-7D5A0E0E96B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

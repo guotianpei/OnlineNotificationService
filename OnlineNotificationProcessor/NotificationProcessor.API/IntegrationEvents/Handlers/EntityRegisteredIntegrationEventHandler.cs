@@ -1,5 +1,5 @@
-﻿using Domain;
-using Infrastructure;
+﻿using ONP.Domain;
+using ONP.;
 using Microsoft.Extensions.Logging;
 using MMS.EventBus.Abstractions;
 using NotificationProcessor.API.IntegrationEvents.Events;

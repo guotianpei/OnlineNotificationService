@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OnlineNotificationProcessor.Tasks
+namespace ONP.BackendProcessor.Tasks
 {
     public sealed class PlaceHolder
     {       

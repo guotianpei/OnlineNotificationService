@@ -1,4 +1,4 @@
-﻿using OnlineNotificationProcessor.Models;
+﻿using ONP.BackendProcessor.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace OnlineNotificationProcessor.Tasks
+namespace ONP.BackendProcessor.Tasks
 {
     public class BuildTemplate
     {

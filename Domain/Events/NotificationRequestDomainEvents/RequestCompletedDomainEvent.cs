@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using MediatR;
 
-namespace Domain.Events
+namespace ONP.Domain
 {
     //This event hold info for raising side effect once complete process for Notification request 
-    class RequestCompletedDomainEvent:  INotification
+    public class RequestCompletedDomainEvent:  INotification
     {
         public Guid TrackingID { get; set; }
         //public string EntityID { get; set; }

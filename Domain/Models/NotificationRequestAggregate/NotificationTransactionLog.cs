@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace ONP.Domain
 {
     public class NotificationTransactionLog
     {
@@ -21,17 +21,30 @@ namespace Domain
         public string MessageBody { get; set; }
 
         public DateTime TransactionDateTime { get; set; }
+
         public int RetryCounts { get; set; }
 
-        //The stage cannot be set from public/outside of the object.
-        //only thru the methods defined on the class, to avoid spaghetti code
-        public NotificationState NotificationStage { get; private set; }
+        public NotificationStage NotificationStage { get;  set; }
 
-        public int ResponseCode { get; set; }
+        public string ResponseCode { get; set; }
 
         public string ResponseDescription { get; set; }
 
         public NotificationTransactionLog() { }
+
+        public NotificationTransactionLog(Guid trackingId,  string comChannel, int topicId)            
+        {
+            TrackingID = trackingId;
+            //EntityID = entityId;
+            ComChannel = comChannel;
+            //Recipient = recipient;
+            TopicID = topicId;
+            //RequestProcessing = 1, Notification Background processor retrieve initial request, 
+            NotificationStage = NotificationStage.RequestProcessing;
+            //MessageBody = messageBody;
+        }
+
+
 
     } 
 }

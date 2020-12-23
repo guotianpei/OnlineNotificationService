@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Domain.IntegrationEventAggregate
+namespace ONP.Domain.IntegrationEventAggregate
 {
     public class IntegrationEvent
     {

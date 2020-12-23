@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OnlineNotificationProcessor.Configuration
+namespace ONP.BackendProcessor.Configuration
 {
     public class BackgroundTaskSettings
     {

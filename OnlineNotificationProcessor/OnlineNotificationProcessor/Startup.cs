@@ -13,11 +13,11 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using RabbitMQ.Client;
-using OnlineNotificationProcessor.Tasks;
-using OnlineNotificationProcessor.Configuration;
+using ONP.BackendProcessor.Tasks;
+using ONP.BackendProcessor.Configuration;
 
 
-namespace OnlineNotificationProcessor
+namespace ONP.BackendProcessor
 {
     public class Startup
     {

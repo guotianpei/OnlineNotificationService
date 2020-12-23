@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using OnlineNotificationProcessor.Configuration;
+using ONP.BackendProcessor.Configuration;
 using MMS.EventBus;
 using MMS.EventBus.Abstractions;
-using OnlineNotificationProcessor.Models;
-using OnlineNotificationProcessor.Services;
+using ONP.BackendProcessor.Models;
+using ONP.BackendProcessor.Services;
 
-namespace OnlineNotificationProcessor.Tasks
+namespace ONP.BackendProcessor.Tasks
 {
     class SendEmailNotification : ISendNotification
     {

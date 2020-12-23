@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MediatR;
 using OPM.Infrastructure;
-using OPM.Infrastructure.Repositories.Interfaces;
+using OPM.ONP.Infrastructure.Repositories.Interfaces;
 using OPM.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using OPM.Queries.API.Controllers;

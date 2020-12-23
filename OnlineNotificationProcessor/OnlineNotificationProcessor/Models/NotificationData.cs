@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OnlineNotificationProcessor.Models
+namespace ONP.BackendProcessor.Models
 {
     public class NotificationData
     {

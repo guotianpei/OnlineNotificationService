@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using OnlineNotificationProcessor.Models;
+using ONP.BackendProcessor.Models;
 
-namespace OnlineNotificationProcessor.Tasks
+namespace ONP.BackendProcessor.Tasks
 {
     public class CommonHelper
     {

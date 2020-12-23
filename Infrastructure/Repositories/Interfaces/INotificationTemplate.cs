@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Domain;
-using Infrastructure.Responsitories;
+using ONP.Domain;
+using ONP.Infrastructure.Responsitories;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Repositories.Interfaces
+namespace ONP.Infrastructure.Repositories.Interfaces
 {
     interface INotificationTemplate : IGenericRepository<NotificationTemplate>, IRepository<NotificationTemplate>
     {

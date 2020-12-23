@@ -1,9 +1,9 @@
-﻿using OnlineNotificationProcessor.Models;
+﻿using ONP.BackendProcessor.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace OnlineNotificationProcessor.Tasks
+namespace ONP.BackendProcessor.Tasks
 {
     public interface ISendNotification
     {

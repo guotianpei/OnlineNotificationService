@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace OnlineNotificationProcessor.Models
+namespace ONP.BackendProcessor.Models
 {
     [XmlRoot("MailBulidTemplate")]
     public class EmailTemplateBuild

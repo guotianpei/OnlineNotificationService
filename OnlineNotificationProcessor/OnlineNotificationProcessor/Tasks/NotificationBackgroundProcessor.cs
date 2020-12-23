@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using OnlineNotificationProcessor.Configuration;
+using ONP.BackendProcessor.Configuration;
 using MMS.EventBus;
 using MMS.EventBus.Abstractions;
 
-namespace OnlineNotificationProcessor.Tasks
+namespace ONP.BackendProcessor.Tasks
 {
     //This background service will operate as following:
     //1. consumer notification event from event bus, the event contains user's contact info; 

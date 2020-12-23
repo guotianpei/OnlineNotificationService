@@ -11,12 +11,15 @@
     <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="3.1.1" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="3.1.1" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.HealthChecks" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.5" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Domain\ONP.Domain.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\ONP.Infrastructure.csproj" />
     <ProjectReference Include="..\..\MMS.EventBus\MMS.EventBus\EventBusRabbitMQ\MMS.EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\MMS.EventBus\MMS.EventBus\EventBus\MMS.EventBus.csproj" />
   </ItemGroup>

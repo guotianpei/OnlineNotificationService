@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Domain;
+using ONP.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.EntityConfiguration
+namespace ONP.Infrastructure
 {
     public class NotificationTransactionLogConfiguration : IEntityTypeConfiguration<NotificationTransactionLog>
     {

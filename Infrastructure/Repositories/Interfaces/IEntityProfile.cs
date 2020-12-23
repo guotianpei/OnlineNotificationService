@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Domain;
+using ONP.Domain;
 using Infrastructure.Responsitories;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Repositories.Interfaces
+namespace ONP.Infrastructure.Repositories
 {
     interface IEntityProfile : IGenericRepository<EntityProfile>, IRepository<EntityProfile>
     {
