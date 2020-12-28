@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
 
-namespace ONP.Domain
+using ONP.Domain.Seedwork;
+
+namespace ONP.Domain.Models
 {
     public class NotificationRequest : Entity
     {
         //Rachel: GUID, instead of int ID, and also can we generate ID in DB, instead of in the request?
         //Mallika: It should be from requestor, for tracking purpose. So requestor can track the request from their end.
-        public Guid ID { get; set; }
+        public Guid TrackingID { get; set; }
 
         public string EntityID { get; set; }
 
@@ -22,7 +21,7 @@ namespace ONP.Domain
 
         //The stage cannot be set from public/outside of the object.
         //only thru the methods defined on the class, to avoid spaghetti code
-        public NotificationStage NotificationStage { get; private set; }
+        public NotificationStageEnum NotificationStage { get; private set; }
         private int _notificationStageId;
 
         public string RequestDatetime { get; set; }//Rachel: will be default as current date. 
@@ -44,34 +43,34 @@ namespace ONP.Domain
 
        
 
-        public NotificationRequest(Guid id, string entityId, string comChannel, string requestMessageDate, int topicId, string requestDateTime): this()
+        public NotificationRequest(Guid trackingID, string entityId, string comChannel, string requestMessageDate, int topicId, string requestDateTime): this()
         {
-            ID = id;
+            TrackingID = trackingID;
             EntityID = entityId;
             ComChannel = comChannel;
             RequestMessageData = requestMessageDate;
             TopicID = topicId;
             RequestDatetime = requestDateTime;
-            _notificationStageId = NotificationStage.RequestReceived.Id;
+            _notificationStageId = NotificationStageEnum.RequestReceived.Id;
 
         }
 
         public void SetRequestProcessingStage()
         {
             //Set Request stage=1; and initiate/to create  transaction Log
-            if(_notificationStageId!= NotificationStage.RequestReceived.Id)
+            if(_notificationStageId!= NotificationStageEnum.RequestReceived.Id)
             {
-                StageChangeException(NotificationStage.RequestProcessing);
+                StageChangeException(NotificationStageEnum.RequestProcessing);
             }
             
-            _notificationStageId = NotificationStage.RequestProcessing.Id;
+            _notificationStageId = NotificationStageEnum.RequestProcessing.Id;
 
             CreateTransactionLog();
         }
 
         private void CreateTransactionLog()
         {
-            var log = new NotificationTransactionLog(ID, ComChannel, TopicID);
+            var log = new NotificationTransactionLog(TrackingID, ComChannel, TopicID);
             _transactionLog = log;
         }       
      
@@ -83,11 +82,11 @@ namespace ONP.Domain
         public void SetToPublishStage( string recipient, string messageBody)
         {
             //check current stage of transaction log.
-            if(_transactionLog.NotificationStage.Id!=NotificationStage.RequestProcessing.Id)
+            if(_transactionLog.NotificationStage.Id!= NotificationStageEnum.RequestProcessing.Id)
             {
-                StageChangeException(NotificationStage.ToPublish);
+                StageChangeException(NotificationStageEnum.ToPublish);
             }
-            _transactionLog.NotificationStage = NotificationStage.ToPublish;
+            _transactionLog.NotificationStage = NotificationStageEnum.ToPublish;
             _transactionLog.Recipient = recipient;
             _transactionLog.MessageBody = messageBody;
         }
@@ -96,44 +95,44 @@ namespace ONP.Domain
         public void SetPublishingStage()
         {
             //check current stage of transaction log.
-            if (_transactionLog.NotificationStage.Id != NotificationStage.ToPublish.Id)
+            if (_transactionLog.NotificationStage.Id != NotificationStageEnum.ToPublish.Id)
             {
-                StageChangeException(NotificationStage.Publishing);
+                StageChangeException(NotificationStageEnum.Publishing);
             }
-            _transactionLog.NotificationStage = NotificationStage.Publishing;           
+            _transactionLog.NotificationStage = NotificationStageEnum.Publishing;           
         }
 
         //Completed = 5, // Either Success or failed depends on responseCode
         public void SetCompletedStage(string responseCode, string responseDescription)
         {
             //check current stage of transaction log.
-            if (_transactionLog.NotificationStage.Id != NotificationStage.Publishing.Id)
+            if (_transactionLog.NotificationStage.Id != NotificationStageEnum.Publishing.Id)
             {
-                StageChangeException(NotificationStage.Published);
+                StageChangeException(NotificationStageEnum.Published);
             }
             //Get the list of FailureNotifyCodes and compare, to determine the stage and further action.
             if(GetfailureNotifyingCodes().Contains(responseCode))
             {
                 //PublishFailed = 5, // Failed.
-                _transactionLog.NotificationStage = NotificationStage.PublishFailed;
+                _transactionLog.NotificationStage = NotificationStageEnum.PublishFailed;
                 //Raise PublishFailedDomainEvent   as side effect.
-                AddDomainEvent(new PublishFailedDomainEvent(ID, responseCode));
+                AddDomainEvent(new PublishFailedDomainEvent(TrackingID, responseCode));
             }
             else
             {
                 //Published = 4, // Success
-                _transactionLog.NotificationStage = NotificationStage.Published;
+                _transactionLog.NotificationStage = NotificationStageEnum.Published;
             }
             
             _transactionLog.ResponseCode = responseCode;
             _transactionLog.ResponseDescription = responseDescription;
             //Update stage in NotificationRequest
-            NotificationStage = NotificationStage.Completed;
+            NotificationStage = NotificationStageEnum.Completed;
         }
 
        
 
-        private void StageChangeException (NotificationStage stageToChange)
+        private void StageChangeException (NotificationStageEnum stageToChange)
         {
             throw new ONPDomainException($"Cannot change request stage from {NotificationStage.Name} to {stageToChange.Name}.");
         }

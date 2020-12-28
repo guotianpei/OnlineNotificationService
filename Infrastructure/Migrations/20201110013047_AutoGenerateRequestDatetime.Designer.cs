@@ -9,7 +9,7 @@ using Infrastructure;
 
 namespace ONP.Infrastructure.Migrations
 {
-    [DbContext(typeof(NotificationContext))]
+    [DbContext(typeof(NotificationProcessorContext))]
     [Migration("20201110013047_AutoGenerateRequestDatetime")]
     partial class AutoGenerateRequestDatetime
     {

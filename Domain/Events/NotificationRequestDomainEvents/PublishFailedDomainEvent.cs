@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using MediatR;
+using ONP.Domain.Models;
 
 namespace ONP.Domain
 {
@@ -12,7 +13,7 @@ namespace ONP.Domain
         //public string comChannel { get; set; }
         //public string Recipient { get; set; }
         //public DateTime TransactionDateTime { get; set; }
-        public NotificationStage NotificationStage { get; set; }
+        public NotificationStageEnum NotificationStage { get; set; }
         public string ResponseCode { get; set; }
 
         public PublishFailedDomainEvent(Guid trackingID, string responseCode)

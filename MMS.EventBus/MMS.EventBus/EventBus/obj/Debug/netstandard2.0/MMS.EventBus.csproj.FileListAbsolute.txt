@@ -16,3 +16,12 @@ C:\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBus\obj\Debug
 C:\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBus\obj\Debug\netstandard2.0\MMS.EventBus.dll
 C:\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBus\obj\Debug\netstandard2.0\MMS.EventBus.pdb
 C:\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBus\obj\Debug\netstandard2.0\MMS.EventBus.csprojAssemblyReference.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBus\bin\Debug\netstandard2.0\MMS.EventBus.deps.json
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBus\bin\Debug\netstandard2.0\MMS.EventBus.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBus\bin\Debug\netstandard2.0\MMS.EventBus.pdb
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBus\obj\Debug\netstandard2.0\MMS.EventBus.csprojAssemblyReference.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBus\obj\Debug\netstandard2.0\MMS.EventBus.AssemblyInfoInputs.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBus\obj\Debug\netstandard2.0\MMS.EventBus.AssemblyInfo.cs
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBus\obj\Debug\netstandard2.0\MMS.EventBus.csproj.CoreCompileInputs.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBus\obj\Debug\netstandard2.0\MMS.EventBus.dll
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\MMS.EventBus\MMS.EventBus\EventBus\obj\Debug\netstandard2.0\MMS.EventBus.pdb

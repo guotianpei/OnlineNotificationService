@@ -9,7 +9,9 @@ namespace OPM.Infrastructure.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
+        
         DbContext _context;
+        //Rachel: SaveChangesAsync happens in DBContext.SaveEntitiesAsync() to commit all DB CRUD commands.
         public GenericRepository(DbContext context)
         {
             _context = context;
@@ -22,22 +24,23 @@ namespace OPM.Infrastructure.Repositories
         {
             return await _context.Set<T>().FindAsync(id);
         }
-        public async virtual Task<T> Add(T entity)
+        public virtual T Add(T entity)
         {
             _context.Set<T>().Add(entity);
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
             return entity;
         }
-        public async virtual Task Update(T entity)
+        public virtual void Update(T entity)
         {
             _context.Entry<T>(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            
+            //await _context.SaveChangesAsync();
         }
-        public async virtual Task Delete(int id)
+        public virtual void Delete(int id)
         {
             T entity = _context.Set<T>().Find(id);
             _context.Set<T>().Remove(entity);
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
         }
         public virtual void Dispose()
         {

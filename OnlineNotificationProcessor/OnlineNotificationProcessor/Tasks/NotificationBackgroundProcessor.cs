@@ -9,6 +9,12 @@ using Microsoft.Extensions.Options;
 using ONP.BackendProcessor.Configuration;
 using MMS.EventBus;
 using MMS.EventBus.Abstractions;
+using ONP.Domain.Models;
+using ONP.Infrastructure.Repositories;
+using ONP.Infrastructure.Repositories.Interfaces;
+
+
+
 
 namespace ONP.BackendProcessor.Tasks
 {
@@ -20,14 +26,17 @@ namespace ONP.BackendProcessor.Tasks
         private readonly ILogger<NotificationBackgroundProcessor> _logger;
         private readonly BackgroundTaskSettings _settings;
         private readonly IEventBus _eventBus;
+        private readonly INotificationRequestRepository _repository;
 
         public NotificationBackgroundProcessor(IOptions<BackgroundTaskSettings> settings,
             IEventBus eventBus,
+            INotificationRequestRepository notificationRequestRepository,
             ILogger<NotificationBackgroundProcessor> logger)
         {
             _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
             _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _repository = notificationRequestRepository ?? throw new ArgumentNullException(nameof(notificationRequestRepository));
 
         }
 
@@ -49,6 +58,28 @@ namespace ONP.BackendProcessor.Tasks
             _logger.LogDebug("NotificationEventConsumerService background task is stopping.");
 
             await Task.CompletedTask;
+        }
+
+        private async Task<IEnumerable<NotificationRequest>> RetrievePendingRequests()
+        {
+           var pendingRequests=await _repository.GetAsyncAllPendingRequests();
+            foreach(var request in pendingRequests)
+            {
+                _logger.LogInformation("Retrieving pending request for processing:{TrackingID}", request.TrackingID);
+                try
+                {
+                    request.SetRequestProcessingStage();
+                    //await _repository
+
+
+                }
+                catch(Exception ex)
+                {
+                    _logger.LogError(ex, "ERROR retrieving pending request:{TrackingID}", request.TrackingID);
+
+                }
+            }
+
         }
     }
 }

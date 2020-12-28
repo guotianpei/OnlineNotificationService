@@ -207,3 +207,9 @@ C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Commands.API\obj
 C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Commands.API\obj\Debug\netcoreapp3.1\OPM.Commands.API.dll
 C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Commands.API\obj\Debug\netcoreapp3.1\OPM.Commands.API.pdb
 C:\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Commands.API\obj\Debug\netcoreapp3.1\OPM.Commands.API.genruntimeconfig.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Commands.API\obj\Debug\netcoreapp3.1\OPM.Commands.API.csprojAssemblyReference.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Commands.API\obj\Debug\netcoreapp3.1\OPM.Commands.API.AssemblyInfoInputs.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Commands.API\obj\Debug\netcoreapp3.1\OPM.Commands.API.AssemblyInfo.cs
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Commands.API\obj\Debug\netcoreapp3.1\OPM.Commands.API.csproj.CoreCompileInputs.cache
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Commands.API\obj\Debug\netcoreapp3.1\OPM.Commands.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\tguo4\OneDrive - DXC Production\Documents\GitHub\OnlineNotificationService\OnlineProfileManagement\OPM.Commands.API\obj\Debug\netcoreapp3.1\OPM.Commands.API.MvcApplicationPartsAssemblyInfo.cache

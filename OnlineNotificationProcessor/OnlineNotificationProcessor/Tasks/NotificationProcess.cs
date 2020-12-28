@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
+
 namespace ONP.BackendProcessor.Tasks
 {
     public class NotificationProcess
@@ -28,6 +29,8 @@ namespace ONP.BackendProcessor.Tasks
                     if (notificationResponse.NotificationStage == NotificationStage.Success)
                     {
                         //Update request status completed
+                        //Update lstPendingReq
+
                     }
                     else if (notificationResponse.NotificationStage == NotificationStage.Failed)
                     {

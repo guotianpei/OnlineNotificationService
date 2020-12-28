@@ -1,20 +1,23 @@
-﻿using ONP.Domain;
+﻿using ONP.Domain.Models;
+using ONP.Domain.Seedwork;
 using ONP.Infrastructure.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
- 
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+
 
 namespace ONP.Infrastructure.Responsitories
 {
-    class NotificationRequestRepository : GenericRepository<NotificationRequest>, INotificationRequest
+    class NotificationRequestRepository : GenericRepository<NotificationRequest>, INotificationRequestRepository
     {
         //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design
         //Define one repository per aggregate
-        private readonly NotificationContext _context;
+        private readonly NotificationProcessorContext _context;
 
-        public NotificationRequestRepository(NotificationContext context) : base(context)
+        public NotificationRequestRepository(NotificationProcessorContext context) : base(context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
@@ -28,30 +31,35 @@ namespace ONP.Infrastructure.Responsitories
         }
 
        
+       
+
+
+        //Get all stage=0
+        public async Task<IEnumerable<NotificationRequest>> GetAsyncAllPendingRequests()
+        {
+            
+           
+            return await _context.NotificationRequests
+                .Where(n => n.NotificationStage == NotificationStageEnum.RequestReceived)
+                .OrderBy(o => o.RequestDatetime)
+                .ToListAsync();
+                
+
+        }
 
         
 
-        //Get all stage=0
-        public Task<IEnumerable<NotificationRequest>> GetAll()
+        public async Task<NotificationRequest> GetAsyncById(Guid trackingId)
         {
-            throw new NotImplementedException();
-        }
+            var request = await _context.NotificationRequests
+               .Include(n => n.NotificationTransactionLog)
+               .Where(n => n.TrackingID == trackingId)
+               .SingleOrDefaultAsync();
 
-        public Task<NotificationRequest> GetAsync(NotificationRequest request)
-        {
-            throw new NotImplementedException();
+            return request;
         }
-
-        public Task<NotificationRequest> GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
        
 
-        public Task<NotificationRequest> UpdateAsync(NotificationRequest request)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

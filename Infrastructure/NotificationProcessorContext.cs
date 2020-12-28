@@ -1,10 +1,12 @@
-﻿using ONP.Domain;
+﻿using ONP.Domain.Models;
+using ONP.Domain.Seedwork;
 using ONP.Infrastructure;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -12,24 +14,25 @@ using System.Threading.Tasks;
 
 namespace ONP.Infrastructure
 {
-    public class NotificationContext: DbContext, IUnitOfWork
+    public class NotificationProcessorContext: DbContext, IUnitOfWork
     {
         private readonly IMediator _mediator;
         private IDbContextTransaction _currentTransaction;
-        private NotificationContext(DbContextOptions<NotificationContext> options) : base(options)
+        private NotificationProcessorContext(DbContextOptions<NotificationProcessorContext> options) : base(options)
         {
         }
-        public NotificationContext(DbContextOptions<NotificationContext> options, IMediator mediator) : base(options)
+        public NotificationProcessorContext(DbContextOptions<NotificationProcessorContext> options, IMediator mediator) : base(options)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             System.Diagnostics.Debug.WriteLine("NotificationContext::ctor ->" + this.GetHashCode());
         }
+        public const string DEFAULT_SCHEMA = "ONP";
         public DbSet<NotificationRequest> NotificationRequests { get; set; }
         public DbSet<EntityProfile> EntityProfiles { get; set; }
         public DbSet<NotificationTransactionLog> NotificationTransactionLogs { get; set; }
         public DbSet<FailureNotifyCodes> FailureNotifyCodes { get; set; }
         public DbSet<NotificationTemplate> NotificationTemplates { get; set; }
-        public DbSet<IntegrationEventLogEntry> IntegrationEventLogEntries { get; set; }
+        //public DbSet<IntegrationEventLogEntry> IntegrationEventLogEntries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -38,7 +41,7 @@ namespace ONP.Infrastructure
             builder.ApplyConfiguration(new NotificationTransactionLogConfiguration());
             builder.ApplyConfiguration(new FailureNotifyCodesConfiguration());
             builder.ApplyConfiguration(new NotificationTemplateConfiguration());
-            builder.ApplyConfiguration(new IntegrationEventLogConfiguration());
+            //builder.ApplyConfiguration(new IntegrationEventLogConfiguration());
         }
 
         public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
@@ -109,13 +112,13 @@ namespace ONP.Infrastructure
             }
         }
     }
-    public class NotificationContextDesignFactory : IDesignTimeDbContextFactory<NotificationContext>
+    public class NotificationContextDesignFactory : IDesignTimeDbContextFactory<NotificationProcessorContext>
     {
-        public NotificationContext CreateDbContext(string[] args)
+        public NotificationProcessorContext CreateDbContext(string[] args)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<NotificationContext>()
+            var optionsBuilder = new DbContextOptionsBuilder<NotificationProcessorContext>()
                 .UseSqlServer("Server=DC01VI2WSSDV01.WV.CORE.HIM\\OPMDEV;Initial Catalog=OnlineNotification;Integrated Security = False; Persist Security Info = False; User ID = sa; Password = Pass@word");
-            return new NotificationContext(optionsBuilder.Options, new NoMediator());
+            return new NotificationProcessorContext(optionsBuilder.Options, new NoMediator());
             //return null;
         }
 

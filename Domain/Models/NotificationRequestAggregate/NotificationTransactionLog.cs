@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+ 
 
-namespace ONP.Domain
+namespace ONP.Domain.Models
 {
     public class NotificationTransactionLog
     {
@@ -24,7 +25,7 @@ namespace ONP.Domain
 
         public int RetryCounts { get; set; }
 
-        public NotificationStage NotificationStage { get;  set; }
+        public NotificationStageEnum NotificationStage { get;  set; }
 
         public string ResponseCode { get; set; }
 
@@ -40,7 +41,7 @@ namespace ONP.Domain
             //Recipient = recipient;
             TopicID = topicId;
             //RequestProcessing = 1, Notification Background processor retrieve initial request, 
-            NotificationStage = NotificationStage.RequestProcessing;
+            NotificationStage = NotificationStageEnum.RequestProcessing;
             //MessageBody = messageBody;
         }
 

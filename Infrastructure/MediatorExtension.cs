@@ -8,7 +8,7 @@ namespace ONP.Infrastructure
 {
     static class MediatorExtension
     {
-        public static async Task DispatchDomainEventsAsync(this IMediator mediator, NotificationContext ctx)
+        public static async Task DispatchDomainEventsAsync(this IMediator mediator, NotificationProcessorContext ctx)
         {
             var domainEntities = ctx.ChangeTracker
                 .Entries<Entity>()

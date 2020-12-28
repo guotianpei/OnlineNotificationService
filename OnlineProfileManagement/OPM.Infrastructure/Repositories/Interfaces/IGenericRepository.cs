@@ -9,8 +9,8 @@ namespace OPM.Infrastructure.Repositories.Interfaces
     {
         Task<IEnumerable<T>> GetAll();
         Task<T> GetById(int id);
-        Task<T> Add(T entity);
-        Task Update(T entity);
-        Task Delete(int id);
+        T Add(T entity);
+        void Update(T entity);
+        void Delete(int id);
     }
 }

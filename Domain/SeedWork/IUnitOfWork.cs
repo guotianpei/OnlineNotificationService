@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ONP.Domain
+namespace ONP.Domain.Seedwork
 {
     public interface IUnitOfWork : IDisposable
     {        

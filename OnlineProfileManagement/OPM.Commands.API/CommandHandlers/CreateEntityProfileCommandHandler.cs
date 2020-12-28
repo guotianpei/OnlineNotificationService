@@ -35,12 +35,12 @@ namespace OPM.Commands.API.CommandHandlers
             _profileIntegrationEventService = profileIntegrationEventService ?? throw new ArgumentNullException(nameof(profileIntegrationEventService));
         }
 
-        public async Task<bool> Handle(CreateEntityProfileCommand request, CancellationToken cancellationToken)
+        public Task<bool> Handle(CreateEntityProfileCommand request, CancellationToken cancellationToken)
         {
             // TO-DO: Add any Integration event
 
             var entityRegisteredIntegrationEvent = new EntityRegisteredIntegrationEvent(request.EntityId, request.EntityName, request.EntityType, request.FirstName, request.LastName, Program.AppName, request.RequestID, request.ComChannels);
-            await _profileIntegrationEventService.AddAndSaveEventAsync(entityRegisteredIntegrationEvent);
+            _profileIntegrationEventService.AddAndSaveEventAsync(entityRegisteredIntegrationEvent);
 
             // Add/Update the Profile AggregateRoot
             // DDD patterns comment: Add child entities and value-objects through the Profile Aggregate-Root
@@ -54,8 +54,8 @@ namespace OPM.Commands.API.CommandHandlers
             }
 
             //_logger.LogInformation("----- Creating EntityProfile - EntityProfile: {@profile}", profile);
-            await _profileRepository.Add(profile);
-            return await _profileRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
+            _profileRepository.Add(profile);
+            return _profileRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
         }
 
 

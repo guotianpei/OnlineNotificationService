@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace ONP.Domain
+namespace ONP.Domain.Models
 {
     public class ComChannel
     {

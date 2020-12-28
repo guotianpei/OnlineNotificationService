@@ -9,7 +9,7 @@ using Infrastructure;
 
 namespace ONP.Infrastructure.Migrations
 {
-    [DbContext(typeof(NotificationContext))]
+    [DbContext(typeof(NotificationProcessorContext))]
     [Migration("20201001222529_InitialSchema")]
     partial class InitialSchema
     {

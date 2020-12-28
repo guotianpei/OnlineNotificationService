@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ONP.Domain.Seedwork;
 
-namespace ONP.Domain
+namespace ONP.Domain.Models
 {
     public class ComChannelTypes : Enumeration
     {

@@ -1,5 +1,5 @@
-﻿using ONP.Domain;
-using ONP.;
+﻿using ONP.Domain.Models;
+using ONP.Infrastructure;
 using Microsoft.Extensions.Logging;
 using MMS.EventBus.Abstractions;
 using NotificationProcessor.API.IntegrationEvents.Events;
@@ -13,13 +13,13 @@ namespace NotificationProcessor.API.IntegrationEvents.Handlers
 {
     public class EntityRegisteredIntegrationEventHandler : IIntegrationEventHandler<EntityRegisteredIntegrationEvent>
     {
-        private readonly NotificationContext _notificationContext;
+        private readonly NotificationProcessorContext _notificationRequestContext;
         private readonly ILogger<EntityRegisteredIntegrationEventHandler> _logger;
         private readonly INotificationIntegrationEventService _notificationIntegrationEventService;
-        public EntityRegisteredIntegrationEventHandler(NotificationContext notificationContext, ILogger<EntityRegisteredIntegrationEventHandler> logger,
+        public EntityRegisteredIntegrationEventHandler(NotificationProcessorContext notificationContext, ILogger<EntityRegisteredIntegrationEventHandler> logger,
              INotificationIntegrationEventService notificationIntegrationEventService)
         {
-            _notificationContext = notificationContext;
+            _notificationRequestContext = notificationContext;
             _logger = logger;
             _notificationIntegrationEventService = notificationIntegrationEventService;
         }
@@ -47,8 +47,8 @@ namespace NotificationProcessor.API.IntegrationEvents.Handlers
                 };
 
                 //await _notificationContext.NotificationTransactionLogs.AddAsync(notificationLog);
-                await _notificationContext.EntityProfiles.AddAsync(profileToUpdate);
-                await _notificationContext.SaveChangesAsync();
+                await _notificationRequestContext.EntityProfiles.Add(profileToUpdate);
+                await _notificationRequestContext.SaveChangesAsync();
             }
         }
     }

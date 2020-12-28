@@ -3,10 +3,8 @@ using MediatR;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ONP.Domain
-{
-    
-
+namespace ONP.Domain.Seedwork
+{   
     public abstract class Entity
     {
         int? _requestedHashCode;

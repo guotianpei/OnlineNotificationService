@@ -9,7 +9,7 @@ using Infrastructure;
 
 namespace ONP.Infrastructure.Migrations
 {
-    [DbContext(typeof(NotificationContext))]
+    [DbContext(typeof(NotificationProcessorContext))]
     [Migration("20201022170925_DropIDFromNotificationRequestTable")]
     partial class DropIDFromNotificationRequestTable
     {

@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using ONP.Domain.Models;
 using MMS.EventBus.Events;
 using System;
 using System.Collections.Generic;

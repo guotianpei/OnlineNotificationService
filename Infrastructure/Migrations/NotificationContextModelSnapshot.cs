@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ONP.Infrastructure.Migrations
 {
-    [DbContext(typeof(NotificationContext))]
+    [DbContext(typeof(NotificationProcessorContext))]
     partial class NotificationContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

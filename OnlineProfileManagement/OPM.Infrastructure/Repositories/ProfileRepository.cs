@@ -43,10 +43,8 @@ namespace OPM.Infrastructure.Repositories
 
         public Task<List<EntityProfile>> GetEntityProfiles(string EntityID)
         {
-            //_context.EntityProfiles.
-            var student = (from s in _context.EntityProfiles
-                           where s.EntityID == EntityID
-                           select s).FirstOrDefault<EntityProfile>();
+            //_context.EntityProfiles
+            //Mallika/Chao TO-DO: input EntityID here is string of listed entityID separate by ;, not single entityID
 
             return Task.FromResult(_context.EntityProfiles.Where(obj => obj.EntityID == EntityID)
                                                            .Include(obj => obj.ProfileResource)
