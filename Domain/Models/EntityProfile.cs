@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ONP.Domain.Seedwork;
 
 namespace ONP.Domain.Models
 {
-    public class EntityProfile
+    public class EntityProfile : Entity, IAggregateRoot
     {
         public int ID { get; set; }
         public string EntityID { get; set; }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using ONP.Domain.Seedwork;
+using System.Threading.Tasks;
 
 namespace ONP.Domain.Models
 {
-    public class NotificationRequest : Entity
+    public class NotificationRequest : Entity, IAggregateRoot
     {
         //Rachel: GUID, instead of int ID, and also can we generate ID in DB, instead of in the request?
         //Mallika: It should be from requestor, for tracking purpose. So requestor can track the request from their end.
@@ -55,24 +55,24 @@ namespace ONP.Domain.Models
 
         }
 
-        public void SetRequestProcessingStage()
-        {
-            //Set Request stage=1; and initiate/to create  transaction Log
-            if(_notificationStageId!= NotificationStageEnum.RequestReceived.Id)
-            {
-                StageChangeException(NotificationStageEnum.RequestProcessing);
-            }
+        //public void SetRequestProcessingStage()
+        //{
+        //    //Set Request stage=1; and initiate/to create  transaction Log
+        //    if(_notificationStageId!= NotificationStageEnum.RequestReceived.Id)
+        //    {
+        //        StageChangeException(NotificationStageEnum.RequestProcessing);
+        //    }
             
-            _notificationStageId = NotificationStageEnum.RequestProcessing.Id;
+        //    _notificationStageId = NotificationStageEnum.RequestProcessing.Id;
 
-            CreateTransactionLog();
-        }
+        //    CreateTransactionLog();
+        //}
 
-        private void CreateTransactionLog()
-        {
-            var log = new NotificationTransactionLog(TrackingID, ComChannel, TopicID);
-            _transactionLog = log;
-        }       
+        //private void CreateTransactionLog()
+        //{
+        //    var log= new NotificationTransactionLog(TrackingID, ComChannel, TopicID);
+          
+        //}       
      
        
 
@@ -129,6 +129,8 @@ namespace ONP.Domain.Models
             //Update stage in NotificationRequest
             NotificationStage = NotificationStageEnum.Completed;
         }
+
+        
 
        
 

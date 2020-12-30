@@ -18,7 +18,7 @@ namespace ONP.Infrastructure.Responsitories
         {
             return await _context.Set<T>().ToListAsync();
         }
-        public async virtual Task<T> GetById(int id)
+        public async virtual Task<T> GetById(Guid id)
         {
             return await _context.Set<T>().FindAsync(id);
         }

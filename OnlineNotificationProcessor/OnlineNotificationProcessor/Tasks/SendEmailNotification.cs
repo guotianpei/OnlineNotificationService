@@ -11,6 +11,8 @@ using MMS.EventBus;
 using MMS.EventBus.Abstractions;
 using ONP.BackendProcessor.Models;
 using ONP.BackendProcessor.Services;
+using ONP.Domain.Models;
+using ONP.Infrastructure.Repositories.Interfaces;
 
 namespace ONP.BackendProcessor.Tasks
 {
@@ -20,6 +22,8 @@ namespace ONP.BackendProcessor.Tasks
         private readonly BackgroundTaskSettings _settings;
         private readonly IEventBus _eventBus;
         private readonly EmailService _ems;
+
+        private readonly INotificationRequestRepository _requestRepository;
 
         public SendEmailNotification(IOptions<BackgroundTaskSettings> settings,
             IEventBus eventBus,
@@ -36,11 +40,13 @@ namespace ONP.BackendProcessor.Tasks
             _ems = new EmailService();
         }
 
-        public NotificationResponse SendNotification(NotificationData notdata)
+        public async Task<NotificationResponse> SendNotification(NotificationData notdata)
         {
             NotificationResponse _emailResponse = new NotificationResponse();
             try
             {
+                //Update stage
+                SetPublishingStage(notdata.TrackingID);
                 EmailService ems = new EmailService();
                 EmailRequest emr = null;
 
@@ -52,12 +58,12 @@ namespace ONP.BackendProcessor.Tasks
                 emr.IsBodyHtml = true;
                 emr.Priority = System.Net.Mail.MailPriority.Normal;
                 _ems.SendMail(emr);
-                _emailResponse.NotificationStage = NotificationStage.Success;
-                _emailResponse.ID = notdata.ID;
+                _emailResponse.NotificationStage = NotificationStageEnum.Published;//Need to capture actual response.
+                _emailResponse.TrackingID = notdata.TrackingID;
             }
             catch (Exception ex)
             {
-                _emailResponse.NotificationStage = NotificationStage.Failed;
+                _emailResponse.NotificationStage = NotificationStageEnum.PublishFailed;
                 _emailResponse.Error = ex;                
             }
 
@@ -65,17 +71,15 @@ namespace ONP.BackendProcessor.Tasks
         }
 
 
-        public List<NotificationResponse> SendBulkNotification(List<NotificationData> lstNotificationData)
-        {
-            int chunkSize = 80;//TO-DO: from appsetting configuration.
-            
-            // Split "mailingList" to multiple lists of "chunkSize" size.
-            var mailingChunks = CommonHelper.SplitMany(mailingList, chunkSize);
 
-        }
-        void UpdatNotification()
+        private async void SetPublishingStage(Guid trackingId)
         {
-
+            var requestToUpdate = await _requestRepository.GetById(trackingId);
+            if (requestToUpdate != null)
+            {
+                requestToUpdate.SetPublishingStage();
+                await _requestRepository.UnitOfWork.SaveEntitiesAsync();
+            }
         }
 
     }

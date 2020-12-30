@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Net.Mail;
 using System.Text;
 using Microsoft.Extensions.Configuration;
+using ONP.BackendProcessor.Models;
+using System.Threading.Tasks;
 
 namespace ONP.BackendProcessor.Services
 {
     public class EmailService
     {
-        internal void SendMail(EmailRequest mailrequest)
+        internal async Tasks<NotificationResponse> SendMail(EmailRequest mailrequest)
         {
             System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
             //AddMailProperties(mailrequest, null, message);

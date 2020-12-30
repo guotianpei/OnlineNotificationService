@@ -1,52 +1,53 @@
-﻿using ONP.BackendProcessor.Models;
+﻿using ONP.Domain.Models;
+using ONP.BackendProcessor.Models;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using Microsoft.Extensions.Logging;
+using ONP.Infrastructure.Repositories.Interfaces;
+using System.Threading.Tasks;
 
 
 namespace ONP.BackendProcessor.Tasks
 {
     public class NotificationProcess
     {
+        private readonly ILogger<NotificationProcess> _logger;
+        private readonly INotificationRequestRepository _requestRepository;
+        private readonly INotificationTemplateRepository _templateRepository;
+
         ISendNotification _sendnotificatoin;
-        public NotificationProcess(ISendNotification objSN)
+        public NotificationProcess(ISendNotification objSN,
+            INotificationRequestRepository notificationRequestRepository,
+            ILogger<NotificationProcess> logger)
         {
             _sendnotificatoin = objSN;
         }
-        public void SendNotification(List<NotificationRequest> lstPendingReq)
+        public async void SendNotification(List<NotificationRequest> lstPendingReq)
         {
             NotificationResponse notificationResponse;
 
             foreach (NotificationRequest notificationReq in lstPendingReq)
             {
-                notificationResponse = _sendnotificatoin.SendNotification(BuildNotificationData(notificationReq));
+                var notificationData = await BuildNotificationData(notificationReq);
+                notificationResponse = _sendnotificatoin.SendNotification(notificationData);
 
                 if (notificationResponse != null )
                 {
-
-                    //Domain event should be triggered here.
-                    if (notificationResponse.NotificationStage == NotificationStage.Success)
-                    {
-                        //Update request status completed
-                        //Update lstPendingReq
-
-                    }
-                    else if (notificationResponse.NotificationStage == NotificationStage.Failed)
-                    {
-                        //Raise Domain event to update
-                        //Update request status failed and lof failed reason
-                    }
+                   SetCompletedStage(notificationResponse.TrackingID, notificationResponse.ResponseCode, notificationResponse.ResponseMessage);
                 }
             }            
         }
 
-        NotificationData BuildNotificationData(NotificationRequest req)
+        public async Task<NotificationData> BuildNotificationData(NotificationRequest req)
         {
             try
             {
                 NotificationData _notificationData = new NotificationData();
-                NotificationTemplate _notificationTemplate = GetNotificatoinTemplate(req.TopicID);
+                //NotificationTemplate _notificationTemplate = GetNotificatoinTemplate(req.TopicID);
+                var _notificationTemplate =await _templateRepository.GetAsync(req.TopicID);
+                
                 EntityProfile _entprof = GetEntityProfile(req.EntityID);
                 BuildTemplate _bt = new BuildTemplate();
 
@@ -62,6 +63,8 @@ namespace ONP.BackendProcessor.Tasks
                     //Replace custom tag
                     _notificationData.RequestMessageData = _notificationData.RequestMessageData.Replace("$CustomTag$", req.RequestMessageData).Trim();
                 }
+                // Notification Composition has been completed, to send to corresponding notification processor depends on type of communication channel. Update stage=ToPublish
+                SetToPublishStage(req.TrackingID, _notificationData.To, _notificationData.RequestMessageData);
                 return _notificationData;
             }
             catch (Exception ex)
@@ -92,17 +95,25 @@ namespace ONP.BackendProcessor.Tasks
             return _entprof;
         }
 
-        NotificationTemplate GetNotificatoinTemplate(string TopicID)
+        private async void SetToPublishStage(Guid trackingId, string recipient, string messageBody)
         {
-            NotificationTemplate _notificationTemplate = new NotificationTemplate();
-            _notificationTemplate.ID = "123";
-            _notificationTemplate.Subject = "PEA Registration";
-            _notificationTemplate.From = "NoReply.PEA@Gainwelltechnologies.com";
-            _notificationTemplate.ComChannel = "Email";
-            _notificationTemplate.TemplateFile = "";
-            //Need to validate template termination date
-            return _notificationTemplate;
+            var requestToUpdate =await _requestRepository.GetById(trackingId);
+            if(requestToUpdate!=null)
+            {
+                requestToUpdate.SetToPublishStage(recipient, messageBody);
+                await _requestRepository.UnitOfWork.SaveEntitiesAsync();
+            }             
         }
-       
+
+        private async void SetCompletedStage(Guid trackingId, string responseCode, string responseDescription)
+        {
+            var requestToUpdate = await _requestRepository.GetById(trackingId);
+            if (requestToUpdate != null)
+            {
+                requestToUpdate.SetCompletedStage(responseCode, responseDescription);
+                await _requestRepository.UnitOfWork.SaveEntitiesAsync();
+            }
+        }
+
     }
 }

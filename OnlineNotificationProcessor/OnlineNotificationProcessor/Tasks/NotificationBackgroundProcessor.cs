@@ -52,7 +52,8 @@ namespace ONP.BackendProcessor.Tasks
                 //Looking for pending notification "NotPublished"
                 //Get email notification from . Call template management service, compose msg body
                 //Depends on the type of notification, publish either email or SMS Into notification table.
-
+                var pendingRequests = await _repository.GetAndUpdateAsyncAllPendingRequests();
+                
             }
 
             _logger.LogDebug("NotificationEventConsumerService background task is stopping.");
@@ -60,26 +61,6 @@ namespace ONP.BackendProcessor.Tasks
             await Task.CompletedTask;
         }
 
-        private async Task<IEnumerable<NotificationRequest>> RetrievePendingRequests()
-        {
-           var pendingRequests=await _repository.GetAsyncAllPendingRequests();
-            foreach(var request in pendingRequests)
-            {
-                _logger.LogInformation("Retrieving pending request for processing:{TrackingID}", request.TrackingID);
-                try
-                {
-                    request.SetRequestProcessingStage();
-                    //await _repository
-
-
-                }
-                catch(Exception ex)
-                {
-                    _logger.LogError(ex, "ERROR retrieving pending request:{TrackingID}", request.TrackingID);
-
-                }
-            }
-
-        }
+       
     }
 }

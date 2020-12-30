@@ -4,7 +4,7 @@ using System.Text;
 using MediatR;
 using ONP.Domain.Models;
 
-namespace ONP.Domain
+namespace ONP.Domain.Events
 {
     public class PublishFailedDomainEvent : INotification
     {

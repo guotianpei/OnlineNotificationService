@@ -6,7 +6,7 @@ namespace ONP.BackendProcessor.Models
 {
     public class NotificationData
     {
-        public string ID { get; set; } //Notification request id       
+        public Guid TrackingID { get; set; } //Notification request id       
         public string ComChannel { get; set; }
         public string RequestMessageData { get; set; }
         public string Subject { get; set; }

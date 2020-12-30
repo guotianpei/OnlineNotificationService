@@ -4,11 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
- 
+using ONP.Domain.Seedwork;
+using ONP.Domain.Models;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+
+
 
 namespace ONP.Infrastructure.Responsitories
 {
-    class NotificationTemplateRepository : GenericRepository<NotificationTemplate>, INotificationTemplate
+    class NotificationTemplateRepository : GenericRepository<NotificationTemplate>, INotificationTemplateRepository
     {
         //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design
         //Define one repository per aggregate
@@ -18,7 +23,7 @@ namespace ONP.Infrastructure.Responsitories
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
-
+    
         public IUnitOfWork UnitOfWork
         {
             get
@@ -32,9 +37,17 @@ namespace ONP.Infrastructure.Responsitories
             throw new NotImplementedException();
         }
 
-        public Task<NotificationTemplate> GetAsync(int templateID)
+        public async Task<NotificationTemplate> GetAsync(int topicId)
         {
-            throw new NotImplementedException();
+            
+            return await _context.NotificationTemplates
+                .Include(n => n.TopicName)
+                .Include(n => n.Subject)
+                .Include(n => n.TemplateFile)
+                .Include(n => n.From)
+                .Where(n => n.ID == topicId && n.TerminateDate> DateTime.Today)
+                .FirstOrDefaultAsync();                  
+              
         }
 
         public Task<NotificationTemplate> UpdateAsync(NotificationTemplate request)

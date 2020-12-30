@@ -35,16 +35,13 @@ namespace ONP.Infrastructure.Responsitories
 
 
         //Get all stage=0
-        public async Task<IEnumerable<NotificationRequest>> GetAsyncAllPendingRequests()
-        {
-            
-           
+        public async Task<IEnumerable<NotificationRequest>> GetAndUpdateAsyncAllPendingRequests()
+        {                     
+            //To-DO: Replace with SP update original request status and insert transaction log.
             return await _context.NotificationRequests
                 .Where(n => n.NotificationStage == NotificationStageEnum.RequestReceived)
                 .OrderBy(o => o.RequestDatetime)
-                .ToListAsync();
-                
-
+                .ToListAsync();                
         }
 
         
@@ -55,7 +52,6 @@ namespace ONP.Infrastructure.Responsitories
                .Include(n => n.NotificationTransactionLog)
                .Where(n => n.TrackingID == trackingId)
                .SingleOrDefaultAsync();
-
             return request;
         }
        

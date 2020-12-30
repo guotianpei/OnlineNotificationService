@@ -12,7 +12,7 @@ namespace ONP.Infrastructure.Repositories.Interfaces
     {
         Task<NotificationTemplate> AddAsync(NotificationTemplate request);
         Task<NotificationTemplate> UpdateAsync(NotificationTemplate request);
-        Task<NotificationTemplate> GetAsync(int templateID);
+        Task<NotificationTemplate> GetAsync(int topicId);
 
 
     }
