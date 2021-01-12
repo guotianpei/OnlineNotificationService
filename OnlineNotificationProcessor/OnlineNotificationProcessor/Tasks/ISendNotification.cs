@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ONP.BackendProcessor.Tasks
 {
     public interface ISendNotification
     {
-        NotificationResponse SendNotification(NotificationData notlog);
+        public Task<NotificationResponse> SendNotification(NotificationData notlog);
         //void UpdateNotificationStatus();
 
     }

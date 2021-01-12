@@ -35,7 +35,7 @@ namespace ONP.Infrastructure.Responsitories
 
 
         //Get all stage=0
-        public async Task<IEnumerable<NotificationRequest>> GetAndUpdateAsyncAllPendingRequests()
+        public async Task<List<NotificationRequest>> GetAndUpdateAsyncAllPendingRequests()
         {                     
             //To-DO: Replace with SP update original request status and insert transaction log.
             return await _context.NotificationRequests
@@ -44,7 +44,9 @@ namespace ONP.Infrastructure.Responsitories
                 .ToListAsync();                
         }
 
-        
+       
+
+
 
         public async Task<NotificationRequest> GetAsyncById(Guid trackingId)
         {

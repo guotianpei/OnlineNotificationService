@@ -4,6 +4,7 @@ using System.Text;
 using ONP.Domain.Models;
 using ONP.Infrastructure.Responsitories;
 using System.Threading.Tasks;
+using ONP.Domain.Seedwork;
 
 namespace ONP.Infrastructure.Repositories.Interfaces
 {

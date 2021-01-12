@@ -21,24 +21,27 @@ namespace ONP.BackendProcessor.Tasks
         private readonly ILogger<SendEmailNotification> _logger;
         private readonly BackgroundTaskSettings _settings;
         private readonly IEventBus _eventBus;
-        private readonly EmailService _ems;
+        private readonly IEmailService _emailService;
+
+        private readonly EmailServiceConfig _configuration;
+        
+
 
         private readonly INotificationRequestRepository _requestRepository;
 
         public SendEmailNotification(IOptions<BackgroundTaskSettings> settings,
             IEventBus eventBus,
-            ILogger<SendEmailNotification> logger)
+            ILogger<SendEmailNotification> logger,
+            IEmailService emailService)
         {
             _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
             _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _emailService= emailService ?? throw new ArgumentNullException(nameof(emailService));
 
         }
 
-        public SendEmailNotification()
-        {
-            _ems = new EmailService();
-        }
+        
 
         public async Task<NotificationResponse> SendNotification(NotificationData notdata)
         {

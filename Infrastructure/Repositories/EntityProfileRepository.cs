@@ -1,10 +1,14 @@
-﻿using ONP.Domain;
+﻿using ONP.Domain.Models;
+using ONP.Domain.Seedwork;
 using ONP.Infrastructure.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
- 
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+
+
 
 namespace ONP.Infrastructure.Responsitories
 {

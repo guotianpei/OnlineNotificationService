@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using ONP.Domain.Models;
 using System.Text;
 using ONP.BackendProcessor.Models;
+using System.Reflection;
 
 namespace ONP.BackendProcessor.Tasks
 {
     public class CommonHelper
     {
-        internal static List<List<NotificationData>> SplitMany(List<NotificationData> source, int size)
+        public List<PlaceHolder> AddPlaceHolder(EntityProfile entProf)
         {
-            var sourceChunks = new List<List<NotificationData>>();
-
-            for (int i = 0; i < source.Count; i += size)
-                sourceChunks.Add(source.GetRange(i, Math.Min(size, source.Count - i)));
-
-            return sourceChunks;
+            List<PlaceHolder> lstPH = new List<PlaceHolder>();
+            PlaceHolder _pholder;
+            foreach (PropertyInfo prop in entProf.GetType().GetProperties())
+            {
+                _pholder = new PlaceHolder(string.Format("${0}$", prop.Name), prop.GetValue(entProf).ToString());
+                lstPH.Add(_pholder);
+            }
+            return lstPH;
         }
 
-        
+
     }
 }

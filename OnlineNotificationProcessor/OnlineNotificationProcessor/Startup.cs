@@ -15,6 +15,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using RabbitMQ.Client;
 using ONP.BackendProcessor.Tasks;
 using ONP.BackendProcessor.Configuration;
+using ONP.BackendProcessor.Services;
 
 
 namespace ONP.BackendProcessor
@@ -41,9 +42,18 @@ namespace ONP.BackendProcessor
             //configure background task
 
             services.AddSingleton<IHostedService, NotificationBackgroundProcessor>();
-            //configure event bus related services
-
             
+
+
+            // Read all service endpoint settings
+            services.Configure<EmailServiceConfig>(Configuration.GetSection("AWSSES"));
+            services.Configure<SecureMessageServiceConfig>(Configuration.GetSection("AWSSES"));
+
+            // Register email/SMS/SM service 
+            services.AddSingleton<IEmailService, EmailService>();
+            services.AddSingleton<ISecureMessageService, SecureMessageService>();
+            services.AddSingleton<ISMSService, SMSService>();
+
             services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
             {
                 var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
@@ -108,6 +118,8 @@ namespace ONP.BackendProcessor
         
             services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
         }
+
+       
     }
 
    

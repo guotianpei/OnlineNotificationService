@@ -17,6 +17,8 @@ namespace ONP.Domain.Models
 
         public string RequestMessageData { get; set; }
 
+        public string Recipient { get; set; }
+
         public int TopicID { get; set; }
 
         //The stage cannot be set from public/outside of the object.

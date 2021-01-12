@@ -13,7 +13,8 @@ namespace ONP.Infrastructure.Repositories.Interfaces
         //Task<NotificationRequest> AddAsync(NotificationRequest request);
         //void Update(NotificationRequest request);
         //public  Task<NotificationRequest> GetAsyncById(Guid trackingId);
-        Task<IEnumerable<NotificationRequest>> GetAndUpdateAsyncAllPendingRequests();
+        Task<List<NotificationRequest>> GetAndUpdateAsyncAllPendingRequests();
+      
 
 
     }
