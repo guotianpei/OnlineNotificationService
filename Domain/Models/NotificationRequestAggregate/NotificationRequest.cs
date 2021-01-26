@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ONP.Domain.Seedwork;
 using System.Threading.Tasks;
+using ONP.Domain.Events;
 
 namespace ONP.Domain.Models
 {
@@ -26,7 +27,7 @@ namespace ONP.Domain.Models
         public NotificationStageEnum NotificationStage { get; private set; }
         private int _notificationStageId;
 
-        public string RequestDatetime { get; set; }//Rachel: will be default as current date. 
+        public DateTime RequestDatetime { get; set; }//Rachel: will be default as current date. 
                                                    //Mallika: No, it should be from the request/intergration event, not current date/time.
 
         //DDD Patterns comment
@@ -45,7 +46,7 @@ namespace ONP.Domain.Models
 
        
 
-        public NotificationRequest(Guid trackingID, string entityId, string comChannel, string requestMessageDate, int topicId, string requestDateTime): this()
+        public NotificationRequest(Guid trackingID, string entityId, string comChannel, string requestMessageDate, int topicId, DateTime requestDateTime): this()
         {
             TrackingID = trackingID;
             EntityID = entityId;
@@ -57,26 +58,26 @@ namespace ONP.Domain.Models
 
         }
 
-        //public void SetRequestProcessingStage()
-        //{
-        //    //Set Request stage=1; and initiate/to create  transaction Log
-        //    if(_notificationStageId!= NotificationStageEnum.RequestReceived.Id)
-        //    {
-        //        StageChangeException(NotificationStageEnum.RequestProcessing);
-        //    }
-            
-        //    _notificationStageId = NotificationStageEnum.RequestProcessing.Id;
+        public void SetRequestProcessingStage()
+        {
+            //Set Request stage=1; and initiate/to create  transaction Log
+            if (_notificationStageId != NotificationStageEnum.RequestReceived.Id)
+            {
+                StageChangeException(NotificationStageEnum.RequestProcessing);
+            }
 
-        //    CreateTransactionLog();
-        //}
+            _notificationStageId = NotificationStageEnum.RequestProcessing.Id;
 
-        //private void CreateTransactionLog()
-        //{
-        //    var log= new NotificationTransactionLog(TrackingID, ComChannel, TopicID);
-          
-        //}       
-     
-       
+            CreateTransactionLog();
+        }
+
+        private void CreateTransactionLog()
+        {
+            var log = new NotificationTransactionLog(TrackingID, ComChannel, TopicID);
+
+        }
+
+
 
         //ToPublish = 2, // Notification Composition has been completed, 
         //to send to corresponding notification processor depends on type of communication channel.
@@ -117,8 +118,6 @@ namespace ONP.Domain.Models
             {
                 //PublishFailed = 5, // Failed.
                 _transactionLog.NotificationStage = NotificationStageEnum.PublishFailed;
-                //Raise PublishFailedDomainEvent   as side effect.
-                AddDomainEvent(new PublishFailedDomainEvent(TrackingID, responseCode));
             }
             else
             {

@@ -25,9 +25,9 @@ namespace ONP.BackendProcessor.Tasks
            // List<NotificationResponse> notificationResponselst=new List<NotificationResponse>();
 
           
-                _emailService.SendMailAsync(lstPendingReq);
+                //_emailService.SendMailAsync(lstPendingReq);
                
-            }            
+                       
         }
 
         //public async Task<NotificationData> BuildNotificationData(NotificationRequest req)

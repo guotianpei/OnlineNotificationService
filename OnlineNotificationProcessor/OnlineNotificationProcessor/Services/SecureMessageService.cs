@@ -13,7 +13,7 @@ using ONP.BackendProcessor.Tasks;
 
 namespace ONP.BackendProcessor.Services
 {
-   
+
 
     public class SecureMessageService : ISecureMessageService
     {
@@ -31,41 +31,9 @@ namespace ONP.BackendProcessor.Services
             //_entityRepository = entityRepository;
         }
 
-        public async Task<List<NotificationResponse>> SendMailAsync(List<NotificationData> lstPendingReq)
+        public void SendMailAsync(List<NotificationData> lstEmailRequest)
         {
-            SmtpClient client = new SmtpClient();
-            client.Host = _configuration.MailServerHost;
-            client.Credentials = new System.Net.NetworkCredential(_configuration.ACCESS_KEY, _configuration.SECRET_KEY);
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
-            try
-            {
-                foreach (var mailrequest in lstPendingReq)
-                {
-                    var data = await BuildEmailTemplateData(mailrequest);
-                    message.From = new System.Net.Mail.MailAddress(data.From);
-                    message.Subject = data.Subject;
-                    message.Body = data.RequestMessageData;
-                    //message.Priority = mailrequest.Priority;
-                    // message.IsBodyHtml = mailrequest.IsBodyHtml;
-                    message.To.Add(data.To);
-                    try
-                    {
-                        client.Send(message);
-                    }
-                    catch (Exception ex)
-                    {
-                        //throw ex;
-                        //Capture response and update to NotificationResponse 
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
+            throw new NotImplementedException();
         }
-
     }
+}

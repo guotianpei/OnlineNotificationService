@@ -11,5 +11,6 @@ namespace ONP.BackendProcessor.Configuration
         public string ACCESS_KEY { get; set; }
         public string SECRET_KEY { get; set; }
         public string RegionEndpoint { get; set; }
+        public bool EnableSsl { get; set; }
     }
 }

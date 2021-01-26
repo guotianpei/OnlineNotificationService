@@ -17,10 +17,7 @@ namespace ONP.BackendProcessor.Tasks
 
         }
 
-        public NotificationResponse SendNotification(NotificationData notdata)
-        {
-            return null;
-        }
+        
         
     }
 }

@@ -213,7 +213,7 @@ namespace ONP.BackendProcessor.Tasks
 
         }
 
-        private async void SetCompletedStage(Guid trackingId, string responseCode, string responseDescription)
+        public async void SetCompletedStage(Guid trackingId, string responseCode, string responseDescription)
         {
             var requestToUpdate = await _requestRepository.GetById(trackingId);
             if (requestToUpdate != null)

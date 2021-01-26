@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ONP.Domain.Models;
 
 namespace ONP.Infrastructure
 {
@@ -19,7 +20,7 @@ namespace ONP.Infrastructure
                 .ToTable("NotificationRequest");
 
             builder
-                .HasKey(nr => nr.ID);
+                .HasKey(nr => nr.TrackingID);
 
             //builder
             //    .Ignore(nr => nr.DomainEvents);
@@ -42,7 +43,7 @@ namespace ONP.Infrastructure
                .IsRequired();
 
             builder
-                .Property(nr => nr.ID)
+                .Property(nr => nr.TrackingID)
                 .HasDefaultValueSql("newid()");
 
             builder

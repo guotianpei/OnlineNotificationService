@@ -47,7 +47,7 @@ namespace NotificationProcessor.API.IntegrationEvents.Handlers
                 };
 
                 //await _notificationContext.NotificationTransactionLogs.AddAsync(notificationLog);
-                await _notificationRequestContext.EntityProfiles.Add(profileToUpdate);
+                await _notificationRequestContext.EntityProfiles.AddAsync(profileToUpdate);
                 await _notificationRequestContext.SaveChangesAsync();
             }
         }

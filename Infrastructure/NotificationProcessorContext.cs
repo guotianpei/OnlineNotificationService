@@ -18,6 +18,11 @@ namespace ONP.Infrastructure
     {
         private readonly IMediator _mediator;
         private IDbContextTransaction _currentTransaction;
+
+        public IDbContextTransaction GetCurrentTransaction() => _currentTransaction;
+
+        public bool HasActiveTransaction => _currentTransaction != null;
+
         private NotificationProcessorContext(DbContextOptions<NotificationProcessorContext> options) : base(options)
         {
         }

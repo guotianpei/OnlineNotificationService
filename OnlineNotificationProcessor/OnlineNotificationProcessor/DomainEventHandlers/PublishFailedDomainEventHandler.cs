@@ -14,7 +14,9 @@ namespace ONP.BackendProcessor.DomainEventHandlers
         { }
         public async Task Handle(PublishFailedDomainEvent notification, CancellationToken cancellationToken)
         {
-            //TBD-- Send email notification to admin.
+            //Anything we want to do when Publish(handle all channels) Failed.
+
+
         }
     }
 }

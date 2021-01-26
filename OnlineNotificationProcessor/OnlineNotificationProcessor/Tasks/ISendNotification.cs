@@ -8,7 +8,7 @@ namespace ONP.BackendProcessor.Tasks
 {
     public interface ISendNotification
     {
-        public Task<NotificationResponse> SendNotification(NotificationData notlog);
+        //public Task<NotificationResponse> SendNotification(NotificationData notlog);
         //void UpdateNotificationStatus();
 
     }

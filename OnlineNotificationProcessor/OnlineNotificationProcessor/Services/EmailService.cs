@@ -7,111 +7,165 @@ using ONP.BackendProcessor.Models;
 using System.Threading.Tasks;
 using ONP.BackendProcessor.Configuration;
 using ONP.Infrastructure.Repositories.Interfaces;
+using ONP.Domain.Events;
 using ONP.Domain.Models;
 using ONP.BackendProcessor.Tasks;
+using Polly;
+using System.ComponentModel;
+using ONP.Domain.Seedwork;
+
 
 
 namespace ONP.BackendProcessor.Services
 {
-    public class EmailService : IEmailService
+    public class EmailService : Entity, IEmailService
     {
 
         private readonly EmailServiceConfig _configuration;
-        //private readonly INotificationTemplateRepository _templateRepository;
+        private static readonly int NUMBER_OF_RETRIES = 3;
+        private List<NotificationResponse> _responseList;
+        private readonly INotificationRequestRepository _requestRepository;
         //private readonly IEntityProfileRepository _entityRepository;
 
-        public EmailService(IOptions<EmailServiceConfig> emailConfig) 
-            //INotificationTemplateRepository templateRepository,
-            //IEntityProfileRepository entityRepository)
+        public EmailService(IOptions<EmailServiceConfig> emailConfig,
+        INotificationRequestRepository notificationRequestRepository)
+        //IEntityProfileRepository entityRepository)
         {
             _configuration = emailConfig.Value;
+            _requestRepository = notificationRequestRepository ?? throw new ArgumentNullException(nameof(notificationRequestRepository));
             //_templateRepository = templateRepository;
             //_entityRepository = entityRepository;
         }
 
-        public async Task<List<NotificationResponse>> SendMailAsync(List<NotificationData> lstPendingReq)
+
+
+        public void SendMailAsync(List<NotificationData> lstNotificationData)
         {
             SmtpClient client = new SmtpClient();
             client.Host = _configuration.MailServerHost;
             client.Credentials = new System.Net.NetworkCredential(_configuration.ACCESS_KEY, _configuration.SECRET_KEY);
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+
+            //Return Notification Response.
+            List<NotificationResponse> lstresponse = new List<NotificationResponse>();
             try
             {
-                foreach (var mailrequest in lstPendingReq)
+                foreach (var mailrequest in lstNotificationData)
                 {
-                    var data = await BuildEmailTemplateData(mailrequest);                    
-                    message.From = new System.Net.Mail.MailAddress(data.From);
-                    message.Subject = data.Subject;
-                    message.Body = data.RequestMessageData;
+                    message.From = new System.Net.Mail.MailAddress(mailrequest.From);
+                    message.Subject = mailrequest.Subject;
+                    message.Body = mailrequest.RequestMessageData;
                     //message.Priority = mailrequest.Priority;
-                   // message.IsBodyHtml = mailrequest.IsBodyHtml;
-                    message.To.Add(data.To);
+                    // message.IsBodyHtml = mailrequest.IsBodyHtml;
+                    message.To.Add(mailrequest.To);
+
+                    // The userState can be any object that allows your callback
+                    // method to identify this send operation.
+                    
+                    object userState = mailrequest;
+                    // Set the method that is called back when the send operation ends.
+                    client.SendCompleted += new
+                    SendCompletedEventHandler(SendCompletedCallback);
+
+                    //Specify Polly retry Policy
+                    var retry = Policy
+                        // TO-DO: Update condition check to GetRetrySmtpStatusCodes
+                        .Handle<SmtpFailedRecipientException>(ex => ex.StatusCode == SmtpStatusCode.MailboxUnavailable)
+                        //.Or<SmtpException>() No need retry
+                        .WaitAndRetry(NUMBER_OF_RETRIES, currentRetry => TimeSpan.FromSeconds(Math.Pow(2, currentRetry)));
+
                     try
                     {
-                        client.Send(message);
+                        retry.Execute(() =>
+                        {
+                           client.SendAsync(message, userState);
+                        });
+
+                    }
+                    catch (SmtpFailedRecipientsException ex)
+                    {
+                        //then handler it with event 
+                        HandleFailedStatusCode(mailrequest, ex.StatusCode, ex);
                     }
                     catch (Exception ex)
                     {
-                        //throw ex;
-                        //Capture response and update to NotificationResponse 
+                        HandleFailedStatusCode(mailrequest, SmtpStatusCode.GeneralFailure,  ex);
                     }
-
+                    finally
+                    {
+                       
+                        //some clean up.
+                        message.Dispose();
+                        //TO-DO: Update stage 
+                       
+                    }
                 }
             }
             catch (Exception ex)
-            {
-                throw ex;
+            { }
+            finally
+             {
+                
+
             }
-          
+
+
         }
 
-
-
-        private async Task<NotificationData> BuildEmailTemplateData(NotificationRequest req)
+        private void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
         {
-            try
+            //TO-DO: Logging
+            
+            // Get the request for this asynchronous operation.
+            NotificationData requestData = (NotificationData)e.UserState;
+            NotificationResponse response = new NotificationResponse();            
+
+            if (e.Cancelled)
             {
-                NotificationData _notificationData = new NotificationData();
-                //NotificationTemplate _notificationTemplate = GetNotificatoinTemplate(req.TopicID);
-                var _notificationTemplate = await _templateRepository.GetAsync(req.TopicID);
-
-                EntityProfile _entprof =await _entityRepository.GetAsync(req.EntityID);
-                BuildTemplate _bt = new BuildTemplate();
-
-                if (_notificationTemplate != null)
+                response.ResponseCode = "Send canceled.";
+            }
+            if (e.Error != null)
+            {
+                Console.WriteLine("[{0}] {1}", requestData.TrackingID, e.Error.ToString());
+                Exception ex = e.Error;
+                if (ex is SmtpException smtpException)
                 {
-                    _notificationData.From = _notificationTemplate.From;
-                    _notificationData.Subject = _notificationTemplate.Subject;
-                    _notificationData.To = _entprof.Email;//chnage based on comchannel
-
-                    EmailTemplateBuild _etb = _bt.BuildEmailTemplate(_notificationTemplate.TemplateFile);
-                    PlaceHoldReplacer _phr = new PlaceHoldReplacer();
-                    _notificationData.RequestMessageData = _phr.Replace(_etb.MailBody.Trim(), AddPlaceHolder(_entprof), false).Trim(); //construct message with template
-                    //Replace custom tag
-                    _notificationData.RequestMessageData = _notificationData.RequestMessageData.Replace("$CustomTag$", req.RequestMessageData).Trim();
+                    response.ResponseCode = smtpException.StatusCode.ToString();
+                    response.Error = smtpException;
                 }
-                // Notification Composition has been completed, to send to corresponding notification processor depends on type of communication channel. Update stage=ToPublish
-                //SetToPublishStage(req.TrackingID, _notificationData.To, _notificationData.RequestMessageData);
-                return _notificationData;
             }
-            catch (Exception ex)
+            else //"Mail sent successfully"  
             {
-                //need to log exception
-                throw ex;
+                Console.WriteLine("Send success: {0}]  ", requestData.TrackingID);
+                response.ResponseCode = SmtpStatusCode.Ok.ToString();
             }
+            response.TrackingID = requestData.TrackingID;
+            _responseList.Add(response);
+            //Raise domain event to update status.
+            RequestCompletedDomainEvent requestComplated = new RequestCompletedDomainEvent(requestData.TrackingID, response.ResponseCode, response.Error);
+            this.AddDomainEvent(requestComplated);
+
         }
 
-        List<PlaceHolder> AddPlaceHolder(EntityProfile entProf)
+        private void HandleFailedStatusCode(NotificationData request,  SmtpStatusCode statuscode=SmtpStatusCode.GeneralFailure, Exception exception=null)
         {
-            List<PlaceHolder> lstPH = new List<PlaceHolder>();
-            PlaceHolder _pholder;
-            foreach (PropertyInfo prop in entProf.GetType().GetProperties())
+
+            if (GetfailureNotifyingCodes().Contains(statuscode))
             {
-                _pholder = new PlaceHolder(string.Format("${0}$", prop.Name), prop.GetValue(entProf).ToString());
-                lstPH.Add(_pholder);
+                //Raise PublishFailedDomainEvent   as side effect.
+                var failedEvent = new PublishFailedDomainEvent(request.TrackingID, request.To, 
+                    request.RequestMessageData, ComChannelTypes.Email, statuscode, exception);
+                AddDomainEvent(failedEvent);
             }
-            return lstPH;
+            
+        }
+
+        //TO-GO: Load during application start
+        public List<SmtpStatusCode> GetfailureNotifyingCodes()
+        {
+            List<SmtpStatusCode> codes = new List<SmtpStatusCode>();
+            return codes;
         }
 
     }

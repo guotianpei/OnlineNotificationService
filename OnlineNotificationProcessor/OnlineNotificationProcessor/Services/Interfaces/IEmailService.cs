@@ -7,8 +7,8 @@ using ONP.Domain.Models;
 
 namespace ONP.BackendProcessor.Services
 {
-    public interface ISecureMessageService
+    public interface IEmailService
     {
-        public Task<List<NotificationResponse>> SendMailAsync(List<NotificationData> lstEmailRequest);
+        public void SendMailAsync(List<NotificationData> lstEmailRequest);
     }
 }

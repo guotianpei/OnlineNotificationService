@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace ONP.Infrastructure.Responsitories
 {
-    class NotificationRequestRepository : GenericRepository<NotificationRequest>, INotificationRequestRepository
+    public class NotificationRequestRepository : GenericRepository<NotificationRequest>, INotificationRequestRepository
     {
         //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design
         //Define one repository per aggregate
@@ -35,9 +35,10 @@ namespace ONP.Infrastructure.Responsitories
 
 
         //Get all stage=0
-        public async Task<List<NotificationRequest>> GetAndUpdateAsyncAllPendingRequests()
+        public async Task<List<NotificationRequest>> GetAllPendingRequestsAsync()
         {                     
-            //To-DO: Replace with SP update original request status and insert transaction log.
+            //Alternative: Use SP update original request status and insert transaction log.
+            //Prefer all business logic handled in Domain module instead of multiple places. 
             return await _context.NotificationRequests
                 .Where(n => n.NotificationStage == NotificationStageEnum.RequestReceived)
                 .OrderBy(o => o.RequestDatetime)
@@ -56,8 +57,12 @@ namespace ONP.Infrastructure.Responsitories
                .SingleOrDefaultAsync();
             return request;
         }
-       
 
-       
+   
+
+
+
+
+
     }
 }

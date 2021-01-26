@@ -1,33 +1,34 @@
-﻿using Autofac;
-using MMS.EventBus.Abstractions;
-using NotificationProcessor.API.IntegrationEvents;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Reflection;
-using System.Threading.Tasks;
+using Autofac;
+using MMS.EventBus.Abstractions;
 using ONP.Infrastructure.Responsitories;
 using ONP.Infrastructure.Repositories.Interfaces;
 
-namespace NotificationProcessor.API.Infrastructure.AutofacModules
+namespace ONP.BackendProcessor.Infrastructure.AutofacModules
 {
+
+    //Introduction to Dependency Injection in ASP.NET Core
+    //https://docs.microsoft.com/aspnet/core/fundamentals/depende
+    //ncy-injection
+    //Autofac.Official documentation.
+    //https://docs.autofac.org/en/latest/
+
     public class ApplicationModule : Autofac.Module
     {
       
-        public ApplicationModule(string qconstr)
-        {
-        
 
+        public ApplicationModule(string qconstr)
+        {          
         }
 
         protected override void Load(ContainerBuilder builder)
         {
-
-          
-
+            
+            
             builder.RegisterType<NotificationRequestRepository>()
-               .As<INotificationRequestRepository>()
-               .InstancePerLifetimeScope();
+                .As<INotificationRequestRepository>()
+                .InstancePerLifetimeScope();
 
             builder.RegisterType<NotificationTemplateRepository>()
                 .As<INotificationTemplateRepository>()
@@ -37,8 +38,7 @@ namespace NotificationProcessor.API.Infrastructure.AutofacModules
                .As<IEntityProfileRepository>()
                .InstancePerLifetimeScope();
 
-            builder.RegisterAssemblyTypes(typeof(NotificationRequestedIntegrationEventHandler).GetTypeInfo().Assembly)
-            .AsClosedTypesOf(typeof(IIntegrationEventHandler<>));
+            
 
         }
     }

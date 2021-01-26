@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace ONP.Infrastructure.Responsitories
 {
-    class EntityProfileRepository : GenericRepository<EntityProfile>, IEntityProfileRepository
+    public class EntityProfileRepository : GenericRepository<EntityProfile>, IEntityProfileRepository
     {
         //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design
         //Define one repository per aggregate

@@ -5,25 +5,24 @@ using MediatR;
 
 using ONP.Domain.Models;
 
-namespace ONP.Domain
+namespace ONP.Domain.Events
 {
     //This event hold info for raising side effect once complete process for Notification request 
     public class RequestCompletedDomainEvent:  INotification
     {
+        
         public Guid TrackingID { get; set; }
-        //public string EntityID { get; set; }
-        //public string comChannel { get; set; }
-        //public string Recipient { get; set; }
-        //public DateTime TransactionDateTime { get; set; }
-        public NotificationStageEnum NotificationStage { get; set; }
-        public int ResponseCode { get; set; }
+        //public NotificationStageEnum NotificationStage { get; set; }
+        public string ResponseCode { get; set; }
+        public Exception ResponseDesc { get; set; }
+       // public List<NotificationResponse> BatchRequestResults { get; set; }
 
-        public RequestCompletedDomainEvent(Guid trackingID,  int responseCode )
+        public RequestCompletedDomainEvent(Guid trackingId, string responseCode, Exception desc)
         {
-            TrackingID = trackingID;
-            //NotificationStage = stage;
+            TrackingID = trackingId;
             ResponseCode = responseCode;
-            //.... any other info needed for additional actions needed.
+            ResponseDesc = desc;
+
         }
 
 

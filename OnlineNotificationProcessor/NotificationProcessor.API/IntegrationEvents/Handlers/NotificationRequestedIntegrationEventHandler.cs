@@ -1,5 +1,5 @@
-﻿using Domain;
-using Infrastructure;
+﻿using ONP.Domain.Models;
+using ONP.Infrastructure;
 using Microsoft.Extensions.Logging;
 using MMS.EventBus.Abstractions;
 using NotificationProcessor.API.IntegrationEvents.Events;
@@ -14,10 +14,10 @@ namespace NotificationProcessor.API.IntegrationEvents
 
     public class NotificationRequestedIntegrationEventHandler : IIntegrationEventHandler<NotificationRequestedIntegrationEvent>
     {
-        private readonly NotificationContext _notificationContext;
+        private readonly NotificationProcessorContext _notificationContext;
         private readonly ILogger<NotificationRequestedIntegrationEventHandler> _logger;
         private readonly INotificationIntegrationEventService _notificationIntegrationEventService;
-        public NotificationRequestedIntegrationEventHandler(NotificationContext notificationContext,ILogger<NotificationRequestedIntegrationEventHandler> logger,
+        public NotificationRequestedIntegrationEventHandler(NotificationProcessorContext notificationContext,ILogger<NotificationRequestedIntegrationEventHandler> logger,
              INotificationIntegrationEventService notificationIntegrationEventService)
         {
             _notificationContext = notificationContext;
@@ -33,14 +33,9 @@ namespace NotificationProcessor.API.IntegrationEvents
                 _logger.LogInformation("----- Handling integration event: {IntegrationEventId} at {AppName} - ({@IntegrationEvent})", @event.Id, Program.AppName, @event);
 
                 //Save Notification Request into NotificationRequest table
-                NotificationRequest notificationRequest = new NotificationRequest()
-                {
-                    EntityID = @event.EntityID,
-                    ComChannel = @event.ComChannel.Name, //"test@gmail.com"                 
-                    TopicID = @event.TopicID,
-                    RequestMessageData = "Custom data from requestor",
-                    NotificationStage = "Pending"
-                };
+                NotificationRequest notificationRequest = new NotificationRequest(@event.TrackingID, @event.EntityID, @event.ComChannel.ToString(),
+                    @event.RequestMessageData, @event.TopicID, @event.CreationDate);
+                
 
                 await _notificationContext.NotificationRequests.AddAsync(notificationRequest);
                 await _notificationContext.SaveChangesAsync();              

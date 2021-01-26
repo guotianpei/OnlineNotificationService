@@ -1,7 +1,7 @@
-﻿using Domain;
+﻿using ONP.Domain.Models;
 using Microsoft.Extensions.Logging;
 using MMS.EventBus.Abstractions;
-using Infrastructure;
+using ONP.Infrastructure;
 using NotificationProcessor.API.IntegrationEvents.Events;
 using Serilog.Context;
 using System;
@@ -13,10 +13,10 @@ namespace NotificationProcessor.API.IntegrationEvents
 {
     public class TemplateUpdatedIntegrationEventHandler : IIntegrationEventHandler<TemplateUpdatedIntegrationEvent>
     {
-        private readonly NotificationContext _notificationContext;
+        private readonly NotificationProcessorContext _notificationContext;
         private readonly ILogger<TemplateUpdatedIntegrationEventHandler> _logger;
         private readonly INotificationIntegrationEventService _notificationIntegrationEventService;
-        public TemplateUpdatedIntegrationEventHandler(NotificationContext notificationContext, ILogger<TemplateUpdatedIntegrationEventHandler> logger,
+        public TemplateUpdatedIntegrationEventHandler(NotificationProcessorContext notificationContext, ILogger<TemplateUpdatedIntegrationEventHandler> logger,
              INotificationIntegrationEventService notificationIntegrationEventService)
         {
             _notificationContext = notificationContext;

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ONP.Infrastructure.Responsitories
+namespace
+    ONP.Infrastructure.Repositories.Interfaces
+
 {
     public interface IGenericRepository<T>:IDisposable where T:class
     {

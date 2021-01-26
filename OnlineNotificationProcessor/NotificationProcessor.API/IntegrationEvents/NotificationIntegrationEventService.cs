@@ -4,7 +4,7 @@ using MMS.EventBus.Abstractions;
 using MMS.EventBus.Events;
 using MMS.IntegrationEventLogEF.Services;
 using MMS.IntegrationEventLogEF.Utilities;
-using Infrastructure;
+using ONP.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -17,13 +17,13 @@ namespace NotificationProcessor.API.IntegrationEvents
     {
         private readonly Func<DbConnection, IIntegrationEventLogService> _integrationEventLogServiceFactory;
         private readonly IEventBus _eventBus;
-        private readonly NotificationContext _notificationContext;
+        private readonly NotificationProcessorContext _notificationContext;
         private readonly IIntegrationEventLogService _eventLogService;
         private readonly ILogger<NotificationIntegrationEventService> _logger;
 
         public NotificationIntegrationEventService(ILogger<NotificationIntegrationEventService> logger,
             IEventBus eventBus,
-             NotificationContext notificationContext,
+             NotificationProcessorContext notificationContext,
             Func<DbConnection, IIntegrationEventLogService> integrationEventLogServiceFactory)
         {
             _notificationContext = notificationContext ?? throw new ArgumentNullException(nameof(notificationContext));

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ONP.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ONP.Domain.Models;
 
 namespace ONP.Infrastructure
 {

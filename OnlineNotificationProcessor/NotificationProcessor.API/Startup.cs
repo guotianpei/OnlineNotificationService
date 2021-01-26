@@ -17,7 +17,7 @@ using MMS.EventBus.Abstractions;
 using MMS.EventBusRabbitMQ;
 using MMS.IntegrationEventLogEF;
 using MMS.IntegrationEventLogEF.Services;
-using Infrastructure;
+using ONP.Infrastructure;
 using NotificationProcessor.API.Infrastructure.AutofacModules;
 using NotificationProcessor.API.IntegrationEvents;
 using NotificationProcessor.API.IntegrationEvents.Events;
@@ -96,7 +96,7 @@ namespace NotificationProcessor.API
         public static IServiceCollection AddCustomDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddEntityFrameworkSqlServer()
-                   .AddDbContext<NotificationContext>(options =>
+                   .AddDbContext<NotificationProcessorContext>(options =>
                    {
                        options.UseSqlServer(configuration["ProfileDBConnectionString"],
                            sqlServerOptionsAction: sqlOptions =>
